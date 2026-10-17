@@ -11,6 +11,9 @@ VideoMotion tách từ [MotionFly](https://github.com/andyluu98/MotionFly) (cùn
 | `vendor/bestagentkits/fit-beat-grid.py` | [bestagentkits/motion-video-skill](https://github.com/bestagentkits/motion-video-skill) commit a73702b | MIT | Không sửa |
 | `templates/fonts/BeVietnamPro-*.ttf`, `JetBrainsMono-Variable.ttf` | [google/fonts](https://github.com/google/fonts) | SIL OFL 1.1 | Đổi tên file JetBrains Mono |
 | `reference/vn-short-video-tts/` | dự án cũ của chủ repo | của chủ repo | Không sửa |
+| `docs/assets/styles/*.jpg` (35 ảnh "khung video") | MotionFly `site/media/styles/`, gốc từ lemo-opuscar `docs/frames/` commit a75e2b3 | MIT (tài nguyên bên thứ ba trong demo gốc giữ giấy phép riêng) | Đổi tên theo slug VideoMotion |
+| `docs/assets/styles/*.jpg` (51 ảnh "khung slide") | ảnh demo [SlideFly](https://github.com/andyluu98/slidefly) (cùng tác giả) | MIT | Thu nhỏ 800 x 450 |
+| `docs/assets/gsap.min.js`, `SplitText.min.js`, `ScrambleTextPlugin.min.js` | [GSAP](https://gsap.com) 3.15.0 | GSAP Standard "no charge" license, không thuộc MIT của repo | Không sửa, giữ phần ghi bản quyền |
 
 ## Phụ thuộc cài khi chạy (không chép vào repo)
 
