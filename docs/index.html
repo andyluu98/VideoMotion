@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VideoMotion: video biết kể</title>
+<meta name="description" content="Plugin Claude Code làm video tiếng Việt: AI làm đạo diễn, 86 style, agent Sonnet dựng từng cảnh song song bằng HyperFrames và GSAP. Không khung dựng sẵn.">
+<meta property="og:image" content="https://andyluu98.github.io/VideoMotion/media/poster.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23FF7A45'/%3E%3Crect x='7' y='9' width='14' height='14' rx='2' fill='%23140A05'/%3E%3Cpath d='M21 14l5-3v10l-5-3z' fill='%23140A05'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css?v=1">
+<link rel="stylesheet" href="gallery.css?v=1">
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="logo" href="#"><svg viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#FF7A45"/><rect x="7" y="9" width="14" height="14" rx="2" fill="#140A05"/><path d="M21 14l5-3v10l-5-3z" fill="#140A05"/></svg>VideoMotion</a>
+  <div class="links"><a href="#mau">Video mẫu</a><a href="#vi-sao">Vì sao</a><a href="#quy-trinh">Quy trình</a><a href="#style">Thư viện style</a><a href="#cai-dat">Cài đặt</a></div>
+  <a class="gh" href="https://github.com/andyluu98/VideoMotion" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.8.06 1.23.83 1.23.83.72 1.22 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.65-.89-3.65-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a>
+</div></nav>
+
+<header class="hero">
+  <div class="glow" style="width:620px;height:620px;right:-120px;top:-160px;background:#FF7A45"></div>
+  <div class="glow" style="width:480px;height:480px;left:-200px;top:260px;background:#8B7CFF;opacity:.18"></div>
+  <div class="wrap">
+    <div>
+      <p class="kick">Plugin mã nguồn mở cho Claude Code</p>
+      <h1>Video biết <em>kể.</em></h1>
+      <p class="lead">Gõ một câu, <b>AI làm đạo diễn</b>: nghĩ ý tưởng lớn, viết kịch bản, đọc bằng giọng Việt, rồi giao từng cảnh cho <b>agent Sonnet</b> dựng song song bằng GSAP. 86 style, không khung dựng sẵn, ra MP4 có nhạc và phụ đề.</p>
+      <div class="cta"><a class="btn p" href="#cai-dat">Cài vào Claude Code</a><a class="btn" href="#mau">Xem video mẫu</a><a class="btn" href="#style">86 style</a></div>
+      <div class="checks"><span>Miễn phí, giấy phép MIT</span><span>Giọng VieNeu tiếng Việt</span><span>Dọc 9:16 hoặc ngang 16:9</span></div>
+    </div>
+    <div class="phone">
+      <video src="media/san-quai-lang-phi.mp4" poster="media/poster.jpg" autoplay muted loop playsinline preload="metadata"></video>
+      <button type="button" class="snd">Bật tiếng</button>
+      <p class="cap">video mẫu · 24 giây · style pixel-rpg</p>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="mau">
+    <p class="kick">Video mẫu</p>
+    <h2>Một câu yêu cầu, <em>24 giây phim.</em></h2>
+    <p class="sub">Chủ đề: lãng phí trong sản xuất và AI, khung dọc, <code>style pixel-rpg</code>. Đạo diễn chọn thế giới game nhập vai: thanh HP là lợi nhuận, quái nhầy là lãng phí, AI là rương báu. Bốn cảnh do bốn agent Sonnet dựng cùng lúc.</p>
+    <div class="strip">
+      <figure><img src="media/khung-3.0.jpg" alt="Cảnh 1: xưởng chạy ba ca" loading="lazy"><figcaption><b>0:03 · cảnh 1</b>Xưởng chạy đủ ba ca, HP lợi nhuận bắt đầu tụt</figcaption></figure>
+      <figure><img src="media/khung-6.2.jpg" alt="Cảnh 2: quái lãng phí" loading="lazy"><figcaption><b>0:06 · cảnh 2</b>Ba con quái rơi xuống đúng lúc đọc tên</figcaption></figure>
+      <figure><img src="media/khung-14.6.jpg" alt="Cảnh 3: rương báu AI" loading="lazy"><figcaption><b>0:14 · cảnh 3</b>Rương mở, vật phẩm AI bắn tia vào quái</figcaption></figure>
+      <figure><img src="media/khung-23.5.jpg" alt="Cảnh 4: hoàn thành nhiệm vụ" loading="lazy"><figcaption><b>0:23 · cảnh 4</b>HP đầy lại, hoàn thành nhiệm vụ</figcaption></figure>
+    </div>
+  </section>
+
+  <section id="vi-sao">
+    <p class="kick">Vì sao có VideoMotion</p>
+    <h2>Khung cứng làm video <em>rập khuôn.</em></h2>
+    <p class="sub">VideoMotion tách từ MotionFly: giữ phần máy đang chạy tốt (giọng, nhạc, render, phụ đề), thay phần đạo diễn để mỗi video là một câu chuyện riêng.</p>
+    <div class="tw"><table class="cmp">
+      <tr><th></th><th>MotionFly</th><th>VideoMotion</th></tr>
+      <tr><td>Cách nghĩ</td><td>Hạn mức cứng: 85% hình, tối đa 30 từ mỗi cảnh, thẻ nào cũng phải có SVG</td><td>Ý tưởng lớn, vật xuyên suốt, chuyển động theo động từ của câu; bố cục do người dựng tự nghĩ</td></tr>
+      <tr><td>Style</td><td>43 thẻ tiếng Anh, dài, nhiều luật kỹ thuật</td><td>86 thẻ tiếng Việt ngắn: gu, màu, chữ, chữ ký chuyển động</td></tr>
+      <tr><td>Phông chữ</td><td>Chỉ Be Vietnam Pro</td><td>Phông riêng của từng style, tải sẵn về dự án</td></tr>
+      <tr><td>GSAP</td><td>Bản lõi</td><td>Thêm SplitText, DrawSVG, MotionPath, MorphSVG, ScrambleText</td></tr>
+      <tr><td>Agent dựng cảnh</td><td>Theo model phiên chính</td><td>Sonnet mới nhất, effort medium, chạy song song</td></tr>
+      <tr><td>Kiểm và duyệt</td><td>3 cổng duyệt, tờ duyệt, agent người chấm</td><td>1 cổng duyệt kịch bản, kiểm kỹ thuật, kiểm MP4 một lần</td></tr>
+    </table></div>
+  </section>
+
+  <section id="quy-trinh">
+    <p class="kick">Quy trình</p>
+    <h2>Bảy bước, <em>AI tự đi hết.</em></h2>
+    <div class="steps">
+      <div class="step"><h3>Brief</h3><p>Chủ đề, khán giả, khung, độ dài, giọng. Chỉ hỏi thứ không đoán được.</p></div>
+      <div class="step"><h3>Chọn style</h3><p>Gợi ý ba style: một hợp, một khác nền, một bất ngờ.</p></div>
+      <div class="step"><h3>Ý tưởng lớn, kịch bản</h3><p>Một thế giới, một vật xuyên suốt. Cổng duyệt duy nhất, nói "tự làm hết" để bỏ.</p></div>
+      <div class="step"><h3>Giọng đọc</h3><p>VieNeu đọc tiếng Việt, Whisper lấy mốc thời gian từng từ.</p></div>
+      <div class="step"><h3>Phân cảnh</h3><p>Mỗi hình neo vào đúng từ khóa trong lời đọc.</p></div>
+      <div class="step"><h3>Nhạc nền</h3><p>Nhạc tự hạ khi có lời, chuẩn -14 LUFS.</p></div>
+      <div class="step"><h3>Dựng song song</h3><p>Mỗi cảnh một agent Sonnet, kiểm kỹ thuật, render, phụ đề, MP4.</p></div>
+    </div>
+  </section>
+
+  <section id="style">
+    <p class="kick">Thư viện style</p>
+    <h2><em>86 style</em>, chép một dòng là xong.</h2>
+    <p class="sub">Bấm "Chép" để lấy đúng một dòng như <code>style pixel-rpg</code>, dán vào cuối yêu cầu làm video. Mỗi thẻ ghi bảng màu, phông chữ, ngôn ngữ minh họa và chữ ký chuyển động; bố cục từng cảnh vẫn do AI tự nghĩ.</p>
+    <div class="how"><div><b>Khung video</b>: ảnh từ thư viện MotionFly, cùng họ style.</div><div><b>Khung slide</b>: ảnh từ bộ mẫu SlideFly, cùng bảng màu và chất liệu.</div><div>Ảnh chỉ minh họa phong cách; video thật do VideoMotion dựng mới cho từng chủ đề.</div></div>
+    <div class="filters"><span id="fb"></span><input id="q" type="search" placeholder="Tìm theo tên, cảm xúc, chủ đề…" aria-label="Tìm style"><span class="cnt" id="cnt"></span></div>
+    <div class="gal" id="gal"></div>
+    <div class="more" id="more"><button type="button" class="btn">Xem cả 86 style</button></div>
+  </section>
+
+  <section id="cai-dat">
+    <p class="kick">Cài đặt</p>
+    <h2>Ba lệnh, <em>rồi cứ nói.</em></h2>
+    <p class="sub">Cần Claude Code, Node.js 22 trở lên, Python 3.10 trở lên và ffmpeg. Máy đã chạy MotionFly thì dùng chung môi trường, không tải lại gì; máy mới tải khoảng 2 đến 3 GB (giọng VieNeu, Whisper).</p>
+    <div class="inst">
+      <div class="i"><span class="n">1</span><div><h3>Thêm plugin vào Claude Code</h3>
+        <div class="cmd">/plugin marketplace add andyluu98/VideoMotion</div>
+        <div class="cmd">/plugin install videomotion@videomotion</div></div></div>
+      <div class="i"><span class="n">2</span><div><h3>Kiểm tra máy</h3>
+        <div class="cmd">/vm-cai-dat</div>
+        <p>Báo thiếu gì, rồi tự cài phần Python và model khi anh đồng ý.</p></div></div>
+      <div class="i"><span class="n">3</span><div><h3>Làm video</h3>
+        <div class="cmd">/videomotion Làm video 45 giây giải thích lãng phí trong sản xuất, style pixel-rpg</div>
+        <p>Codex, Antigravity và công cụ khác: cho đọc <code>skills/videomotion/SKILL.md</code>; không có agent con thì dựng lần lượt từng cảnh theo <code>agents/vm-canh.md</code>.</p></div></div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <p><b>Giấy phép.</b> Mã và thẻ style của VideoMotion theo MIT. GSAP trên trang này và trong video theo giấy phép riêng của GSAP (gsap.com/standard-license). Phông theo giấy phép của từng phông.</p>
+  <p><b>Ghi công.</b> Phần máy tách từ MotionFly. Thẻ style dùng chung với SlideMotion; nhiều style phỏng theo lemo-opuscar (MIT) và frontend-slides (MIT). Ảnh minh họa style: khung video từ MotionFly (gốc lemo-opuscar), khung slide từ SlideFly. Chi tiết trong NOTICE.md.</p>
+</div></footer>
+
+<script src="styles.js?v=1"></script>
+<script src="assets/gsap.min.js"></script>
+<script src="assets/SplitText.min.js"></script>
+<script src="assets/ScrambleTextPlugin.min.js"></script>
+<script src="site.js?v=1"></script>
+<script src="gallery.js?v=1"></script>
+</body>
+</html>
