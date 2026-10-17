@@ -1,0 +1,243 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Scene s1: xưởng pixel chạy, thanh HP LỢI NHUẬN tụt từng ô. Nền trong suốt, lớp _nen vẽ bản đồ và đường. -->
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "VT323"; src: url("fonts/VT323-400.ttf"); font-weight: 400; font-style: normal; }
+        #s1-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "VT323", monospace;
+          color: var(--fg);
+          text-transform: uppercase;
+        }
+        #s1-root svg { shape-rendering: crispEdges; display: block; }
+
+        /* hộp thoại viền vát */
+        #s1-root .win {
+          position: absolute;
+          box-sizing: border-box;
+          background: var(--win);
+          border: 8px solid var(--ink);
+          box-shadow: inset 8px 8px 0 var(--sil), inset -8px -8px 0 var(--dk);
+        }
+        #s1-hp { left: 60px; top: 180px; width: 960px; height: 300px; }
+        #s1-hp-title {
+          position: absolute; left: 66px; top: 40px;
+          font-size: 96px; line-height: 1; letter-spacing: 0.03em;
+          text-shadow: 6px 6px 0 var(--ink);
+        }
+        #s1-hp-tag {
+          position: absolute; right: 60px; top: 52px;
+          font-size: 72px; line-height: 1; color: var(--accent);
+          text-shadow: 6px 6px 0 var(--ink);
+        }
+        #s1-cells { position: absolute; left: 66px; top: 168px; width: 828px; height: 64px; }
+        #s1-root .cell {
+          position: absolute; top: 0; width: 64px; height: 64px;
+          background: var(--hp); box-shadow: 0 0 0 6px var(--ink);
+        }
+        #s1-root .cell i { position: absolute; left: 0; top: 0; width: 64px; height: 16px; background: var(--hp-hi); }
+
+        /* huy hiệu ba ca */
+        #s1-root .ca { width: 220px; height: 90px; top: 540px; }
+        #s1-root .ca b { position: absolute; left: 28px; top: 14px; font-size: 56px; font-weight: 400; line-height: 1; text-shadow: 4px 4px 0 var(--ink); }
+        #s1-root .ca u { position: absolute; right: 24px; top: 31px; width: 20px; height: 20px; background: var(--hp-hi); box-shadow: 0 0 0 4px var(--ink); }
+
+        /* xưởng */
+        #s1-fac { position: absolute; left: 460px; top: 700px; width: 520px; height: 500px; }
+        #s1-fac svg { position: absolute; left: 0; top: 0; }
+        #s1-sign {
+          position: absolute; left: 36px; top: 266px; width: 228px; height: 60px;
+          background: #8b5a2f; border: 6px solid var(--ink); box-sizing: border-box;
+          box-shadow: inset 0 6px 0 #c98f4e;
+          font-size: 52px; line-height: 48px; text-align: center; letter-spacing: 0.03em;
+          text-shadow: 4px 4px 0 var(--ink);
+        }
+        #s1-root .gear { position: absolute; }
+        #s1-g1 { left: 280px; top: 300px; width: 120px; height: 120px; }
+        #s1-g2 { left: 392px; top: 364px; width: 80px; height: 80px; }
+        #s1-root .puff {
+          position: absolute; left: 400px; top: 20px; width: 44px; height: 44px;
+          background: #c9d6f0; border: 6px solid var(--ink); box-sizing: border-box;
+        }
+        #s1-root .puff.dk { background: var(--sil); }
+        #s1-root .lamp { position: absolute; top: 340px; width: 56px; height: 56px; background: var(--accent); border: 6px solid var(--ink); box-sizing: border-box; box-shadow: inset 0 8px 0 #fff3c4; }
+
+        /* người hùng */
+        #s1-hero { position: absolute; left: 104px; top: 1098px; width: 192px; height: 200px; }
+        #s1-spr { position: absolute; left: 0; top: 0; width: 192px; height: 192px; }
+        #s1-shadow { position: absolute; left: 16px; top: 192px; width: 160px; height: 8px; background: var(--edge); }
+        #s1-q {
+          position: absolute; left: 40px; top: -150px; width: 112px;
+          font-size: 150px; line-height: 1; text-align: center; color: var(--accent);
+          text-shadow: 8px 8px 0 var(--ink);
+        }
+      </style>
+
+      <div id="s1-root" data-composition-id="s1" data-width="1080" data-height="1920">
+        <div id="s1-fac">
+          <svg id="s1-facsvg" width="520" height="500" viewBox="0 0 520 500"></svg>
+          <div id="s1-sign">Xưởng</div>
+          <div class="lamp" style="left:36px"></div>
+          <div class="lamp" style="left:116px"></div>
+          <div class="lamp" style="left:196px"></div>
+          <div class="gear" id="s1-g1"><svg width="120" height="120" viewBox="0 0 120 120" data-gear="1"></svg></div>
+          <div class="gear" id="s1-g2"><svg width="80" height="80" viewBox="0 0 120 120" data-gear="2"></svg></div>
+          <div class="puff" id="s1-p0"></div>
+          <div class="puff dk" id="s1-p1"></div>
+          <div class="puff" id="s1-p2"></div>
+          <div class="puff dk" id="s1-p3"></div>
+        </div>
+
+        <div class="win" id="s1-hp">
+          <div id="s1-hp-title">Lợi nhuận</div>
+          <div id="s1-hp-tag">HP</div>
+          <div id="s1-cells"></div>
+        </div>
+
+        <div class="win ca" id="s1-ca1" style="left:60px"><b>Ca 1</b><u></u></div>
+        <div class="win ca" id="s1-ca2" style="left:300px"><b>Ca 2</b><u></u></div>
+        <div class="win ca" id="s1-ca3" style="left:540px"><b>Ca 3</b><u></u></div>
+
+        <div id="s1-hero">
+          <div id="s1-shadow"></div>
+          <svg id="s1-spr" width="192" height="192" viewBox="0 0 192 192"></svg>
+          <div id="s1-q">?</div>
+        </div>
+      </div>
+
+      <script>
+        (() => {
+          const A = (key) => window.__vv.local("s1", key);
+          const NS = "http://www.w3.org/2000/svg";
+          const END = 4.32;
+          const rect = (p, x, y, w, h, f) => {
+            const r = document.createElementNS(NS, "rect");
+            r.setAttribute("x", x); r.setAttribute("y", y); r.setAttribute("width", w); r.setAttribute("height", h); r.setAttribute("fill", f);
+            p.appendChild(r);
+          };
+
+          /* sprite người hùng 16x16, ô 12px */
+          const spr = document.getElementById("s1-spr");
+          const pal = { k: "#1a1c2c", h: "#8b5a2f", s: "#f2c27a", r: "#b13e53", b: "#3b5dc9", B: "#41a6f6", w: "#f4f4f4" };
+          const grid = [
+            "......kkkk......",
+            ".....khhhhk.....",
+            "....khhhhhhk....",
+            "....kssssssk....",
+            "....kskssksk....",
+            "....kssssssk....",
+            ".....rrrrrr.....",
+            "....krrrrrrk....",
+            "...kbbbbbbbbk...",
+            "..kbbBbbbbBbbk..",
+            "..ksbbbbbbbbsk..",
+            "...kbbbbbbbbk...",
+            "....kbbbbbbk....",
+            "....kbbkkbbk....",
+            "....khhk.khhk...",
+            "....kkkk.kkkk..."
+          ];
+          grid.forEach((row, y) => [...row].forEach((c, x) => { if (pal[c]) rect(spr, x * 12, y * 12, 12, 12, pal[c]); }));
+
+          /* thân xưởng, ô 4px */
+          const fs = document.getElementById("s1-facsvg");
+          const INK = "#1a1c2c";
+          const solid = (x, y, w, h, f) => { rect(fs, x - 6, y - 6, w + 12, h + 12, INK); rect(fs, x, y, w, h, f); };
+          solid(400, 80, 60, 164, "#b13e53");          // ống khói
+          rect(fs, 408, 96, 44, 8, "#ef7d57"); rect(fs, 408, 148, 44, 8, "#ef7d57"); rect(fs, 408, 200, 44, 8, "#ef7d57");
+          solid(388, 60, 84, 28, "#7d93a8");            // miệng ống
+          solid(0, 240, 500, 260, "#7d93a8");           // thân
+          for (let r = 0; r < 6; r++) for (let c = 0; c < 8; c++) rect(fs, c * 64 + (r % 2) * 32 + 8, 336 + r * 24 + 16, 24, 4, "#94b0c2");
+          for (let i = 0; i < 3; i++) {                  // mái răng cưa
+            solid(i * 160 + 8, 216, 148, 28, "#b13e53");
+            solid(i * 160 + 28, 176, 100, 40, "#b13e53");
+            solid(i * 160 + 52, 144, 52, 32, "#ef7d57");
+          }
+          solid(360, 420, 100, 80, "#29366f");           // cửa
+          rect(fs, 404, 420, 8, 80, INK);
+
+          /* bánh răng pixel */
+          document.querySelectorAll("[data-gear]").forEach((g) => {
+            const shapes = [[20, 30, 80, 60], [30, 20, 60, 80], [48, 0, 24, 24], [48, 96, 24, 24], [0, 48, 24, 24], [96, 48, 24, 24], [16, 16, 28, 28], [76, 16, 28, 28], [16, 76, 28, 28], [76, 76, 28, 28]];
+            shapes.forEach((s) => { rect(g, s[0] - 6, s[1] - 6, s[2] + 12, s[3] + 12, INK); });
+            shapes.forEach((s) => { rect(g, s[0], s[1], s[2], s[3], "#ffcd75"); });
+            rect(g, 40, 40, 40, 40, "#c98f4e");
+            rect(g, 52, 52, 16, 16, INK);
+            rect(g, 56, 24, 8, 20, "#ef7d57");
+          });
+
+          /* thanh HP 10 ô */
+          const cellsBox = document.getElementById("s1-cells");
+          for (let i = 0; i < 10; i++) {
+            const c = document.createElement("div");
+            c.className = "cell"; c.id = "s1-c" + i; c.style.left = (i * 84) + "px";
+            c.appendChild(document.createElement("i"));
+            cellsBox.appendChild(c);
+          }
+
+          const tl = gsap.timeline({ paused: true });
+          const tCa = A("ca"), tTut = A("tut");
+          const tXuong = tCa - 1.06; // từ "Xưởng"
+
+          /* vào: bản đồ cuộn theo bậc, hộp thoại bật mở */
+          tl.fromTo("#s1-fac", { x: 1100 }, { x: 0, duration: 0.5, ease: "steps(8)" }, 0);
+          tl.fromTo("#s1-hero", { x: -320 }, { x: 0, duration: 0.5, ease: "steps(8)" }, 0.05);
+          tl.fromTo("#s1-hp", { scaleY: 0, transformOrigin: "50% 50%" }, { scaleY: 1, duration: 0.3, ease: "steps(4)" }, 0.15);
+          tl.fromTo(".cell", { opacity: 0 }, { opacity: 1, duration: 0.01, stagger: 0.07, ease: "steps(1)" }, 0.55);
+          tl.fromTo("#s1-hp-title,#s1-hp-tag", { opacity: 0 }, { opacity: 1, duration: 0.01, ease: "steps(1)" }, 0.45);
+
+          /* "Xưởng": biển gỗ bật lên, đèn cửa sổ sáng */
+          tl.fromTo("#s1-sign", { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.16, ease: "steps(3)" }, tXuong);
+          tl.fromTo(".lamp", { opacity: 0 }, { opacity: 1, duration: 0.01, stagger: 0.08, ease: "steps(1)" }, tXuong + 0.1);
+          tl.to(".lamp", { opacity: 0.35, duration: 0.01, ease: "steps(1)", stagger: 0.2 }, tCa + 0.6);
+          tl.to(".lamp", { opacity: 1, duration: 0.01, ease: "steps(1)", stagger: 0.2 }, tCa + 0.9);
+
+          /* bánh răng quay từng góc vuông, ống khói nhả khói theo bậc */
+          tl.fromTo("#s1-g1", { rotation: 0 }, { rotation: 2160, duration: END - 0.5, ease: "steps(24)" }, 0.5);
+          tl.fromTo("#s1-g2", { rotation: 0 }, { rotation: -2880, duration: END - 0.5, ease: "steps(32)" }, 0.5);
+          const dur = 1.0;
+          ["s1-p0", "s1-p1", "s1-p2", "s1-p3"].forEach((id, i) => {
+            const st = 0.6 + i * 0.25;
+            const n = Math.max(1, Math.floor((END - st) / dur));
+            tl.fromTo("#" + id, { y: 0, x: 0, scale: 0.6, opacity: 1 }, { y: -180, x: 24 + (i % 2) * 16, scale: 1.7, opacity: 1, duration: dur, ease: "steps(6)", repeat: n - 1 }, st);
+          });
+
+          /* "ba ca": ba huy hiệu ca bật lên đúng nhịp đọc */
+          [["#s1-ca1", 0], ["#s1-ca2", 0.2], ["#s1-ca3", 0.41]].forEach(([id, d]) => {
+            tl.fromTo(id, { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.15, ease: "steps(3)" }, tCa + d);
+          });
+          tl.fromTo(".ca u", { opacity: 1 }, { opacity: 0, duration: 0.3, ease: "steps(1)", repeat: 7, yoyo: true }, tCa + 0.6);
+
+          /* người hùng thở theo bậc */
+          tl.fromTo("#s1-spr", { y: 0 }, { y: -6, duration: 0.4, ease: "steps(1)", repeat: 8, yoyo: true }, 0.6);
+
+          /* "lợi nhuận": viền hộp HP chớp vàng báo hiệu */
+          tl.to("#s1-hp", { borderColor: "#ffcd75", duration: 0.01, ease: "steps(1)", repeat: 3, yoyo: true, repeatDelay: 0.12 }, tTut - 0.7);
+
+          /* "tụt dần": ô HP đỏ lóe rồi tắt, còn 9 ô (cảnh s2 bắt đầu ở 9 ô) */
+          for (let i = 0; i < 1; i++) {
+            const id = "#s1-c" + (9 - i), t = tTut + i * 0.1;
+            tl.set(id, { backgroundColor: "#b13e53" }, t);
+            tl.set(id + " i", { opacity: 0 }, t);
+            tl.set(id, { backgroundColor: "#333c57" }, t + 0.07);
+          }
+          tl.set("#s1-hp-title", { color: "#ef7d57" }, tTut);
+          tl.fromTo("#s1-hp-title", { x: 0 }, { x: 8, duration: 0.04, ease: "steps(1)", repeat: 5, yoyo: true }, tTut);
+
+          /* dấu ? nảy trên đầu người hùng */
+          tl.fromTo("#s1-q", { opacity: 0, scale: 0, transformOrigin: "50% 100%" }, { opacity: 1, scale: 1, duration: 0.12, ease: "steps(3)" }, tTut - 0.05);
+          tl.fromTo("#s1-q", { y: 0 }, { y: -24, duration: 0.2, ease: "steps(2)", repeat: 5, yoyo: true }, tTut + 0.1);
+
+          window.__timelines["s1"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

@@ -1,0 +1,236 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Scene s2. Runtime keeps only <template>; put style, markup and script inside it. -->
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "VT323"; src: url("fonts/VT323-400.ttf"); font-weight: 400; font-style: normal; }
+        #s2-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          background: transparent;
+          color: var(--fg);
+          font-family: "VT323", monospace;
+        }
+        #s2-root svg { position: absolute; display: block; overflow: visible; }
+        #s2-root .sh { position: absolute; width: 150px; height: 16px; background: #a8723c; opacity: 0; }
+        #s2-root .warn { position: absolute; width: 60px; text-align: center; font-size: 110px; line-height: 110px; color: var(--accent);
+          text-shadow: 6px 6px 0 var(--ink); opacity: 0; }
+        #s2-root .mon { position: absolute; width: 176px; height: 132px; top: 1158px; }
+        #s2-root .mon .sq { position: absolute; inset: 0; transform-origin: 50% 100%; }
+        #s2-root .lab { position: absolute; width: 200px; height: 60px; top: 1036px; box-sizing: border-box; text-align: center;
+          font-size: 44px; line-height: 52px; letter-spacing: 0.03em; color: var(--fg); background: var(--win);
+          border: 4px solid var(--ink); box-shadow: inset 4px 4px 0 0 var(--sil), inset -4px -4px 0 0 var(--dk), 4px 4px 0 0 var(--ink);
+          text-shadow: 3px 3px 0 var(--ink); opacity: 0; }
+        #s2-root .lab b { position: absolute; left: 88px; top: 56px; width: 16px; height: 12px; background: var(--ink); }
+        #s2-root .dust { position: absolute; width: 16px; height: 16px; background: var(--edge); opacity: 0; }
+        #s2-root .hpbox { position: absolute; left: 90px; top: 150px; width: 900px; height: 190px; box-sizing: border-box;
+          background: var(--win); box-shadow: 0 0 0 6px var(--ink), inset 6px 6px 0 0 var(--sil), inset -6px -6px 0 0 var(--dk); }
+        #s2-root .hpbox h3 { position: absolute; left: 40px; top: 26px; margin: 0; font-size: 56px; line-height: 60px; font-weight: 400;
+          letter-spacing: 0.03em; text-transform: uppercase; color: var(--fg); text-shadow: 4px 4px 0 var(--ink); }
+        #s2-root .cells { position: absolute; left: 40px; top: 100px; display: flex; gap: 8px; }
+        #s2-root .cell { position: relative; width: 74px; height: 56px; background: var(--hp); box-shadow: 0 0 0 4px var(--ink); }
+        #s2-root .cell i { position: absolute; left: 0; top: 0; width: 100%; height: 14px; background: var(--hp-hi); }
+        #s2-root .cell.off { background: #333c57; }
+        #s2-root .cell.off i { opacity: 0; }
+        #s2-root .chomp { position: absolute; left: 0; top: 0; width: 80px; height: 50px; opacity: 0; }
+        #s2-root .cut { position: absolute; inset: 0; background: var(--ink); clip-path: inset(100% 0% 0% 0%); }
+      </style>
+
+      <div id="s2-root" data-composition-id="s2" data-width="1080" data-height="1920">
+        <div class="hpbox" id="s2-hp">
+          <h3>HP LỢI NHUẬN</h3>
+          <div class="cells" id="s2-cells"></div>
+        </div>
+
+        <div id="s2-hero" style="position:absolute;left:96px;top:1095px;width:208px;height:208px;">
+          <svg id="s2-hx" width="208" height="208" viewBox="0 0 208 208" shape-rendering="crispEdges"></svg>
+        </div>
+
+        <div id="s2-stage"></div>
+        <div class="cut" id="s2-cut"></div>
+      </div>
+
+      <script>
+        (() => {
+          const A = (key) => window.__vv.local("s2", key);
+          const tl = gsap.timeline({ paused: true });
+          const $ = (id) => document.getElementById("s2-" + id);
+
+          // ---------- sprite helper (lưới chữ -> rect, đã gộp theo hàng) ----------
+          const sprite = (rows, pal, c) => {
+            let s = "";
+            rows.forEach((r, y) => {
+              r = r.padEnd(16, ".").slice(0, 16);
+              let x = 0;
+              while (x < 16) {
+                const ch = r[x];
+                let e = x;
+                while (e < 16 && r[e] === ch) e++;
+                if (ch !== "." && pal[ch]) s += `<rect x="${x * c}" y="${y * c}" width="${(e - x) * c}" height="${c}" fill="${pal[ch]}"/>`;
+                x = e;
+              }
+            });
+            return s;
+          };
+          const rect = (x, y, w, h, f, c) => `<rect x="${x * c}" y="${y * c}" width="${w * c}" height="${h * c}" fill="${f}"/>`;
+
+          // ---------- người hùng ----------
+          const heroRows = [
+            "................",
+            "....oooooooo....",
+            "...ohhhhhhhho...",
+            "...ohkkkkkkho...",
+            "...okokkkokko...",
+            "....orrrrrro....",
+            "..orbbbbbbbbbo..",
+            "..okbbbbbbbbko..",
+            "..okbbbbbbbbko..",
+            "...ooaaaaaaoo...",
+            "...oppppppppo...",
+            "...opppoopppo...",
+            "...opppoopppo...",
+            "...opppoopppo...",
+            "..ooooo..ooooo..",
+            "................"
+          ];
+          const heroPal = { o: "#1a1c2c", h: "#8b5a2f", k: "#ffcd75", r: "#b13e53", b: "#3b5dc9", a: "#ef7d57", p: "#29366f" };
+          $("hx").innerHTML = sprite(heroRows, heroPal, 13);
+
+          // ---------- thanh HP: 9 ô đầy, 1 ô rỗng ----------
+          const cellsBox = $("cells");
+          const cells = [];
+          for (let i = 0; i < 10; i++) {
+            const d = document.createElement("div");
+            d.className = "cell" + (i === 9 ? " off" : "");
+            d.id = "s2-cell" + i;
+            d.innerHTML = "<i></i>";
+            cellsBox.appendChild(d);
+            cells.push(d);
+          }
+
+          // ---------- quái nhầy ----------
+          const slimeRows = [
+            ".....oooooo.....",
+            "...ooohhbbbooo..",
+            "..ohhhbbbbbbbbo.",
+            ".ohhbbbbbbbbbbbo",
+            "obbeebbbbbbeebbo",
+            "obbepbbbbbbepbbo",
+            "obbbbbbbbbbbbbbo",
+            "obbbbbbbbbbbbbbo",
+            "obbbbbbbbbbbbbbo",
+            "osbbbbbbbbbbbbso",
+            ".osssssssssssso.",
+            ".oooooooooooooo."
+          ];
+          const C = 11;
+          const monsters = [
+            { id: "m1", name: "MÁY DỪNG", cx: 450, land: A("may"), pal: { b: "#3b5dc9", h: "#41a6f6", s: "#29366f" } },
+            { id: "m2", name: "HÀNG LỖI", cx: 680, land: A("loi"), pal: { b: "#38b764", h: "#a7f070", s: "#257179" } },
+            { id: "m3", name: "TỒN KHO", cx: 910, land: A("ton"), pal: { b: "#8b5a2f", h: "#c98f4e", s: "#5a3a1f" } }
+          ];
+          const stage = $("stage");
+          let html = "";
+          monsters.forEach((m, i) => {
+            const pal = Object.assign({ o: "#1a1c2c", e: "#f4f4f4", p: "#1a1c2c" }, m.pal);
+            const mouthOpen =
+              rect(5, 6, 6, 3, "#1a1c2c", C) + rect(6, 6, 1, 1, "#f4f4f4", C) + rect(9, 6, 1, 1, "#f4f4f4", C) +
+              rect(7, 8, 1, 1, "#f4f4f4", C) + rect(8, 8, 1, 1, "#f4f4f4", C);
+            const mouthShut = rect(6, 7, 4, 1, "#1a1c2c", C);
+            html +=
+              `<div class="sh" id="s2-sh${i}" style="left:${m.cx - 75}px;top:1282px"></div>` +
+              `<div class="warn" id="s2-w${i}" style="left:${m.cx - 30}px;top:1110px">!</div>` +
+              `<div class="mon" id="s2-${m.id}" style="left:${m.cx - 88}px"><div class="sq" id="s2-${m.id}q">` +
+              `<svg width="176" height="132" viewBox="0 0 176 132" shape-rendering="crispEdges">` +
+              sprite(slimeRows, pal, C) +
+              `<g id="s2-${m.id}c">${mouthShut}</g><g id="s2-${m.id}o" opacity="0">${mouthOpen}</g></svg></div></div>` +
+              `<div class="lab" id="s2-l${i}" style="left:${m.cx - 100}px;border-color:${m.pal.h}">${m.name}<b></b></div>` +
+              `<div class="dust" id="s2-da${i}" style="left:${m.cx - 110}px;top:1270px"></div>` +
+              `<div class="dust" id="s2-db${i}" style="left:${m.cx + 94}px;top:1270px"></div>`;
+          });
+          const chompRows = ["oooooooo", "owowowwo", "orrrrrro", "owowowwo", "oooooooo"];
+          const chompPal = { o: "#1a1c2c", w: "#f4f4f4", r: "#b13e53" };
+          for (let k = 0; k < 3; k++) {
+            html += `<div class="chomp" id="s2-ch${k}"><svg width="80" height="50" viewBox="0 0 80 50" shape-rendering="crispEdges">${sprite(chompRows, chompPal, 10)}</svg></div>`;
+          }
+          stage.innerHTML = html;
+
+          // ---------- nhịp hero: nhún hai khung ----------
+          for (let t = 0, n = 0; t < 6.7; t += 0.5, n++) tl.set($("hero"), { y: n % 2 ? -6 : 0 }, t);
+
+          // ---------- 0.25 thủ phạm: bóng nhấp nháy; lp: dấu ! ----------
+          monsters.forEach((m, i) => {
+            const sh = $("sh" + i);
+            const t0 = 0.25 + i * 0.06;
+            tl.set(sh, { opacity: 1 }, t0).set(sh, { opacity: 0 }, t0 + 0.14).set(sh, { opacity: 1 }, t0 + 0.28);
+            const fallStart = m.land - 0.32;
+            const w = $("w" + i);
+            const wt = A("lp") + i * 0.08;
+            tl.set(w, { opacity: 1, y: 0 }, wt);
+            for (let t = wt + 0.16, n = 1; t < fallStart; t += 0.16, n++) tl.set(w, { y: n % 2 ? -12 : 0 }, t);
+            tl.set(w, { opacity: 0 }, fallStart);
+          });
+
+          // ---------- quái rơi, tiếp đất đúng lúc đọc tên ----------
+          monsters.forEach((m, i) => {
+            const mon = $(m.id), sq = $(m.id + "q"), lab = $("l" + i);
+            tl.fromTo(mon, { y: -1400 }, { y: 0, duration: 0.32, ease: "steps(8)" }, m.land - 0.32);
+            tl.set(sq, { scaleY: 0.72, scaleX: 1.16 }, m.land)
+              .set(sq, { scaleY: 1.06, scaleX: 0.96 }, m.land + 0.08)
+              .set(sq, { scaleY: 1, scaleX: 1 }, m.land + 0.16);
+            tl.fromTo(lab, { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.15, ease: "steps(3)" }, m.land);
+            // bụi bắn hai bên
+            ["da", "db"].forEach((p, j) => {
+              const d = $(p + i), dir = j ? 1 : -1;
+              tl.fromTo(d, { opacity: 1, x: 0, y: 0 }, { opacity: 0, x: dir * 44, y: -24, duration: 0.24, ease: "steps(4)", immediateRender: false }, m.land);
+            });
+            // nhún sống động theo nhịp 0.3s
+            for (let t = m.land + 0.3, n = 0; t < 6.7; t += 0.3, n++) tl.set(sq, { scaleY: n % 2 ? 1 : 0.92 }, t);
+          });
+
+          // ---------- cắn thanh HP ----------
+          const cellCx = (i) => 130 + i * 82 + 37;
+          const bites = [[8, 7], [6, 5], [4, 3]];
+          const hpBox = $("hp"), hx = $("hx");
+          monsters.forEach((m, k) => {
+            const t0 = A("can") + k * 0.5;
+            const mon = $(m.id), mo = $(m.id + "o"), mc = $(m.id + "c");
+            const pair = bites[k];
+            // nhảy lên, há miệng
+            tl.set(mc, { opacity: 0 }, t0).set(mo, { opacity: 1 }, t0);
+            tl.to(mon, { y: -110, duration: 0.14, ease: "steps(3)" }, t0)
+              .to(mon, { y: 0, duration: 0.14, ease: "steps(3)" }, t0 + 0.18);
+            tl.set(mo, { opacity: 0 }, t0 + 0.4).set(mc, { opacity: 1 }, t0 + 0.4);
+            // miếng cắn bay lên thanh HP
+            const ch = $("ch" + k);
+            const tx = (cellCx(pair[0]) + cellCx(pair[1])) / 2 - 40;
+            tl.fromTo(ch, { opacity: 1, x: m.cx - 40, y: 1040 }, { opacity: 1, x: tx, y: 250, duration: 0.3, ease: "steps(6)", immediateRender: false }, t0 + 0.1);
+            const hit = t0 + 0.4;
+            tl.set(ch, { opacity: 0 }, hit);
+            // người hùng giật mình, hộp HP rung
+            tl.set(hx, { x: -14 }, hit).set(hx, { x: 0 }, hit + 0.1).set(hx, { x: -8 }, hit + 0.2).set(hx, { x: 0 }, hit + 0.3);
+            tl.set(hpBox, { x: 8 }, hit).set(hpBox, { x: -8 }, hit + 0.06).set(hpBox, { x: 6 }, hit + 0.12).set(hpBox, { x: 0 }, hit + 0.18);
+            // hai ô đỏ lóe rồi tắt
+            pair.forEach((idx) => {
+              const cl = cells[idx], hi = cl.firstChild;
+              tl.set(cl, { backgroundColor: "#b13e53" }, hit).set(hi, { opacity: 0 }, hit)
+                .set(cl, { backgroundColor: "#38b764" }, hit + 0.1).set(hi, { opacity: 1 }, hit + 0.1)
+                .set(cl, { backgroundColor: "#b13e53" }, hit + 0.2).set(hi, { opacity: 0 }, hit + 0.2)
+                .set(cl, { backgroundColor: "#333c57" }, hit + 0.32);
+            });
+          });
+
+          // ---------- ra: màn đen ngắn ----------
+          tl.fromTo($("cut"), { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.2, ease: "steps(4)" }, 6.76);
+
+          window.__timelines["s2"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

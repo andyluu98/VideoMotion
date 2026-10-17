@@ -6,6 +6,12 @@ Plugin Claude Code làm video tiếng Việt từ một câu yêu cầu. Không 
 /videomotion Làm video 45 giây giải thích lãng phí trong sản xuất, style pixel-rpg
 ```
 
+## Video mẫu
+
+[![Săn quái lãng phí trong xưởng, style Pixel RPG](site/media/san-quai-lang-phi.jpg)](site/media/san-quai-lang-phi.mp4)
+
+"Săn quái lãng phí trong xưởng": 24 giây, khung dọc 9:16, style `pixel-rpg`, giọng Ngọc Huyền. 4 cảnh do 4 agent Sonnet dựng song song. Mã nguồn dự án ở `examples/san-quai-lang-phi/` (bấm ảnh để xem video).
+
 Anh em với [SlideMotion](https://github.com/andyluu98/slidemotion) (làm slide): dùng chung 86 thẻ style và cùng một tinh thần.
 
 ## Vì sao có VideoMotion

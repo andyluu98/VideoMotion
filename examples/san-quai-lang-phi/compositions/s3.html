@@ -1,0 +1,297 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Scene s3: rương báu mở, ba vật phẩm bắn ba con quái. Runtime keeps only <template>. -->
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "VT323"; src: url("fonts/VT323-400.ttf"); font-weight: 400; font-style: normal; }
+        #s3-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "VT323", monospace;
+          color: var(--fg);
+        }
+        #s3-root svg { display: block; image-rendering: pixelated; }
+        #s3-root .abs { position: absolute; }
+        #s3-root .win {
+          position: absolute;
+          background: var(--win);
+          box-shadow: 0 0 0 6px var(--ink), inset 6px 6px 0 var(--sil), inset -6px -6px 0 var(--dk);
+        }
+        #s3-root .txt { text-transform: uppercase; letter-spacing: 0.03em; text-shadow: 3px 3px 0 var(--ink); white-space: nowrap; }
+        #s3-root .hp-title { position: absolute; left: 36px; top: 14px; font-size: 44px; line-height: 44px; color: var(--accent); }
+        #s3-root .cell { position: absolute; top: 72px; width: 56px; height: 40px; background: var(--hp); box-shadow: inset 0 10px 0 var(--hp-hi), 0 0 0 4px var(--ink); }
+        #s3-root .cell.empty { background: #333c57; box-shadow: inset 0 10px 0 #41486a, 0 0 0 4px var(--ink); }
+        #s3-root .mon { position: absolute; top: 1330px; width: 280px; height: 240px; }
+        #s3-root .mon .lbl { position: absolute; left: 30px; top: 0; width: 220px; box-sizing: border-box; text-align: center; font-size: 40px; line-height: 48px; background: var(--win); color: var(--fg); border: 4px solid var(--ink); }
+        #s3-root .mon .msp { position: absolute; left: 14px; top: 56px; transform-origin: 50% 100%; }
+        #s3-root .dlg { left: 100px; top: 500px; width: 880px; height: 120px; }
+        #s3-root .dlg span { position: absolute; left: 0; top: 0; width: 100%; text-align: center; font-size: 52px; line-height: 120px; }
+        #s3-root .dlg b { font-weight: 400; color: var(--accent); }
+        #s3-root .item { position: absolute; left: 450px; top: 710px; width: 180px; height: 200px; display: flex; align-items: center; justify-content: center; }
+        #s3-root .ray { position: absolute; width: 40px; transform-origin: 50% 100%; }
+        #s3-root .dot { position: absolute; width: 24px; height: 24px; border: 4px solid var(--ink); box-sizing: border-box; }
+        #s3-root .spk { position: absolute; width: 20px; height: 20px; background: var(--accent); }
+        #s3-root .part { position: absolute; width: 24px; height: 24px; border: 4px solid var(--ink); box-sizing: border-box; background: var(--fg); }
+      </style>
+
+      <div id="s3-root" data-composition-id="s3" data-width="1080" data-height="1920">
+        <div id="s3-rays"></div>
+        <div id="s3-sparks"></div>
+
+        <div id="s3-chest" class="abs" style="left:300px; top:900px; width:480px; height:390px; transform-origin:50% 100%;">
+          <div id="s3-cbody" class="abs" style="left:0; top:180px;"></div>
+          <div id="s3-cin" class="abs" style="left:60px; top:150px; width:360px; height:60px; background:var(--accent); box-shadow: inset 0 24px 0 #fff2b8;"></div>
+          <div id="s3-clid" class="abs" style="left:0; top:0;"></div>
+        </div>
+
+        <div id="s3-hero" class="abs" style="left:120px; top:1090px;"></div>
+
+        <div id="s3-m1" class="mon"><div class="lbl txt">MÁY DỪNG</div><div class="msp" id="s3-m1s"></div></div>
+        <div id="s3-m2" class="mon"><div class="lbl txt">HÀNG LỖI</div><div class="msp" id="s3-m2s"></div></div>
+        <div id="s3-m3" class="mon"><div class="lbl txt">TỒN KHO</div><div class="msp" id="s3-m3s"></div></div>
+
+        <div id="s3-fx"></div>
+
+        <div id="s3-i1" class="item"></div>
+        <div id="s3-i2" class="item"></div>
+        <div id="s3-i3" class="item"></div>
+
+        <div id="s3-d1" class="win dlg"><span class="txt"><b>NHẬN ĐƯỢC:</b> CẢM BIẾN</span></div>
+        <div id="s3-d2" class="win dlg"><span class="txt"><b>NHẬN ĐƯỢC:</b> CAMERA</span></div>
+        <div id="s3-d3" class="win dlg"><span class="txt"><b>NHẬN ĐƯỢC:</b> DỰ BÁO</span></div>
+
+        <div id="s3-hp" class="win" style="left:100px; top:160px; width:880px; height:140px;">
+          <div class="hp-title txt">HP LỢI NHUẬN</div>
+        </div>
+
+        <div id="s3-black" class="abs" style="left:0; top:0; width:100%; height:100%; background:#000;"></div>
+      </div>
+
+      <script>
+        (() => {
+          const A = (key) => window.__vv.local("s3", key);
+          const PAL = {
+            k: "#1a1c2c", W: "#f4f4f4", B: "#8b5a2f", H: "#c98f4e", d: "#5a3a1c", y: "#ffcd75",
+            G: "#94b0c2", c: "#73eff7", P: "#3b5dc9", h: "#a7f070", R: "#b13e53", s: "#f2c27a",
+            T: "#5a3a1c", N: "#29366f", D: "#1a1c2c", S: "#41a6f6", Y: "#ffcd75"
+          };
+          const sprite = (rows, pal, s) => {
+            const w = rows[0].length, h = rows.length;
+            let out = "";
+            rows.forEach((row, y) => {
+              let x = 0;
+              while (x < w) {
+                const ch = row[x];
+                let n = 1;
+                while (x + n < w && row[x + n] === ch) n++;
+                if (ch !== ".") out += `<rect x="${x}" y="${y}" width="${n}" height="1" fill="${pal[ch]}"/>`;
+                x += n;
+              }
+            });
+            return `<svg width="${w * s}" height="${h * s}" viewBox="0 0 ${w} ${h}" shape-rendering="crispEdges">${out}</svg>`;
+          };
+          const put = (id, html) => { document.getElementById(id).innerHTML = html; };
+
+          const HERO = [
+            "......kkkk......", "....kkHHHHkk....", "...kHHHHHHHHk...", "...kHHHHHHHHk...",
+            "...kHssssssHk...", "...kssksskssk...", "...kssssssssk...", "...kRRRRRRRRk...",
+            "..kBBBBBBBBBBk..", ".kBBkBBBBBBBkBBk", ".kBBkBBBBBBBkBBk", ".kssk" + "BBBBBBB" + "kssk",
+            "..kkkDDyyDDkkk..", "....kNNNNNNk....", "....kNNkkNNk....", "....kNNkkNNk....",
+            "....kNNkkNNk....", "...kTTTkkTTTk...", "...kTTTkkTTTk...", "...kkkkkkkkkk..."
+          ];
+          const CHEST_LID = [
+            "..kkkkkkkkkkkk..", ".kBBBBBBBBBBBBk.", "kBBHHHHHHHHHHBBk",
+            "kBBBBBBBBBBBBBBk", "kddddddddddddddk", "kkkkkkkkkkkkkkkk"
+          ];
+          const CHEST_BODY = [
+            "kBByBBBBBBBByBBk", "kBByBBBkkBBByBBk", "kBByBBBkkBBByBBk",
+            "kBByBBBBBBBByBBk", "kBByBBBBBBBByBBk", "kddyddddddddyddk", "kkkkkkkkkkkkkkkk"
+          ];
+          const MON = [
+            "....kkkkkk....", "..kkMMMMMMkk..", ".kMMHHMMMMMMk.", ".kMHHMMMMMMMk.",
+            "kMMMMMMMMMMMMk", "kMMkkMMMMkkMMk", "kMMkWMMMMkWMMk", "kMMMMMMMMMMMMk",
+            ".kMMMMMMMMMMk.", "..kkkkkkkkkk.."
+          ];
+          const GEAR = [
+            "....kkkk....", ".kk.kGGk.kk.", "kGGkkGGkkGGk", ".kGGGGGGGGk.", "..kGGkkGGk..",
+            "kkGGk..kGGkk", "kGGGk..kGGGk", "kkGGk..kGGkk", "..kGGkkGGk..", ".kGGGGGGGGk.",
+            "kGGkkGGkkGGk", ".kk.kGGk.kk.", "....kkkk...."
+          ];
+          const EYE = [
+            "...kkkkkk...", ".kkWWWWWWkk.", "kWWWccccWWWk", "kWcckkkkccWk",
+            "kWcckkkkccWk", "kWWWccccWWWk", ".kkWWWWWWkk.", "...kkkkkk..."
+          ];
+          const BALL = [
+            "....kkkk....", "..kkPPPPkk..", ".kPPhhPPPPk.", ".kPhhPPPPPk.", "kPPhPPPPPPPk",
+            "kPPPPPPPPPPk", "kPPPPPPPPPPk", ".kPPPPPPPPk.", ".kkPPPPPPkk.", "..kyyyyyyk..",
+            ".kyyyyyyyyk.", ".kkkkkkkkkk."
+          ];
+
+          put("s3-hero", sprite(HERO, Object.assign({}, PAL, { B: "#3b5dc9", H: "#8b5a2f" }), 10));
+          put("s3-clid", sprite(CHEST_LID, PAL, 30));
+          put("s3-cbody", sprite(CHEST_BODY, PAL, 30));
+          const monCols = [
+            { M: "#3b5dc9", H: "#41a6f6" },
+            { M: "#38b764", H: "#a7f070" },
+            { M: "#8b5a2f", H: "#c98f4e" }
+          ];
+          const monX = [230, 540, 850];
+          monCols.forEach((c, i) => {
+            put("s3-m" + (i + 1) + "s", sprite(MON, Object.assign({}, PAL, c), 18));
+            document.getElementById("s3-m" + (i + 1)).style.left = (monX[i] - 140) + "px";
+          });
+          put("s3-i1", sprite(GEAR, PAL, 15));
+          put("s3-i2", sprite(EYE, PAL, 15));
+          put("s3-i3", sprite(BALL, PAL, 15));
+
+          // thanh HP: 3 ô xanh, 7 ô rỗng (nối từ cảnh s2)
+          const hp = document.getElementById("s3-hp");
+          for (let i = 0; i < 10; i++) {
+            const c = document.createElement("div");
+            c.className = "cell" + (i >= 3 ? " empty" : "");
+            c.style.left = (36 + i * 80) + "px";
+            hp.appendChild(c);
+          }
+
+          // tia sáng từ rương
+          const raysEl = document.getElementById("s3-rays");
+          const rOff = [-180, -120, -60, 0, 60, 120, 180];
+          const rH = [260, 400, 320, 520, 320, 400, 260];
+          rOff.forEach((o, i) => {
+            const r = document.createElement("div");
+            r.className = "ray";
+            r.id = "s3-ray" + i;
+            r.style.left = (540 + o - 20) + "px";
+            r.style.top = (1100 - rH[i]) + "px";
+            r.style.height = rH[i] + "px";
+            r.style.background = i % 2 ? "#fff2b8" : "var(--accent)";
+            raysEl.appendChild(r);
+          });
+          // hạt vàng bay lên
+          const spEl = document.getElementById("s3-sparks");
+          const sX = [330, 400, 470, 540, 610, 680, 740, 440];
+          sX.forEach((x, i) => {
+            const d = document.createElement("div");
+            d.className = "spk";
+            d.id = "s3-spk" + i;
+            d.style.left = x + "px";
+            d.style.top = "1060px";
+            spEl.appendChild(d);
+          });
+          // tia bắn và hạt nổ
+          const fx = document.getElementById("s3-fx");
+          const snap = (v) => Math.round(v / 4) * 4;
+          const sx = 540, sy = 810;
+          const beamCol = ["var(--cyan)", "var(--hp-hi)", "var(--accent)"];
+          const beams = [], parts = [];
+          monX.forEach((mx, i) => {
+            const ex = mx, ey = 1470;
+            const arr = [];
+            for (let k = 1; k <= 11; k++) {
+              const t = k / 12;
+              const d = document.createElement("div");
+              d.className = "dot";
+              d.style.left = snap(sx + (ex - sx) * t - 12) + "px";
+              d.style.top = snap(sy + (ey - sy) * t - 12) + "px";
+              d.style.background = beamCol[i];
+              d.style.opacity = "0";
+              d.id = "s3-b" + i + "-" + k;
+              fx.appendChild(d);
+              arr.push(d);
+            }
+            beams.push(arr);
+            const pa = [];
+            for (let p = 0; p < 4; p++) {
+              const d = document.createElement("div");
+              d.className = "part";
+              d.style.left = (mx - 12) + "px";
+              d.style.top = "1460px";
+              d.style.background = beamCol[i];
+              d.style.opacity = "0";
+              d.id = "s3-p" + i + "-" + p;
+              fx.appendChild(d);
+              pa.push(d);
+            }
+            parts.push(pa);
+          });
+
+          const tl = gsap.timeline({ paused: true });
+          const S = (n) => "steps(" + n + ")";
+
+          // trạng thái đầu
+          tl.set(["#s3-chest", "#s3-cin", "#s3-i1", "#s3-i2", "#s3-i3", "#s3-d1", "#s3-d2", "#s3-d3"], { opacity: 0 }, 0);
+          tl.set(".ray", { scaleY: 0 }, 0);
+          tl.set(".spk", { opacity: 0 }, 0);
+
+          // vào từ màn đen
+          tl.to("#s3-black", { opacity: 0, duration: 0.3, ease: S(3) }, 0);
+
+          // quái nhún nhịp trong lúc đợi
+          [1, 2, 3].forEach((n, i) => {
+            tl.fromTo("#s3-m" + n + "s", { scaleY: 1 }, { scaleY: 0.9, duration: 0.4, ease: S(1), repeat: 16, yoyo: true }, 0.1 + i * 0.13);
+          });
+
+          // rương hiện ra khi đọc "nhân tạo"
+          tl.fromTo("#s3-chest", { opacity: 1, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.3, ease: S(3), immediateRender: false }, 0.6);
+          // rương rung trước khi mở
+          tl.fromTo("#s3-chest", { x: 0 }, { x: 24, duration: 0.08, ease: S(1), repeat: 5, yoyo: true }, 0.85);
+          tl.set("#s3-chest", { x: 0 }, 1.3);
+
+          // mở rương theo "rương"
+          const tO = A("ruong");
+          tl.set("#s3-cin", { opacity: 1 }, tO);
+          tl.fromTo("#s3-clid", { y: 0 }, { y: -192, duration: 0.18, ease: S(3) }, tO);
+          tl.to("#s3-clid", { y: -108, duration: 0.12, ease: S(2) }, tO + 0.18);
+          for (let i = 0; i < 7; i++) {
+            tl.fromTo("#s3-ray" + i, { scaleY: 0 }, { scaleY: 1, duration: 0.24, ease: S(4) }, tO + 0.02 + (i % 4) * 0.03);
+            tl.to("#s3-ray" + i, { scaleY: 0.6, duration: 0.28, ease: S(2), repeat: 20, yoyo: true }, tO + 0.4 + (i % 3) * 0.05);
+          }
+          tl.to("#s3-hero", { y: -24, duration: 0.12, ease: S(2), repeat: 1, yoyo: true }, tO);
+          sX.forEach((x, i) => {
+            tl.fromTo("#s3-spk" + i, { y: 0, opacity: 1 }, { y: -420, opacity: 0, duration: 0.8, ease: S(6), repeat: 5, immediateRender: false }, tO + 0.1 + i * 0.1);
+          });
+
+          // ba vật phẩm
+          const keys = ["cb", "cam", "db"];
+          keys.forEach((key, i) => {
+            const n = i + 1;
+            const T = A(key);
+            const mx = monX[i];
+            // vật phẩm bật lên khỏi rương
+            tl.fromTo("#s3-i" + n, { opacity: 1, y: 420 }, { opacity: 1, y: 0, duration: 0.4, ease: S(5), immediateRender: false }, T);
+            tl.to("#s3-i" + n, { y: -20, duration: 0.15, ease: S(1), repeat: 3, yoyo: true }, T + 0.4);
+            tl.set("#s3-d" + n, { opacity: 1 }, T + 0.1);
+            tl.fromTo("#s3-d" + n + " span", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.35, ease: S(14) }, T + 0.1);
+            tl.to("#s3-hero", { y: -24, duration: 0.12, ease: S(2), repeat: 1, yoyo: true }, T + 0.05);
+            // tia bắn
+            const tB = T + 0.55;
+            tl.fromTo(beams[i], { opacity: 0 }, { opacity: 1, duration: 0.01, stagger: 0.03, immediateRender: false }, tB);
+            tl.set(beams[i], { opacity: 0 }, tB + 0.4);
+            // vật phẩm chớp rồi tắt
+            tl.set("#s3-i" + n, { opacity: 0 }, tB + 0.3);
+            tl.set("#s3-i" + n, { opacity: 1 }, tB + 0.37);
+            tl.set("#s3-i" + n, { opacity: 0 }, tB + 0.44);
+            tl.set("#s3-d" + n, { opacity: 0 }, tB + 0.45);
+            // quái nhấp nháy rồi biến mất
+            const tH = tB + 0.3;
+            for (let j = 0; j < 6; j++) {
+              tl.set("#s3-m" + n, { opacity: j % 2 ? 1 : 0 }, tH + j * 0.07);
+            }
+            tl.set("#s3-m" + n, { opacity: 0 }, tH + 0.42);
+            const vec = [[-110, -90], [110, -90], [-60, -170], [60, -170]];
+            parts[i].forEach((p, q) => {
+              tl.fromTo(p, { x: 0, y: 0, opacity: 1 }, { x: vec[q][0], y: vec[q][1], opacity: 0, duration: 0.35, ease: S(4), immediateRender: false }, tH + 0.42);
+            });
+          });
+
+          window.__timelines["s3"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

@@ -1,0 +1,7 @@
+{"title": "Săn quái lãng phí trong xưởng", "voice": "Ngọc Huyền", "aspect": "9:16",
+ "scenes": [
+  {"id": "s1", "say": "Xưởng của bạn chạy đủ ba ca, vậy mà lợi nhuận vẫn cứ tụt dần.", "intent": "móc: thanh HP lợi nhuận tụt dù máy chạy"},
+  {"id": "s2", "say": "Thủ phạm là lãng phí: máy dừng, hàng lỗi, tồn kho. | Mỗi con quái nhỏ cắn một miếng vào thanh máu lợi nhuận.", "intent": "ba con quái lãng phí ăn HP"},
+  {"id": "s3", "say": "Trí tuệ nhân tạo là rương báu của xưởng. | Cảm biến báo máy sắp hỏng, camera bắt hàng lỗi, dự báo giúp kho vừa đủ.", "intent": "rương mở, ba vật phẩm đánh ba quái"},
+  {"id": "s4", "say": "Hãy chọn con quái đau nhất, mở đúng vật phẩm, và thanh lợi nhuận sẽ đầy trở lại.", "intent": "kết: HP đầy, hoàn thành nhiệm vụ"}
+ ], "pron": {}}

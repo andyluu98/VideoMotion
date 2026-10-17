@@ -1,0 +1,200 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Scene s4: lâu đài cuối đường, người hùng bước tới, HP nạp đầy, hộp thoại HOÀN THÀNH NHIỆM VỤ. -->
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "VT323"; src: url("fonts/VT323-400.ttf"); font-weight: 400; font-style: normal; }
+        #s4-root { position: absolute; inset: 0; overflow: hidden; background: transparent; font-family: "VT323", monospace; color: var(--fg); }
+        #s4-root div { box-sizing: border-box; }
+
+        /* HP bar */
+        #s4-root .hpbox { position: absolute; left: 70px; top: 150px; width: 940px; height: 170px; background: var(--win);
+          border: 8px solid var(--fg); box-shadow: 8px 8px 0 var(--ink), inset 0 0 0 6px var(--dk); }
+        #s4-root .hplabel { position: absolute; left: 32px; top: 14px; font-size: 52px; line-height: 1; text-shadow: 4px 4px 0 var(--ink); }
+        #s4-root .hpcells { position: absolute; left: 32px; top: 78px; width: 860px; height: 56px; display: flex; gap: 8px; }
+        #s4-root .cell { position: relative; flex: 1; height: 56px; background: var(--ink); border: 4px solid var(--dk); }
+        #s4-root .cell i { position: absolute; inset: 0; background: var(--hp); box-shadow: inset 0 8px 0 var(--hp-hi); }
+
+        /* castle */
+        #s4-root .cs { position: absolute; background: var(--sil); }
+        #s4-root .brick { background-image: linear-gradient(var(--dk) 4px, transparent 4px), linear-gradient(90deg, var(--dk) 4px, transparent 4px);
+          background-size: 48px 32px, 48px 32px; background-color: var(--sil); }
+        #s4-root .tw { border: 6px solid var(--dk); }
+        #s4-root .merl { position: absolute; width: 24px; height: 24px; background: var(--sil); border: 4px solid var(--dk); border-bottom: 0; }
+        #s4-root .glow { position: absolute; left: 810px; top: 1130px; width: 100px; height: 160px; background: var(--accent);
+          border: 6px solid var(--dk); box-shadow: inset 0 -40px 0 var(--orange); }
+        #s4-root .door { position: absolute; top: 1130px; width: 50px; height: 160px; background: var(--edge); border: 6px solid var(--dk); }
+        #s4-root .flag { position: absolute; width: 56px; height: 36px; background: var(--red); border: 4px solid var(--dk); }
+
+        /* hero */
+        #s4-root .hero { position: absolute; left: 100px; top: 1086px; width: 144px; height: 204px; }
+        #s4-root .hero svg { display: block; width: 144px; height: 204px; shape-rendering: crispEdges; }
+        #s4-root .shadow { position: absolute; left: 112px; top: 1282px; width: 120px; height: 14px; background: var(--ink); opacity: 0.45; }
+
+        /* coins */
+        #s4-root .coin { position: absolute; width: 36px; height: 36px; background: var(--accent); border: 6px solid var(--edge);
+          box-shadow: inset 6px 0 0 var(--fg); opacity: 0; }
+
+        /* dialog */
+        #s4-root .dlg { position: absolute; left: 70px; top: 1410px; width: 940px; height: 190px; background: var(--win);
+          border: 8px solid var(--fg); box-shadow: 8px 8px 0 var(--ink), inset 0 0 0 6px var(--dk); }
+        #s4-root .dtxt { position: absolute; left: 36px; top: 36px; font-size: 100px; line-height: 1; color: var(--fg);
+          text-shadow: 5px 5px 0 var(--ink); white-space: nowrap; }
+        #s4-root .dtxt span { display: inline-block; }
+        #s4-root .arrow { position: absolute; right: 36px; bottom: 22px; width: 0; height: 0; border-left: 24px solid transparent;
+          border-right: 24px solid transparent; border-top: 32px solid var(--accent); opacity: 0; }
+      </style>
+
+      <div id="s4-root" data-composition-id="s4" data-width="1080" data-height="1920">
+        <!-- HP -->
+        <div class="hpbox" id="s4-hp">
+          <div class="hplabel">HP LỢI NHUẬN</div>
+          <div class="hpcells" id="s4-cells"></div>
+        </div>
+
+        <!-- castle -->
+        <div class="cs brick tw" style="left:700px;top:960px;width:300px;height:330px;"></div>
+        <div class="cs brick tw" style="left:690px;top:850px;width:96px;height:440px;"></div>
+        <div class="cs brick tw" style="left:914px;top:850px;width:96px;height:440px;"></div>
+        <div id="s4-merl"></div>
+        <div style="position:absolute;left:734px;top:802px;width:8px;height:48px;background:var(--dk);"></div>
+        <div class="flag" id="s4-flag" style="left:742px;top:790px;transform-origin:0 50%;"></div>
+        <div class="glow" id="s4-glow"></div>
+        <div class="door" id="s4-dl" style="left:810px;transform-origin:0 50%;"></div>
+        <div class="door" id="s4-dr" style="left:860px;transform-origin:100% 50%;"></div>
+
+        <!-- hero -->
+        <div class="shadow" id="s4-shadow"></div>
+        <div class="hero" id="s4-hero"><div id="s4-bob"><svg id="s4-sprite" viewBox="0 0 144 204"></svg></div></div>
+
+        <!-- coins -->
+        <div class="coin" id="s4-c0" style="left:620px;top:1190px;"></div>
+        <div class="coin" id="s4-c1" style="left:700px;top:1090px;"></div>
+        <div class="coin" id="s4-c2" style="left:790px;top:1050px;"></div>
+        <div class="coin" id="s4-c3" style="left:930px;top:1090px;"></div>
+        <div class="coin" id="s4-c4" style="left:960px;top:1200px;"></div>
+
+        <!-- dialog -->
+        <div class="dlg" id="s4-dlg">
+          <div class="dtxt" id="s4-txt"></div>
+          <div class="arrow" id="s4-arrow"></div>
+        </div>
+      </div>
+
+      <script>
+        (() => {
+          const A = (key) => window.__vv.local("s4", key);
+          const $ = (id) => document.getElementById(id);
+          const NS = "http://www.w3.org/2000/svg";
+
+          // sprite người hùng: áo xanh, khăn đỏ (12 x 17 ô, mỗi ô 12 px)
+          const rows = [
+            "...hhhhhh...", "..hhhhhhhh..", "..hssssssh..", "..hsessesh..", "..hssssssh..",
+            "...rrrrrrr..", "..rrrrrrrrr.", "..bbbrrbbb..", ".sbbbbbbbbs.", ".sbbbbbbbbs.",
+            "..bbddddbb..", "..bbbbbbbb..", "...bbbbbb...", "...ll..ll...", "...ll..ll...",
+            "..lll..lll..", "..lll..lll..",
+          ];
+          const pal = { h: "#5d275d", s: "#ffcd75", e: "#1a1c2c", r: "#b13e53", b: "#3b5dc9", d: "#29366f", l: "#1a1c2c" };
+          const svg = $("s4-sprite");
+          rows.forEach((row, y) => {
+            [...row].forEach((c, x) => {
+              if (c === ".") return;
+              const r = document.createElementNS(NS, "rect");
+              r.setAttribute("x", x * 12); r.setAttribute("y", y * 12);
+              r.setAttribute("width", 12); r.setAttribute("height", 12);
+              r.setAttribute("fill", pal[c]);
+              svg.appendChild(r);
+            });
+          });
+
+          // ô HP: 10 ô, đang có 3 ô
+          const cells = $("s4-cells");
+          for (let i = 0; i < 10; i++) {
+            const c = document.createElement("div");
+            c.className = "cell";
+            const f = document.createElement("i");
+            f.id = "s4-f" + i;
+            if (i >= 3) f.style.opacity = "0";
+            c.appendChild(f);
+            cells.appendChild(c);
+          }
+
+          // răng cưa lâu đài
+          const merl = $("s4-merl");
+          const spots = [[690, 826], [738, 826], [914, 826], [962, 826], [706, 936], [754, 936], [802, 936], [850, 936], [898, 936], [946, 936]];
+          spots.forEach(([x, y], i) => {
+            const m = document.createElement("div");
+            m.className = "merl";
+            m.style.left = x + "px"; m.style.top = y + "px";
+            merl.appendChild(m);
+          });
+
+          // chữ gõ từng ký tự
+          const msg = "HOÀN THÀNH NHIỆM VỤ";
+          const txt = $("s4-txt");
+          [...msg].forEach((ch, i) => {
+            const s = document.createElement("span");
+            s.id = "s4-ch" + i;
+            s.textContent = ch === " " ? " " : ch;
+            s.style.opacity = "0";
+            txt.appendChild(s);
+          });
+
+          const tl = gsap.timeline({ paused: true });
+          const END = 5.26;
+
+          // cờ phấp phới theo bậc suốt cảnh
+          tl.fromTo("#s4-flag", { scaleX: 1 }, { scaleX: 0.6, duration: 0.25, ease: "steps(1)", repeat: 20, yoyo: true }, 0);
+
+          // người hùng bước theo bậc (32 px mỗi bước) tới trước cổng
+          const t0 = A("chon");
+          const walk = 2.9;
+          tl.fromTo("#s4-hero", { x: 0 }, { x: 416, duration: walk, ease: "steps(13)" }, t0);
+          tl.fromTo("#s4-shadow", { x: 0 }, { x: 416, duration: walk, ease: "steps(13)" }, t0);
+          tl.fromTo("#s4-bob", { y: 0 }, { y: -10, duration: walk / 26, ease: "steps(1)", repeat: 25, yoyo: true }, t0);
+
+          // cổng mở khi nói "vật phẩm"
+          const tv = A("vp");
+          tl.fromTo("#s4-dl", { scaleX: 1 }, { scaleX: 0.1, duration: 0.4, ease: "steps(4)" }, tv);
+          tl.fromTo("#s4-dr", { scaleX: 1 }, { scaleX: 0.1, duration: 0.4, ease: "steps(4)" }, tv);
+          tl.fromTo("#s4-glow", { opacity: 0.35 }, { opacity: 1, duration: 0.4, ease: "steps(4)" }, tv);
+          tl.fromTo("#s4-glow", { scale: 1 }, { scale: 1.06, duration: 0.2, ease: "steps(1)", repeat: 8, yoyo: true }, tv + 0.4);
+
+          // thanh HP nạp lại từng ô khi nói "đầy"
+          const td = A("day");
+          for (let i = 3; i < 10; i++) {
+            tl.fromTo("#s4-f" + i, { opacity: 0 }, { opacity: 1, duration: 0.01, ease: "steps(1)" }, td + (i - 3) * 0.09);
+          }
+          tl.fromTo("#s4-hp", { scale: 1 }, { scale: 1.03, duration: 0.12, ease: "steps(1)", repeat: 3, yoyo: true, transformOrigin: "50% 50%" }, td + 0.63);
+
+          // đồng xu nảy quanh
+          const coinT = td - 0.05;
+          for (let i = 0; i < 5; i++) {
+            const id = "#s4-c" + i;
+            const st = coinT + i * 0.12;
+            tl.fromTo(id, { opacity: 0 }, { opacity: 1, duration: 0.01, ease: "steps(1)" }, st);
+            tl.fromTo(id, { y: 0 }, { y: -60 - (i % 3) * 20, duration: 0.24, ease: "steps(4)", repeat: 5, yoyo: true }, st);
+            tl.fromTo(id, { scaleX: 1 }, { scaleX: 0.25, duration: 0.12, ease: "steps(1)", repeat: 9, yoyo: true }, st);
+          }
+
+          // hộp thoại gõ chữ
+          const ty = td + 0.55;
+          [...msg].forEach((ch, i) => {
+            tl.fromTo("#s4-ch" + i, { opacity: 0 }, { opacity: 1, duration: 0.01, ease: "steps(1)" }, ty + i * 0.035);
+          });
+
+          // mũi tên vàng nhấp nháy, kết thúc ở trạng thái hiện
+          const ta = ty + msg.length * 0.035 + 0.05;
+          tl.fromTo("#s4-arrow", { opacity: 0, y: 0 }, { opacity: 1, y: 8, duration: 0.12, ease: "steps(1)", repeat: 2, yoyo: true }, ta);
+          tl.set("#s4-arrow", { opacity: 1, y: 0 }, Math.min(ta + 0.36, END - 0.02));
+
+          window.__timelines["s4"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

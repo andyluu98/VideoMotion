@@ -1,0 +1,17 @@
+{"title": "Săn quái lãng phí trong xưởng", "aspect": "9:16", "style": "pixel-rpg",
+ "idea": "Xưởng là một màn game nhập vai 16-bit: thanh HP xanh lá là lợi nhuận, các con quái nhầy là lãng phí, AI là rương báu; người hùng áo xanh khăn đỏ là chủ xưởng.",
+ "look": "Nền bản đồ cỏ pixel chung suốt video (lớp _nen), con đường cát nằm ngang từ y 1180 đến 1354 px (lớp _nen đã vẽ, cảnh không vẽ lại). Người hùng áo xanh khăn đỏ (sprite pixel cao khoảng 200 px, chân chạm y 1290) đứng trên đường ở x khoảng 200 px khi không di chuyển, cùng chỗ giữa các cảnh. Thanh HP lợi nhuận là dãy ô vuông xanh lá trong hộp thoại xanh viền vát ở phía trên. Chữ VT323 in hoa, bóng cứng; chuyển động theo bậc (steps), không mờ, không easing mềm.",
+ "scenes": [
+  {"id": "s1", "visual": "Nhà xưởng pixel có ống khói nhả khói theo bậc, bánh răng quay; thanh HP LỢI NHUẬN đầy rồi tụt từng ô dù xưởng vẫn chạy; người hùng đứng nhìn, dấu ? nảy trên đầu.",
+   "anchors": [{"id": "ca", "kw": "ba ca", "nth": 1, "off": 0}, {"id": "tut", "kw": "tụt dần", "nth": 1, "off": -0.1}],
+   "in": "bản đồ cuộn vào theo bậc, hộp thoại bật mở", "out": "cắt"},
+  {"id": "s2", "visual": "Ba con quái nhầy rơi xuống đường lần lượt đúng lúc đọc tên: xanh dương MÁY DỪNG, xanh lá HÀNG LỖI, nâu TỒN KHO, mỗi con có nhãn; khi đọc cắn một miếng, mỗi con nhảy lên cắn thanh HP, ô đỏ lóe rồi tắt.",
+   "anchors": [{"id": "lp", "kw": "lãng phí", "nth": 1, "off": 0}, {"id": "may", "kw": "máy dừng", "nth": 1, "off": 0}, {"id": "loi", "kw": "hàng lỗi", "nth": 1, "off": 0}, {"id": "ton", "kw": "tồn kho", "nth": 1, "off": 0}, {"id": "can", "kw": "cắn", "nth": 1, "off": -0.05}],
+   "in": "cắt", "out": "màn đen ngắn kiểu chuyển màn game"},
+  {"id": "s3", "visual": "Rương báu pixel giữa đường; nắp bật mở theo bậc, ánh sáng vàng dạng tia pixel; ba vật phẩm bay lên lần lượt kèm nhãn NHẬN ĐƯỢC: bánh răng cảm biến, con mắt camera, quả cầu dự báo; mỗi vật bắn một tia vào một con quái tương ứng, quái nhấp nháy rồi biến mất.",
+   "anchors": [{"id": "ruong", "kw": "rương báu", "nth": 1, "off": -0.1}, {"id": "cb", "kw": "Cảm biến", "nth": 1, "off": 0}, {"id": "cam", "kw": "camera", "nth": 1, "off": 0}, {"id": "db", "kw": "dự báo", "nth": 1, "off": 0}],
+   "in": "mở từ màn đen", "out": "cắt"},
+  {"id": "s4", "visual": "Lâu đài pixel cuối đường, cổng mở; người hùng bước tới theo bậc; thanh HP nạp lại từng ô tới đầy; hộp thoại gõ chữ HOÀN THÀNH NHIỆM VỤ, mũi tên vàng nhấp nháy; đồng xu nảy quanh.",
+   "anchors": [{"id": "chon", "kw": "chọn con quái", "nth": 1, "off": 0}, {"id": "vp", "kw": "vật phẩm", "nth": 1, "off": 0}, {"id": "day", "kw": "đầy trở lại", "nth": 1, "off": -0.1}],
+   "in": "cắt", "out": "giữ hình cuối"}
+ ]}

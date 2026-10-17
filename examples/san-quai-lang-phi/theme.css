@@ -1,0 +1,19 @@
+:root {
+  --bg: #1f5a44;
+  --grass: #1f7a46;
+  --ink: #1a1c2c;
+  --fg: #f4f4f4;
+  --accent: #ffcd75;
+  --win: #29366f;
+  --sil: #94b0c2;
+  --dk: #1b2350;
+  --road: #f2c27a;
+  --edge: #c98f4e;
+  --red: #b13e53;
+  --hp: #38b764;
+  --hp-hi: #a7f070;
+  --cyan: #73eff7;
+  --orange: #ef7d57;
+  --cap-bg: rgba(26, 28, 44, 0.86);
+  --cap-ink: #ffffff;
+}

@@ -39,6 +39,7 @@ Bạn là họa sĩ chuyển động dựng một cảnh của video tiếng Vi�
 - Đúng một `gsap.timeline({ paused: true })`, gán `window.__timelines["<id>"]`. Thời gian là thời gian cục bộ của cảnh; lấy mốc bằng `A("<key>")`, không gõ cứng giây của từ.
 - Cấm: `Math.random` không seed, `Date`, `requestAnimationFrame`, `setTimeout`, gọi mạng, `repeat: -1` (lặp thì tính số lần theo độ dài cảnh); thẻ `<audio>`, `<video>`; `data-start` bên trong cảnh; `<br>` trong đoạn chữ.
 - Chỉ tween `x`, `y`, `xPercent`, `yPercent`, `scale`, `rotation`, `opacity`, `clipPath`, màu, thuộc tính SVG (`attr`, `strokeDashoffset`). Không tween `top`, `left`, `width`, `height`, `letterSpacing`. Phần tử có `transform` ban đầu mà GSAP tween cùng thuộc tính thì dùng `fromTo`.
+- `fromTo`: thuộc tính nào có ở điểm đầu thì phải có ở điểm cuối (thiếu là GSAP bỏ qua, vật ẩn mãi). Trạng thái ẩn ban đầu đặt bằng CSS hoặc `gsap.set` ngoài timeline, không bằng `tl.set(..., 0)` (khung 0 không hiện).
 - Chừa khoảng 14 phần trăm đáy khung cho phụ đề; chữ cách mép ít nhất 6 phần trăm chiều rộng.
 - Không dùng `mix-blend-mode` cho vệt sáng (render ra khối trắng).
 

@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        #_nen-root { position: absolute; inset: 0; overflow: hidden; background: var(--bg); }
+        #_nen-root .map { position: absolute; left: 0; top: 0; width: 200%; height: 100%;
+          background:
+            linear-gradient(#2f8a55, #2f8a55) 24px 40px / 16px 8px,
+            linear-gradient(#2f8a55, #2f8a55) 96px 136px / 8px 8px,
+            linear-gradient(#2f8a55, #2f8a55) 152px 72px / 16px 8px,
+            conic-gradient(#1f5a44 25%, #1d6242 0 50%, #1f5a44 0 75%, #1d6242 0) 0 0 / 32px 32px;
+          background-repeat: repeat; background-size: 192px 192px, 192px 192px, 192px 192px, 32px 32px; }
+        #_nen-root .road { position: absolute; left: 0; top: 1180px; width: 200%; height: 150px; background: var(--road);
+          border-top: 12px solid var(--edge); border-bottom: 12px solid var(--edge); }
+        #_nen-root .road i { position: absolute; width: 12px; height: 12px; background: var(--edge); }
+      </style>
+      <div id="_nen-root" data-composition-id="_nen" data-width="1080" data-height="1920">
+        <div class="map" id="_nen-map"></div>
+        <div class="road" id="_nen-road"></div>
+      </div>
+      <script>
+        (() => {
+          const road = document.getElementById("_nen-road");
+          for (let i = 0; i < 36; i++) {
+            const d = document.createElement("i");
+            d.style.left = (i * 60 + (i % 3) * 14) + "px";
+            d.style.top = (30 + ((i * 37) % 80)) + "px";
+            road.appendChild(d);
+          }
+          const tl = gsap.timeline({ paused: true });
+          // bản đồ cuộn theo nguyên ô 32px, giật đều kiểu 16-bit
+          tl.to(["#_nen-map", "#_nen-road"], { x: -32 * 30, duration: 24, ease: "steps(30)" }, 0);
+          window.__timelines["_nen"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>
