@@ -1,0 +1,8 @@
+{
+  "name": "videomotion",
+  "version": "0.1.0",
+  "description": "Làm video tiếng Việt bằng Claude Code, AI làm đạo diễn, không khung dựng sẵn: ý tưởng lớn, kịch bản, giọng VieNeu, 86 style, dựng từng cảnh bằng agent Sonnet chạy song song (HyperFrames + GSAP), phụ đề, MP4.",
+  "author": { "name": "andyluu98" },
+  "license": "MIT",
+  "keywords": ["video", "tiếng Việt", "VieNeu", "HyperFrames", "GSAP", "motion graphics"]
+}
