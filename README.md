@@ -1,5 +1,7 @@
 # VideoMotion: AI làm đạo diễn cho video
 
+Trang giới thiệu, video mẫu và thư viện 86 style (bấm "Chép" để lấy `style <tên>`): **https://andyluu98.github.io/VideoMotion/**
+
 Plugin Claude Code làm video tiếng Việt từ một câu yêu cầu. Không khung dựng sẵn: AI nghĩ ý tưởng lớn, viết kịch bản, đọc bằng giọng VieNeu, phân cảnh theo từng từ, rồi giao mỗi cảnh cho một agent Sonnet dựng song song bằng HyperFrames và GSAP. Ra file MP4 có nhạc nền và phụ đề.
 
 ```
