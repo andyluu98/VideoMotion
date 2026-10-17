@@ -37,7 +37,8 @@ def main() -> None:
         if len(cells) < 5 or not cells[1].startswith("`"):
             continue
         slug = cells[1].strip("`")
-        src, origin = mf_imgs.get(slug), "MotionFly"
+        own = ROOT / "site" / "media" / "mau" / f"{slug}.jpg"
+        src, origin = (own, "VideoMotion") if own.exists() else (mf_imgs.get(slug), "MotionFly")
         if not src:
             src, origin = sm / "docs" / "assets" / "styles" / f"{slug}-1.jpg", "SlideFly"
         img = ""
@@ -48,8 +49,8 @@ def main() -> None:
                        "fonts": cells[4], "img": img, "from": origin if img else ""})
     js = "window.STYLES=" + json.dumps(styles, ensure_ascii=False) + ";"
     (ROOT / "docs" / "styles.js").write_text(js, encoding="utf-8")
-    n_mf = sum(s["from"] == "MotionFly" for s in styles)
-    print(f"{len(styles)} style: {n_mf} ảnh MotionFly, {len(styles) - n_mf} ảnh SlideFly, thiếu ảnh: "
+    n = {k: sum(s["from"] == k for s in styles) for k in ("VideoMotion", "MotionFly", "SlideFly")}
+    print(f"{len(styles)} style: {n}, thiếu ảnh: "
           f"{[s['slug'] for s in styles if not s['img']]}")
 
 

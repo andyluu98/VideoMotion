@@ -27,3 +27,6 @@ Thumbs.db
 # Site media is published on purpose
 !site/media/*.mp4
 !docs/media/*.mp4
+
+# Ban cu tu sao luu
+_backup/

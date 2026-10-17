@@ -2,9 +2,9 @@
 
 Chọn theo chủ đề và cảm xúc. Gợi ý 3 style cho người dùng: một **hợp**, một **khác nền**, một **bất ngờ**. Đọc thẻ `styles/<slug>.md` của style đã chọn trước khi dựng.
 
-Tổng 86 style. Mỗi style có một thẻ gợi ý ở cột "Thẻ".
+Tổng 91 style. Mỗi style có một thẻ gợi ý ở cột "Thẻ".
 
-## Nền tối (16)
+## Nền tối (18)
 
 | Style | Slug | Cảm xúc | Hợp với | Chữ | Thẻ |
 |---|---|---|---|---|---|
@@ -24,8 +24,10 @@ Tổng 86 style. Mỗi style có một thẻ gợi ý ở cột "Thẻ".
 | Pixel RPG | `pixel-rpg` | hoài niệm, phiêu lưu, pixel, game nhập vai | Trailer game, tổng kết hành trình, đào tạo theo cấp độ, nội dung hoài niệm 16-bit | VT323 | [có](pixel-rpg.md) |
 | HD-2D | `hd-2d` | ấm áp, huyền ảo, ánh sáng, diorama | Trailer game, kể chuyện, giới thiệu thương hiệu, nội dung giả tưởng và hoài niệm | Cormorant + Cormorant Garamond | [có](hd-2d.md) |
 | Anime 80s | `cel-anime-80s` | hoài niệm, neon, hoàng hôn, thành phố đêm | Deck hoài niệm, trailer, MV, giới thiệu sản phẩm công nghệ phong cách retro, sự kiện âm nhạc | Barlow Condensed + Barlow | [có](cel-anime-80s.md) |
+| Retro VHS | `retro-vhs` | hoài niệm, ấm áp, mong manh, ký ức | Video kỷ niệm gia đình, kỷ yếu, mở màn sự kiện retro, trailer hoài cổ, nội dung thập niên 80 và 90 | VT323 + Space Mono | [có](retro-vhs.md) |
+| ASCII CRT | `ascii-crt` | lạnh, kiên nhẫn, máy móc điềm tĩnh, chờ đợi | Công cụ lập trình, viễn tưởng, thương hiệu công nghệ, nhật ký hệ thống | VT323 | [có](ascii-crt.md) |
 
-## Nền sáng (47)
+## Nền sáng (49)
 
 | Style | Slug | Cảm xúc | Hợp với | Chữ | Thẻ |
 |---|---|---|---|---|---|
@@ -76,8 +78,10 @@ Tổng 86 style. Mỗi style có một thẻ gợi ý ở cột "Thẻ".
 | Đồ chơi lắp ghép | `brick-toy` | vui nhộn, tươi sáng, thủ công, tuổi thơ | Đồ chơi trẻ em, giáo dục, lắp ráp sản phẩm, khởi nghiệp, chủ đề vũ trụ và công nghệ | Baloo 2 + Nunito | [có](brick-toy.md) |
 | Hoạt hình giữa thế kỷ | `midcentury-toon` | hoài cổ, vui tươi, ấm áp, in lệch màu | Hướng dẫn từng bước, tài liệu trợ giúp khách hàng, bài giảng nhẹ nhàng, thẻ quy tắc và danh sách việc cần làm | Alfa Slab One + Be Vietnam Pro | [có](midcentury-toon.md) |
 | Rubber hose 1930 | `rubber-hose` | hoài cổ, nhí nhảnh, đen trắng, nhạc jazz | Bài giảng nhẹ nhàng, nội dung cho thiếu nhi hoặc gia đình, quảng cáo vui, kể chuyện bằng đồ vật có mặt cười | Lobster + Playfair Display SC + Be Vietnam Pro | [có](rubber-hose.md) |
+| Truyện tranh | `comic-book` | sôi nổi, hài hước, kịch tính, tuổi thơ | Kể chuyện vui, giới thiệu sản phẩm kiểu phiêu lưu, khóa học cho người trẻ, trailer mạng xã hội | Bangers + Be Vietnam Pro | [có](comic-book.md) |
+| Neo-brutalism | `neo-brutalism` | ồn ào, vui, dạn dĩ, nghịch ngợm | Ra mắt app và sản phẩm số, khuyến mãi, thương mại điện tử, sự kiện giới trẻ, quảng cáo ngắn | Lexend + Space Mono | [có](neo-brutalism.md) |
 
-## Nền trộn (23)
+## Nền trộn (24)
 
 | Style | Slug | Cảm xúc | Hợp với | Chữ | Thẻ |
 |---|---|---|---|---|---|
@@ -104,3 +108,4 @@ Tổng 86 style. Mỗi style có một thẻ gợi ý ở cột "Thẻ".
 | Ukiyo-e | `ukiyoe` | cổ điển, tĩnh lặng, trang trọng, đậm chất nhật | Văn hóa, du lịch Nhật, thơ ca, lịch sử, thương hiệu truyền thống | Noto Serif + Be Vietnam Pro | [có](ukiyoe.md) |
 | Game show | `game-show` | vui nhộn, màu kẹo, sôi động, truyền hình | Tổng kết năm, đào tạo vui, sự kiện giải trí, lễ trao giải, giới thiệu theo từng vòng | Baloo 2 + Nunito | [có](game-show.md) |
 | Hoạt hình viễn tưởng | `scifi-toon` | vui nhộn, viền dày, màu phẳng, viễn tưởng | Bài thuyết trình hài hước, thương hiệu công nghệ, video ngắn, deck giải thích ý tưởng nhẹ nhàng | Baloo 2 + Be Vietnam Pro | [có](scifi-toon.md) |
+| Y2K Chrome | `y2k-chrome` | lạc quan, bóng bẩy, lấp lánh, hoài niệm 2000 | Ra mắt sản phẩm công nghệ trẻ, âm nhạc và thời trang, hoài niệm đầu những năm 2000, sự kiện giới trẻ | Exo 2 + Lexend | [có](y2k-chrome.md) |

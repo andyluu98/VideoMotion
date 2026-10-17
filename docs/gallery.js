@@ -1,6 +1,7 @@
-/* thư viện 86 style: lọc theo nhóm, tìm kiếm, nút Chép chỉ chép "style <slug>" */
+/* thư viện 91 style: lọc theo nhóm, tìm kiếm, nút Chép chỉ chép "style <slug>" */
 (() => {
-  const S = (window.STYLES || []).slice().sort((a, b) => (a.from !== 'MotionFly') - (b.from !== 'MotionFly'));
+  const rank = f => f === 'VideoMotion' ? 0 : f === 'MotionFly' ? 1 : 2;
+  const S = (window.STYLES || []).slice().sort((a, b) => rank(a.from) - rank(b.from));
   const gal = document.getElementById('gal'), q = document.getElementById('q'), cnt = document.getElementById('cnt'), more = document.getElementById('more');
   const GH = 'https://github.com/andyluu98/VideoMotion/blob/master/styles/';
   const esc = t => String(t || '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -10,7 +11,7 @@
   const tile = (st, i) => {
     const tags = (st.mood || '').split(',').map(t => t.trim()).filter(Boolean).slice(0, 4);
     return `<article class="st" data-i="${i}">
-    <a class="th" href="${GH}${st.slug}.md" target="_blank" rel="noopener">${st.img ? `<img src="${st.img}" alt="Minh họa style ${esc(st.name)}" loading="lazy" width="800" height="450">` : ''}<span class="src">${st.from === 'MotionFly' ? 'khung video' : 'khung slide'}</span></a>
+    <a class="th" href="${GH}${st.slug}.md" target="_blank" rel="noopener">${st.img ? `<img src="${st.img}" alt="Minh họa style ${esc(st.name)}" loading="lazy" width="800" height="450">` : ''}<span class="src">${st.from === 'VideoMotion' ? 'khung VideoMotion' : st.from === 'MotionFly' ? 'khung video' : 'khung slide'}</span></a>
     <div class="b"><div class="n">${esc(st.name)}</div><div class="s">style ${st.slug}</div>
       <div class="md">${esc(st.use)}</div>
       <div class="tg">${tags.map(t => `<span>${esc(t)}</span>`).join('')}</div>
