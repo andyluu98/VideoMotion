@@ -68,4 +68,21 @@ Phối cảnh hay nghiêng phép chiếu, khối xoay lệch trục, low poly c�
 ## Họ hàng
 `blueprint` (bản vẽ kỹ thuật nét trắng trên giấy xanh, chính xác và cổ điển; iso thì màu tươi, dễ hiểu cho người ngoài ngành), `clay-3d` (khối đất sét bo tròn có ánh sáng, vui cho trẻ em; iso phẳng ba tông, không ánh sáng), `bento-light` (thẻ phẳng chính diện, tối giản; iso có chiều sâu sa bàn).
 
+## Bản video (khi làm video; thắng các mục trên khi mâu thuẫn)
+Mục tiêu hình: giống ảnh minh họa `docs/assets/styles/iso-infographic.jpg`, một khung phim chứ không phải slide.
+- **Thế giới và nhân vật:** một sa bàn isometric thật: bến cảng với tàu container chất nhiều thùng nhiều màu, hai cần cẩu giàn vàng, xe tải xanh nhỏ, dãy nhà thấp màu pastel và cây tròn, mặt nước xanh có vài gợn. Mép sa bàn lộ mặt cắt đất nâu ở góc dưới trái. Không có người, vật chính là tàu và cần cẩu, chiếm hơn 1/3 chiều cao khung. Một đường đứt nét mực chạy xuyên cảnh như tuyến di chuyển.
+- **Chất liệu và ánh sáng:** không có ánh sáng điện ảnh, chỉ có ba tông cố định cho mỗi khối: mặt trên sáng, mặt trái vừa, mặt phải tối (đa polygon SVG, không viền). Chiếu isometric 30 độ: `sx = (x - y)·cos30°·k`, `sy = ((x + y)/2 - z)·k`, sắp theo độ sâu x + y + z. Tông tối pha hơi lạnh. Một màu một nghĩa như chú giải. Mực mảnh 2 px chỉ cho nét hạ tầng: đường dẫn, ghim, đường đứt.
+- **Máy quay và khung dọc 9:16:** góc isometric cố định, không xoay, không phối cảnh; máy chỉ pan và zoom (scale và translate cả nhóm, zoom nội suy theo log). Cỡ từ toàn cảnh tới cận một trạm. Khung dọc: xếp sa bàn chéo từ trên xuống, nước ở trên, đất và mặt cắt ở dưới; nhãn ghim hướng lên hoặc xuống.
+- **Chuyển động:** không gì chuyển động mà không có đường dẫn đi trước: đường tuyến vẽ trước, ghim mọc trước khi khung phụ mở. Khối đến bằng chuyển động chứ không bằng alpha. Hạ cánh có squash khoảng 18% và nảy nhẹ. Xe đi theo polyline, quay theo hướng tiếp tuyến. Ease `power2.inOut`, `back.out` cho biểu tượng nảy lên.
+- **Chữ trên hình:** tiêu đề Lexend IN HOA giãn rộng; nhãn ghim Be Vietnam Pro (chấm, đường dọc, đường ngang, chữ) có viền sáng quanh chữ; số lớn dựng bằng biểu tượng giống nhau (Isotype); phụ đề như nhãn bản đồ, thẻ sáng bo nhẹ có viền mực. Đủ dấu tiếng Việt.
+- **Nước đi đặc trưng:**
+  - Cắt mở (cutaway): đường cắt vẽ, lớp vỏ trượt khỏi sa bàn, lộ ruột có vạch sọc (cấu tạo, bên trong hệ thống).
+  - Số Isotype: biểu tượng giống nhau nảy lên từng cái, số đếm chạy cùng lúc (con số cần cảm nhận).
+  - Tập trung và bối cảnh: mọi thứ xám đi, chỉ chủ thể giữ màu (một thứ giữa nhiều thứ).
+  - Khung tròn trong khung: đường dẫn mọc thành ô tròn cận cảnh (chi tiết nhỏ).
+  - Lùi xa theo log thành một infographic hoàn chỉnh (tổng quan cuối).
+- **Bẫy:** semi-transparent trên khối đang chuyển động trông như ma (chỉ dùng chuyển động); sắp độ sâu sai ở vật ghép như cần cẩu trên tàu (vẽ thành một nhóm có thứ tự); tàu hoặc bánh xe chạm sai mặt thành tai nạn (chừa khe); lặp một màu cho hai nghĩa; thêm bóng mềm hoặc gradient phá chất phẳng ba tông.
+
+Phỏng theo `styles/iso-infographic/STYLE.md` của lemomo-ai/lemo-opuscar (MIT).
+
 *Ý tưởng gốc: MotionFly / lemo-opuscar (MIT), qua SlideFly.*

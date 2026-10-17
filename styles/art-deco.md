@@ -64,4 +64,21 @@ Màu thứ ba nổi bật, vàng đổ thành mảng lớn, gradient ánh kim l�
 ## Họ hàng
 `son-mai` (sang trọng kiểu Việt, sơn then và son đỏ), `emerald-editorial` (cũng xanh lục bảo nhưng chất bìa tạp chí hiện đại), `dark-botanical` (sang nền tối, mềm mại và thực vật hơn).
 
+## Bản video (khi làm video; thắng các mục trên khi mâu thuẫn)
+Mục tiêu hình: giống ảnh minh họa `docs/assets/styles/art-deco.jpg`, một khung phim chứ không phải slide.
+- **Thế giới và nhân vật:** Một sảnh khách sạn đen ấm rất tối, mờ phía sau (cửa thang máy mạ vàng, vòm bậc thang, quạt nắng dưới sàn). Nhân vật chính là một nhân viên khách sạn dáng deco: khoảng 7 đầu cao, thân thon, đồng phục đỏ rượu có viền và khuy vàng, mặt chia mặt phẳng sáng tối như sơn mài, mắt tròn to, mũi một nét. Ở cú cận cảnh nhân vật chiếm hơn 1/3 chiều cao khung, một cánh tay giơ lên chạm mũ.
+- **Chất liệu và ánh sáng:** Nền gradient đen ấm, hơi ngả lục bảo gần sàn. Vàng là dải gradient nhiều bậc (tối, sáng, nóng, sáng, tối) cho viền và khuy; nét khắc gồm một nét tối rộng hơn, nét vàng, một sợi sáng mảnh phía trên. Khối hình dùng gradient xiên từ bóng sang sáng, một hướng sáng duy nhất (trên trái), viền vàng mảnh phía sáng. Không viền đen kiểu hoạt hình. Hậu cảnh mờ bằng blur tĩnh và hạ độ tương phản; chỉ tween transform, opacity, màu.
+- **Máy quay và khung dọc 9:16:** Ngang tầm mắt, cận cảnh ngực trở lên, nhân vật đặt giữa trục dọc; trục giữa là bất khả xâm phạm. Di máy chậm bằng scale/translate: lớp nhân vật, lớp hậu cảnh mờ, lớp sàn, mỗi lớp một tốc độ để có chiều sâu. Khung dọc để hậu cảnh đối xứng hai bên nhân vật.
+- **Chuyển động:** Nhân vật bước nấc (khoảng 12 fps, dùng `steps()`), máy quay và ánh sáng mượt. Mọi thứ mở ra từ tâm. Ease cơ khí: ease-in-out chắc, dừng có chút lún, không trôi. Cảnh nhấn có chuẩn bị rồi mới bật.
+- **Chữ trên hình:** Phụ đề là thanh sơn mài đen (khoảng 88%) đầu bậc thang, viền vàng đôi, chữ ngà Josefin Sans 600, có thể có icon nhỏ trước dòng, nằm dưới khung và mở ra từ tâm. Tiêu đề Playfair Display SC. Phải đủ dấu tiếng Việt.
+- **Nước đi đặc trưng:**
+  - Cửa tách đôi theo đường nối giữa để sang cảnh mới (hợp chuyển chương, chuyển địa điểm).
+  - Quạt nắng xòe từ chân tiêu đề, tia hiện từ giữa ra hai bên (hợp mở đầu, công bố).
+  - Đèn bóng bật từng chiếc theo nhịp đếm (hợp đếm ngược, bình chọn).
+  - Đẩy vào mặt đồng hồ hoặc huy hiệu để con số là cốt truyện (hợp hạn chót, cột mốc).
+  - Quét ánh kim lên vật vàng khi chạm nhịp (hợp trao giải, ra mắt).
+- **Bẫy:** Nhân vật kiểu hoạt hình thường dán vào, phải là nhân vật deco. Phủ cửa lên nền phẳng trông như khung trống, chỉ vẽ cánh cửa khép trên cảnh đang chạy. Vàng thành mảng lớn mất vẻ khắc mảnh. Hậu cảnh quá rõ làm mất nhân vật.
+
+Phỏng theo `styles/art-deco/STYLE.md` của lemomo-ai/lemo-opuscar (MIT).
+
 *Style gốc của SlideFly.*

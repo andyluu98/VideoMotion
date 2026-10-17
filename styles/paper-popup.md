@@ -62,4 +62,25 @@ Màu neon, gradient mượt, bóng mềm kiểu 3D, glow, phối cảnh hội t�
 ## Họ hàng
 `clay-3d` (vui tươi cho trẻ em nhưng là khối đất nặn mềm có chiều sâu), `cat-giay-do` (cũng giấy cắt nhưng phẳng một màu đỏ, chất lễ hội truyền thống), `crayon-book` (sách thiếu nhi tô sáp nét tay, dịu và chậm hơn).
 
+## Bản video (khi làm video; thắng các mục trên khi mâu thuẫn)
+Mục tiêu hình: giống ảnh minh họa `docs/assets/styles/paper-popup.jpg`, một khung phim chứ không phải slide.
+- **Thế giới và nhân vật:** một phông giấy nhiều lớp dựng đứng trên trang sách: nhà nấm mũ đỏ chấm kem, cây tròn, cây thông, hàng rào, bảng gỗ, mặt trời trên cán, đồi xanh chồng lên nhau, con đường be uốn lượn. Nhân vật chính là một sinh vật bé xíu đội mũ lá, có cánh trong, đứng trên đường, cao khoảng 1/6 khung. Mọi thứ là thẻ giấy phẳng viền trắng ngà, mép bìa be, nét mực nâu, mặt chỉ hai chấm mắt và nét cười.
+- **Chất liệu và ánh sáng:** mỗi thẻ là một SVG nhóm: bóng nâu alpha thấp lệch xuống, mép bìa be lệch 3px, viền trắng ngà dày (stroke trắng trước rồi fill), màu phẳng, nét mực nâu. Một lát liềm tối cứng thay cho bóng mềm. Phủ hạt giấy bằng một lớp noise tĩnh. Ánh sáng là một vầng ấm nhẹ từ trên, vignette ấm ở góc. Hoa và cỏ ở tiền cảnh đặt mờ (filter blur chỉ để tĩnh) để tạo cảm giác macro.
+- **Máy quay và khung dọc 9:16:** góc ngang tầm nhân vật, cỡ trung. Chia khung thành 3 lớp sâu: tiền cảnh mờ ở đáy, nhân vật giữa, phông xa. Di máy bằng scale và translate từng lớp với tốc độ khác nhau (parallax). Ở khung dọc xếp phông cao hơn: mặt trời và đồi ở trên, nhà nấm giữa, đường và nhân vật dưới.
+- **Chuyển động:** thẻ bật dựng từ mép đáy (scaleY từ gốc đáy, `back.out` nhẹ), lớp xa lên trước, lớp gần lên sau. Cây, hoa, mặt trời đung đưa vài phần trăm radian quanh gốc. Nhân vật đi bằng bước nấc, lật hướng bằng scaleX. Giấy cứng nên không co giãn dai.
+- **Chữ trên hình:** bảng gỗ hoặc thanh giấy ghi chú có viền trắng ngà, chữ mực nâu đậm; phụ đề bubble giấy trắng ở đáy, chữ nâu viền dày. Phông Baloo 2 hoặc Be Vietnam Pro, đủ dấu tiếng Việt.
+- **Nước đi đặc trưng:**
+  - Mở sách: tấm phông dựng lên, các lớp bật lần lượt từ xa tới gần (bìa, giới thiệu).
+  - Lật trang: thẻ cũ gập xuống, thẻ mới bật lên, phông đổi màu (chuyển chương, đổi bước).
+  - Thẻ kéo: dải giấy trượt để lộ đáp án (hỏi rồi đáp, trước và sau).
+  - Mặt trời trên cán mọc cao hoặc hạ thấp (mở và kết cảnh).
+  - Giấy màu vãi ở góc (khoảnh khắc vui, thành công).
+- **Bẫy:**
+  - Vẽ vật tròn xoe có chiều sâu kiểu 3D: phá cảm giác giấy phẳng, chỉ chồng vài thẻ phẳng.
+  - Bóng mềm hoặc glow: dùng bóng liềm cứng và bóng lệch theo hình cắt.
+  - Xoay quanh trục đứng làm lộ lưng trống: dùng lật scaleX.
+  - Neon hoặc gradient mượt: giữ màu phẳng bão hòa kiểu sách thiếu nhi.
+
+Phỏng theo `styles/paper-popup/STYLE.md` của lemomo-ai/lemo-opuscar (MIT).
+
 *Ý tưởng gốc: MotionFly / lemo-opuscar (MIT), qua SlideFly.*

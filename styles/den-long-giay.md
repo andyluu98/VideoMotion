@@ -65,4 +65,20 @@ Màu ngoài bảng (xanh lá, tím rực, trắng lạnh), gradient ngoài hào 
 ## Họ hàng
 `son-mai` (sơn then bóng, vàng lá, trang trọng hơn và tĩnh hơn), `hoi-an` (đèn lụa phẳng trên tường vôi ban ngày, ở đây đèn giấy phát sáng giữa đêm), `cat-giay-do` (giấy đỏ cắt trên nền kem, tươi vui ngày Tết, không có ánh sáng xuyên qua).
 
+## Bản video (khi làm video; thắng các mục trên khi mâu thuẫn)
+Mục tiêu hình: giống ảnh minh họa `docs/assets/styles/den-long-giay.jpg`, một khung phim chứ không phải slide.
+- **Thế giới và nhân vật:** Một hộp đèn giấy cắt trong đêm xanh thẫm: trăng tròn kem rất lớn chiếm giữa khung (khoảng 2/3 chiều cao), sao thưa, mây cuộn cắt giấy trắng ngà hai bên, một hàng mái và cây mờ trước mặt trăng, bóng thỏ ngọc giấy ngồi bên phải. Nhân vật là một tiên nữ giấy tối màu đứng ở mép trên phải mặt trăng, dải lụa đỏ và vàng bay dài về trái. Nhân vật nhỏ, mảng tối trên nền trăng sáng.
+- **Chất liệu và ánh sáng:** Mỗi lớp là một mảng phẳng một màu, mép gọn, lỗ cắt xoắn trên mây; không viền đậm. Lớp xa sáng và lạnh, lớp gần tối gần đen. Mỗi lớp có một vạch sáng mỏng ở mép trên, một dải tối ở mép dưới. Trăng là radialGradient kem rất sáng với quầng hổ phách tối dần ra rìa; ánh sáng xuyên giấy có vân. Bóng mềm của lớp trước đổ lên lớp sau bằng gradient mờ tĩnh. Chỉ tween transform, opacity, màu.
+- **Máy quay và khung dọc 9:16:** Gần chính diện, đẩy vào rất chậm như bước lại gần hộp. Chiều sâu bằng parallax: mỗi lớp translate với tốc độ tỉ lệ theo độ xa. Khung dọc: trăng ở giữa trên, mây và mái phố dưới, chữ ở phần tối phía dưới. Thêm một chuyển động vi mô nhỏ cho máy để khung không chết.
+- **Chuyển động:** Chậm, êm như gió; mọi thứ chuyển như giấy trên que: trượt, xoay quanh trục, mở từ một cạnh. Không nảy, không bẹp giãn, không biến dạng. Ánh sáng là chuyển động lớn: nguồn sáng lên, rồi từng lớp sáng dần trễ 0,4 giây. Dải lụa bay mượt, đèn sáng lập lòe rất nhẹ.
+- **Chữ trên hình:** Phụ đề là dòng chữ kem nhẹ có bóng mềm, nằm dưới hộp, hiện trước lời một chút (Be Vietnam Pro hoặc Cormorant Garamond). Tiêu đề kem Cormorant Garamond 700. Phải đủ dấu tiếng Việt. Chữ làm bằng giấy cắt thì không phụ đề lại.
+- **Nước đi đặc trưng:**
+  - Đèn sáng: nguồn, rồi các lớp xa, rồi ô cửa sáng từng cái (hợp mở cửa hàng, khai trương).
+  - Hai ô cửa một ánh trăng (hợp hai nơi cùng làm việc, bạn xa).
+  - Chiều sâu là khoảng cách: lớp trượt theo tốc độ tỉ lệ độ xa (hợp hành trình, mốc thời gian).
+  - Giấy tự viết: dải chữ mọc từ một mép theo lời đọc (hợp công thức, điều khoản).
+- **Bẫy:** Lớp gần sáng hơn lớp xa làm hộp phẳng ngay. Viền đậm hoặc bóng mềm kiểu hoạt hình phá chất bìa cắt. Màu ngoài bảng (xanh lá, tím rực, trắng lạnh) mất không khí đêm trăng. Lỗ cắt nửa vời thành lỗ mờ. Tiên nữ vẽ chi tiết mặt thì sai; giữ hình bóng gọn.
+
+Phỏng theo `styles/paper-lantern/STYLE.md` của lemomo-ai/lemo-opuscar (MIT).
+
 *Ý tưởng gốc: MotionFly / lemo-opuscar (MIT), qua SlideFly.*

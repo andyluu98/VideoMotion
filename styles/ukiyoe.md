@@ -63,4 +63,21 @@ Màu ngoài bảng, đỏ son nhiều hơn một điểm nhấn mỗi hình, gra
 ## Họ hàng
 `thuy-mac` (cũng Á Đông và tĩnh, nhưng là mực nước sắc độ loang, không có mảng màu in phẳng), `woodcut` (khắc gỗ thô kiểu phương Tây, mạnh và kịch tính, đen trắng nhiều hơn), `silkscreen-poster` (in từng lớp mực phẳng, nhưng không có nét khóa, chất poster du lịch phương Tây).
 
+## Bản video (khi làm video; thắng các mục trên khi mâu thuẫn)
+Mục tiêu hình: giống ảnh minh họa `docs/assets/styles/ukiyoe.jpg`, một khung phim chứ không phải slide.
+- **Thế giới và nhân vật:** Một tờ tranh in đặt trên nền giấy mount màu be, có khung viền đôi mực sumi. Biển chàm với hàng vảy sóng, một đợt sóng khổng lồ cuộn thành hình ngọn núi xanh có vân trắng, một ngọn núi xa nhỏ có chóp tuyết ở chân trời, mỏm đá xám bên phải với cây thông nghiêng có các tán dẹt. Nhân vật rất nhỏ: một người phẳng đội nón rộng đứng trên mỏm đá, và một dáng trắng nhỏ ngồi trên đỉnh sóng. Mỗi người cao dưới 8% khung.
+- **Chất liệu và ánh sáng:** Mảng màu phẳng, mỗi nhóm màu là một `<g>` riêng, dịch lệch 2 đến 3px so với nét khóa sumi (lớp màu dịch, lớp nét không dịch). Trời là bokashi: một gradient dọc tĩnh chàm nhạt tới kem, tính theo cột bằng nhiều dải `<rect>` có mép lượn, không để lộ đường nối. Sóng là hàng nửa vòng tròn đè nhau (seigaiha) hai ba sắc chàm, bọt là giấy để trắng. Phủ sợi giấy washi và vân gỗ rất nhẹ bằng canvas vẽ một lần, alpha khoảng 0,09. Không bóng đổ, không ánh sáng trên vật, đỏ son chỉ một điểm.
+- **Máy quay và khung dọc 9:16:** Nhìn ngang, phẳng, chỉ xếp lớp ngang song song, không phối cảnh hội tụ. Ở dọc, trời chiếm phần trên, sóng núi khổng lồ ở giữa, biển ở dưới, thông và mỏm đá cắt mạnh một mép; có thể đặt thành cuộn tranh dọc. Di máy là handscroll: trượt cả tờ hoặc chuyển từ tờ này sang tờ kế qua khoảng giấy mount, bằng `x` hoặc `y`, mượt 24 fps.
+- **Chuyển động:** Tranh phần lớn đứng yên, mỗi cảnh chỉ một hai việc nhỏ (sóng nhấp nhô, mây trôi, lá rơi). Nhân vật và thiên nhiên đổi tư thế 8 fps theo nấc, sóng 12 fps. Mỗi bản màu hiện trong khoảng 0,3 giây bằng `clipPath` quét chéo, trượt 5 đến 6px vào chỗ. Giữ một nhịp khoảng một giây để người xem đọc.
+- **Chữ trên hình:** Chữ là phiến giấy kem viền đôi mực, đặt ở lề hoặc mép dưới, tiêu đề dọc là phiến nhỏ với nét cọ trừu tượng, không dùng chữ Hán hay Nhật. Chữ Noto Serif đậm cho chữ không dấu, chữ có dấu dùng Be Vietnam Pro, đủ dấu Việt. Con dấu vuông đỏ son có số là dấu chấm câu của mỗi tờ, đóng bằng `scale` 1,35 về 1 trong 0,2 giây.
+- **Nước đi đặc trưng:**
+  - In từng bản khắc: nét khóa vẽ trước, các bản màu đáp lệch rồi khớp: hợp mở cảnh, một thứ đang thành hình.
+  - Trượt cuộn tranh từ phải sang trái: hợp hành trình, các bước, trạm.
+  - Cùng một chủ thể đặt lệch khác nhau mỗi tờ: hợp so sánh, một thứ qua nhiều thời kỳ.
+  - Đổi bản in ngày sang đêm, mặt trời đỏ thành trăng giấy: hợp chương mới, câu trích.
+  - Con dấu đỏ đóng xuống góc tờ: hợp kết chương, kết luận.
+- **Bẫy:** Chuyển sắc dùng nhiều dải `fillRect` hở nối thì lộ đường dọc. Đặt phối cảnh hội tụ cho đồng ruộng hay sóng làm hỏng độ phẳng. Quá nhiều vân và sợi làm vùng tối như giấy ráp, giữ alpha thấp. Con dấu dùng chế độ multiply sẽ biến mất trên nền tối, dùng chồng thường.
+
+Phỏng theo `styles/ukiyoe/STYLE.md` của lemomo-ai/lemo-opuscar (MIT).
+
 *Ý tưởng gốc: MotionFly / lemo-opuscar (MIT), qua SlideFly.*

@@ -67,4 +67,21 @@ Làm mờ, gradient mịn, bóng mờ, 3D, hiệu ứng CRT hay đường quét;
 ## Họ hàng
 `hd-2d` (cũng là sprite pixel, nhưng đứng trong diorama có ánh sáng và sương, chậm và huyền ảo hơn), `8-bit-orbit` (arcade neon nền tối, năng lượng hơn, không có hộp thoại nhập vai), `retro-windows` (cũng VT323 và hoài cổ, nhưng là cửa sổ máy tính cũ chứ không phải game).
 
+## Bản video (khi làm video; thắng các mục trên khi mâu thuẫn)
+Mục tiêu hình: giống ảnh minh họa `docs/assets/styles/pixel-rpg.jpg`, một khung phim chứ không phải slide.
+- **Thế giới và nhân vật:** Một màn chiến đấu nhìn ngang kiểu 16-bit, khung 320x180 phóng nguyên điểm. Trên cùng là hoàng hôn tím cam sang vàng, có đĩa mặt trời, dãy tháp lâu đài bóng tối với ô cửa sáng, đồi tối. Giữa là sàn gỗ nâu. Bên trái một quái bóng đen khổng lồ có mắt đỏ và răng (khoảng 45% chiều cao khung), bên phải hai nhân vật nhỏ khoảng 30px: một người áo xanh lục khăn đỏ cầm gậy, một người áo xanh dương cầm kiếm, đối mặt quái. Dưới là bảng trạng thái lớn xanh dương, trên cùng một thanh thông báo hành động.
+- **Chất liệu và ánh sáng:** Bảng màu cố định khoảng 32 màu, không blend; chuyển sắc bằng ordered dither (mẫu Bayer 4x4 vẽ trên Canvas 2D hoặc `<pattern>` SVG). Sprite 3 tông, viền mực 1 ô, sáng từ trên trái. Hoàng hôn là các dải màu chia bậc có dither, tháp là khối tối với ô sáng cam. Cửa sổ giao diện xanh dương có viền vát (mép trắng, bạc, tối). Dùng `image-rendering: pixelated` và `crispEdges`. Không CRT, không đường quét, không hạt.
+- **Máy quay và khung dọc 9:16:** Máy khóa một khung trong cảnh chiến đấu. Với 9:16, đặt cảnh chiến đấu ở nửa trên (quái và hai nhân vật), bảng trạng thái và lệnh chiếm nửa dưới; sàn phải nằm trên mép bảng. Di máy chỉ theo bội số điểm ảnh nguyên bằng translate theo bậc; mỗi lớp parallax làm tròn riêng.
+- **Chuyển động:** Nhân vật bước nấc 8 fps (bước), 12 fps (nháy, lửa); máy quay theo nguyên điểm. Diễn kiểu game: nhảy tới để hành động, lùi lại khi trúng đòn, KO nháy rồi biến mất, thở bằng vai nhấc 1px. Cửa sổ trượt vào khoảng 0,3 giây, con trỏ tay nhấp nhô 1px. Không easing mềm, không mờ dần.
+- **Chữ trên hình:** Một font pixel (VT323), cỡ lớn, bóng cứng một bậc. Thanh trên cùng ghi hành động dạng "A dùng chiêu B". Bảng dưới có tên, HP dạng số, lệnh bốn ô (tên giả, không dùng tên game thật). Lệnh hết dùng được thì xám mờ, số HP nguy hiểm thì đỏ. Hộp thoại gõ từng ký tự rồi mũi tên ▼ nhấp nháy. Phải đủ dấu tiếng Việt, chạy thử ở cỡ nhỏ.
+- **Nước đi đặc trưng:**
+  - Cảnh chiến đấu: quái, nhóm nhân vật, bảng lệnh (hợp thi cử, đàm phán, thử thách).
+  - Hộp thoại gõ chữ kèm chân dung (hợp lời thoại, giải thích).
+  - Mở rương, vật phẩm bay lên kèm nhãn "NHẬN ĐƯỢC" (hợp kỹ năng mới, bài học).
+  - Thanh HP nạp từng ô (hợp tiến độ, cấp độ).
+  - Chuyển màn bằng mosaic hoặc màn đen ngắn (hợp đổi chương).
+- **Bẫy:** Làm mờ hay gradient mịn phá chất pixel. Pha nhiều cỡ pixel trong một hình. Tóc sprite là mái tròn trông như mũ; dùng 2 đến 3 gai lớn. Bảng dưới che chân nhân vật nếu sàn thấp. Tên, nhân vật, nhạc của game có thật thì cấm.
+
+Phỏng theo `styles/pixel-rpg/STYLE.md` của lemomo-ai/lemo-opuscar (MIT).
+
 *Ý tưởng gốc: MotionFly / lemo-opuscar (MIT), qua SlideFly.*

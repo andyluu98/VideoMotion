@@ -66,4 +66,24 @@ Mọi sắc màu, gradient tô vật, bóng mờ, 3D bóng loáng; nhân vật c
 ## Họ hàng
 `silent-film` (phim câm đen trắng, ảnh thật, khung chữ thoại, kịch tính khô; ở đây là hoạt hình nét mực và nhạc là động cơ), `midcentury-toon` (hoạt hình hoài cổ hai mươi năm sau, có màu in lệch, hình học hơn), `monochrome` (đen trắng tối giản hiện đại, không có nhân vật).
 
+## Bản video (khi làm video; thắng các mục trên khi mâu thuẫn)
+Mục tiêu hình: giống ảnh minh họa `docs/assets/styles/rubber-hose.jpg`, một khung phim chứ không phải slide.
+- **Thế giới và nhân vật:** phim hoạt hình đen trắng đời đầu, khung 4:3 có viền đen. Nền là một căn bếp: giấy dán tường họa tiết thoi, gạch ốp, kệ treo nồi chảo, tủ gỗ ở đáy. Nhân vật là đồ vật sống: một cái nồi lớn là cả thân, có mắt tròn nhìn, miệng cười, tay vòi quai cong, chân ống mảnh, giày bầu đen; thêm một viên đường vuông nhỏ có mặt đứng trên tay, và một vòi nước có mặt bên phải. Nhân vật chiếm khoảng 1/3 chiều cao khung. Tay găng trắng bốn ngón, chân và tay là ống đều, không khuỷu.
+- **Chất liệu và ánh sáng:** thang xám nghiêm ngặt, không một sắc màu. Nhân vật nhận trắng và đen đậm nhất; nền nằm ở xám giữa. Nhân vật fill phẳng, một dải bóng xám nhạt cứng phía xa nguồn sáng, nét mực đậm hằng định theo màn hình. Mắt: tròng trắng, con ngươi đen có khuyết hình nêm. Lớp phim cũ phủ ngoài: nhấp nháy sáng vài phần trăm, vài vệt dọc, bụi li ti, vignette mạnh, hạt (SVG feTurbulence tĩnh hoặc canvas seed cố định), tăng tương phản nhẹ.
+- **Máy quay và khung dọc 9:16:** máy như sân khấu, gần như đứng yên, cỡ trung, mặt phải đọc được. Với 9:16, đặt khung 4:3 ở giữa cao, vùng đen trên và dưới làm chỗ cho thẻ chữ cổ; hoặc xếp nhân vật chồng dọc. Chỉ di máy để theo người chạy hoặc đẩy gag, cắt cứng trên nhịp.
+- **Chuyển động:** nhân vật bước nấc 12 fps, máy mượt 24 fps. Mọi vật đứng yên đều thở: co giãn 5 đến 7 phần trăm theo nhịp, cùng pha. Trước động tác lớn: ngồi xuống (squash), giữ, rồi bật. Ngừng nhạc thì cả thế giới đóng băng. Cắt có giật nhỏ của khung phim.
+- **Chữ trên hình:** thẻ chữ thời xưa: bảng gần đen viền đôi trắng, góc trang trí, chữ trắng kem, hiện và tắt không mờ. Tiêu đề script đậm viền mực dày và đổ bóng chéo. Phông Be Vietnam Pro cho chữ có dấu; phông trang trí chỉ cho chữ không dấu hoặc số.
+- **Nước đi đặc trưng:**
+  - Mọi thứ thở theo nhịp: cả căn bếp nhún cùng lúc (mở cảnh, đoạn vui).
+  - Vòi cao su kéo dài: tay vươn xa trong một cú máy (với tới, trao tay).
+  - Biến hình: vật hóa thành vật khác giữa chuyển động (ý tưởng thành sản phẩm).
+  - Iris vào ra, thẻ tiêu đề cuộn như rèm (đầu và cuối phim).
+- **Bẫy:**
+  - Khung xám phẳng: đẩy nền về xám giữa, giữ trắng tinh và mực đen cho nhân vật.
+  - Có màu hoặc gradient mượt: chỉ xám rời, bóng một dải cứng.
+  - Quay xa làm gag nhỏ, không đọc được: dùng cỡ trung.
+  - Cơ thể kiểu cốc có ống hút trên thân người: cả đồ vật là thân.
+
+Phỏng theo `styles/rubber-hose/STYLE.md` của lemomo-ai/lemo-opuscar (MIT).
+
 *Ý tưởng gốc: MotionFly / lemo-opuscar (MIT), qua SlideFly.*

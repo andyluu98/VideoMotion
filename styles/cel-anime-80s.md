@@ -68,4 +68,21 @@ Nhân vật, xe, mecha, địa danh, tên, logo của phim có thật; nhân v�
 ## Họ hàng
 `neon-cyber` (công nghệ tương lai, neon lạnh, không hoài niệm và không có nền vẽ tay), `8-bit-orbit` (hoài cổ arcade neon, pixel chứ không phải cel), `aurora` (nền tối mơ màng bằng dải sáng mềm, hiện đại hơn, không có đồ vật thập niên 80).
 
+## Bản video (khi làm video; thắng các mục trên khi mâu thuẫn)
+Mục tiêu hình: giống ảnh minh họa `docs/assets/styles/cel-anime-80s.jpg`, một khung phim chứ không phải slide.
+- **Thế giới và nhân vật:** phố đêm mưa, hai dãy cửa hàng sáng đèn và biển neon (RADIO, BAR, chữ katakana dọc) làm nền vẽ tay; phía trước là một cô gái tóc tím buộc đuôi dài, áo khoác xanh, khăn đỏ bay, cưỡi xe máy trắng viền xanh ngọc, nhìn nghiêng. Nhân vật chiếm khoảng 1/3 chiều cao khung, cel phẳng hai tông, nét viền có màu. Mặt đường ướt phản chiếu biển neon.
+- **Chất liệu và ánh sáng:** nền là gradient phun sơn chàm tím, cửa sổ là ô vuông sáng rải; biển neon là hộp viền màu với chữ, lớp phát sáng là cùng hình mờ 0,2 đến 0,3 phóng to nhẹ. Cel: tô màu, một mảng bóng cứng, một nét sáng mảnh, viền đậm hơn màu tô; không gradient trong hình. Mặt đường: bản lật dọc của nền, tối đi, kẻ dải gợn. Mưa là các vạch xiên mảnh; có vệt sáng hồng ngang như đèn xe. Chồng scanline mảnh và vignette tĩnh lên toàn khung.
+- **Máy quay và khung dọc 9:16:** tracking ngang theo xe, 3 đến 4 lớp thị sai (biển xa, cửa hàng, xe, mặt đường phản chiếu). Cỡ toàn thân, ngang mắt. Khung dọc: cắt lại quanh xe, biển neon xếp cao phía trên, đường ướt chiếm phần dưới.
+- **Chuyển động:** nhân vật trên nhịp hai (12 fps), tóc và khăn là dải nhấp nhô theo sine bước nấc 4 khung; bánh xe quay nấc. Lớp nền, mưa, vệt sáng trượt mượt. Ease `none` cho tracking, `power2.out` cho lóe sáng.
+- **Chữ trên hình:** biển neon với từ chung chung (RADIO, BAR), không tên thương hiệu; tiêu đề Barlow Condensed nghiêng đậm; phụ đề kem viền tối, cách đáy khoảng 96 px. Đủ dấu tiếng Việt.
+- **Nước đi đặc trưng:**
+  - Tracking ngang với thị sai nhiều lớp (hành trình, tiến độ).
+  - Dải sáng quét qua cel đang đứng yên (căng thẳng, tốc độ không cần vẽ lại).
+  - Neon bật chập chờn vài nhịp rồi sáng hẳn (địa điểm, mở cảnh).
+  - Khung đặc tả mắt hoặc tay, giữ tĩnh, chỉ tóc bay (quyết tâm, quyết định).
+  - Hai khung đảo màu rồi cắt về cảnh (va chạm, nhấn mạnh).
+- **Bẫy:** neon thấm qua nhân vật (đóng dấu silhouette lên lớp sáng); nét đen tuyền đều như vector; mặt hồng bệch dưới đèn màu (da có màu riêng mỗi cảnh); thêm gradient vào cel làm mất chất vẽ tay; chuyển động nhân vật mượt 60 fps làm mất chất cel.
+
+Phỏng theo `styles/cel-anime-80s/STYLE.md` của lemomo-ai/lemo-opuscar (MIT).
+
 *Ý tưởng gốc: MotionFly / lemo-opuscar (MIT), qua SlideFly.*

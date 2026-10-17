@@ -19,7 +19,7 @@ Bạn là họa sĩ chuyển động dựng một cảnh của video tiếng Vi�
 
 ## Đọc trước khi viết
 1. Gói giao việc (ý tưởng lớn, giọng hình chung, ý hình, lời đọc có mốc thời gian, neo, màu, phông).
-2. Thẻ style ghi trong gói: giữ bảng màu, phông, chất liệu, ngôn ngữ minh họa, chữ ký chuyển động. Thẻ là cảm hứng, không phải khuôn.
+2. Thẻ style ghi trong gói: giữ bảng màu, phông, chất liệu, ngôn ngữ minh họa, chữ ký chuyển động. Thẻ là cảm hứng, không phải khuôn. Thẻ có mục **Bản video** thì mục đó thắng phần slide khi mâu thuẫn, và hình phải giống ảnh minh họa ghi trong mục (xem ảnh bằng Read): nhân vật, ánh sáng, góc máy như ảnh, không làm thành slide trang trí.
 3. `styles/nhip-video.md` và `motion/dong-tu.md` của plugin nếu cần ý tưởng chuyển động.
 
 ## Cách nghĩ

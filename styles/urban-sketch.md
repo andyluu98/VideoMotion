@@ -67,4 +67,21 @@ Mực đổi màu hoặc đen tuyền, màu nước khít với nét (mất cả
 ## Họ hàng
 `mau-nuoc` (màu nước mềm làm chủ, ít nét mực, thiên về thiên nhiên), `hoi-an` (ấm áp hoài niệm, chủ đề địa phương Việt, không có chất sổ ký họa), `whiteboard` (nét tay giảng giải, bút lông trên bảng, không có màu nước).
 
+## Bản video (khi làm video; thắng các mục trên khi mâu thuẫn)
+Mục tiêu hình: giống ảnh minh họa `docs/assets/styles/urban-sketch.jpg`, một khung phim chứ không phải slide.
+- **Thế giới và nhân vật:** một trang sổ ký họa giấy kem, vẽ cảnh thành phố có công viên. Hàng cây tán xanh lá dày ở dưới, nhiều chấm lá, phía sau là các tòa nhà màu be nâu và một tòa cao nhọn, trời xanh xám với mây trắng chừa giấy. Nhân vật chính là một vật nhỏ màu nâu vàng (chiếc mũ rơm bay giữa trời) có vài nét lá rơi theo. Mép bên phải trang rách thành mảng giấy trắng, màu tan ra ở rìa. Mật độ: cây ở nửa dưới, nhà ở giữa, trời ở trên.
+- **Chất liệu và ánh sáng:** hai lớp tách rời: mực sepia mảnh (nét 1,3 đến 3,4 px, rung 1 px, vượt góc vài px, thỉnh thoảng đứt giữa nét) và màu nước trong suốt đặt lệch mực 1 đến 3 px, có chỗ tràn ra. Màu nước là lớp `multiply` alpha 0,4 đến 0,65, mép khô đậm hơn; chừa giấy trắng cho mây và người. Tán cây: nền nhạt, rồi mảng sáng tối, rồi chấm lá nhỏ. Tòa nhà phía xa trộn màu khói xanh xám; mặt khuất trộn tím xám. Nền giấy có đốm loang lớn và hạt giấy nhân lên, tĩnh.
+- **Máy quay và khung dọc 9:16:** cận trung tới toàn cảnh một trang. Dọc 9:16 thì trời ở trên, cây dưới, vật chính ở giữa. Di máy bằng translate và scale lớp trang, theo vật chính bằng một lò xo giảm chấn (lệch nhẹ như cầm tay), lùi cuối để thấy cả trang và mép rách.
+- **Chuyển động:** người và vật nhỏ rung 12 fps (đổi seed mỗi 1/12 giây); trang tĩnh thì không rung, máy quay chạy mượt mỗi khung. Nét ký họa hiện bằng `stroke-dashoffset` theo thứ tự vẽ. Màu không bật ngay mà nở từ một điểm bằng `clipPath` tròn lớn dần với rìa ướt sẫm. Lực vô hình (gió) là nét xoắn mực hiện rồi xóa từ đuôi.
+- **Chữ trên hình:** ghi chú viết tay ở lề trang (ngày, giờ, nơi chốn), tiêu đề tay, dùng Playpen Sans hoặc Patrick Hand, đủ dấu tiếng Việt, viết trái sang phải bằng `clipPath`. Phụ đề viết vào lề dưới, không hộp.
+- **Nước đi đặc trưng:**
+  - Mực trước, màu sau: vẽ nét theo thứ tự thật rồi màu rơi vào; hợp một công trình, một người đang làm việc.
+  - Màu là sự kiện đến: màu lan từ một nguồn, mọi thứ còn ở dạng nét cho tới khi màu chạm; hợp bình minh, diễu hành, chợ lên đèn.
+  - Một vật có màu duy nhất giữa cảnh nét đơn sắc; hợp chiếc ô đỏ, chiếc taxi vàng.
+  - Lùi ra thấy cả trang, mép rách và ghi chú lề; hợp nhật ký chuyến đi.
+  - Đám đông xa là một mảng màu cùng hai nét chân; hợp nhà ga, sân vận động.
+- **Bẫy:** tô màu kín mép trang thì mất chất sổ ký họa, phải chừa lề và làm rách rìa; màu nước khớp hoàn toàn với nét thì như tô vector, hãy lệch 1 đến 3 px; nhân vật mất màu khi di chuyển sang vùng chưa tô, gắn màu theo sự kiện thay vì vị trí hiện tại; mặt nạ hình chữ nhật quanh hình phức tạp để lại góc khuyết.
+
+Phỏng theo `styles/urban-sketch/STYLE.md` của lemomo-ai/lemo-opuscar (MIT).
+
 *Ý tưởng gốc: MotionFly / lemo-opuscar (MIT), qua SlideFly.*

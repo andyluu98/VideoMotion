@@ -60,4 +60,21 @@ Màu ngoài bốn mực, gradient, glow, blur, độ trong suốt (trừ bóng g
 ## Họ hàng
 `bold-poster` (áp phích chỉ có chữ, táo bạo; điệp viên có hình bóng, mặt trăng, kể chuyện), `art-deco` (đối xứng vàng sang trọng, gala; điệp viên lệch, giật, giấy cắt), `silent-film` (phim câm đen trắng có khung chữ thoại; điệp viên bốn mực, nhịp nhạc kèn).
 
+## Bản video (khi làm video; thắng các mục trên khi mâu thuẫn)
+Mục tiêu hình: giống ảnh minh họa `docs/assets/styles/spy-titles.jpg`, một khung phim chứ không phải slide.
+- **Thế giới và nhân vật:** Đêm đen có sao li ti, mặt trăng kem khổng lồ chiếm khoảng 60% chiều cao khung, dải mái nhà đỏ có ô cửa vàng mù tạt ở đáy. Hai bóng đen chạy trước trăng: một người nhỏ mũ phớt, khăn đỏ bay, một người cao hơn áo khoác dài, mũ rộng vành, tay giơ chìa khóa đồng. Mỗi bóng là một khối đen, không mặt, diễn xuất bằng dáng chạy nghiêng. Cao mỗi bóng khoảng 25 đến 35% khung.
+- **Chất liệu và ánh sáng:** Bốn mực phẳng đục (đen, kem, đỏ, vàng). Mỗi mảnh là `<path>` có mép cắt kéo (đa giác lệch nhẹ, tính sẵn, không random), bóng giấy phẳng lệch 7px xuống phải bằng một bản sao đen alpha 0,28. Trăng là hai đĩa kem lồng nhau, sao là chấm kem nhỏ. Phủ một lớp nhiễu giấy tĩnh (canvas vẽ một lần). Không glow, không gradient; tương phản của hình bóng trước trăng sáng là toàn bộ ánh sáng.
+- **Máy quay và khung dọc 9:16:** Góc nhìn ngang tầm, cỡ cảnh trung. Ở dọc, trăng đặt giữa khung phía trên, hai bóng chạy ngang qua đĩa trăng, dải nhà chiếm một phần ba đáy. Di máy là lateral tracking: trượt lớp nhà và lớp sao ngược chiều chạy bằng `x`, lớp trăng gần như đứng yên để tạo chiều sâu. Cắt cảnh cứng, không dissolve.
+- **Chuyển động:** Bóng chạy bước nấc 12 fps (đổi tư thế bằng `steps()` hoặc đổi nhóm path), khăn đỏ là dải nhiều đoạn có sóng sin. Máy và lớp nền mượt 24 fps. Mảnh giấy vào theo phách với `power4.out` rất ngắn, dừng đột ngột. Một lần đóng băng toàn khung vài nhịp rồi chạy tiếp.
+- **Chữ trên hình:** Dòng danh đề League Gothic IN HOA cho chữ không dấu và số; chữ có dấu dùng Be Vietnam Pro đậm, đủ dấu Việt. Phụ đề nằm trên băng giấy kem hơi nghiêng ở góc dưới trái, đầu băng có biểu tượng chìa khóa đỏ nhỏ, chữ đen. Không đặt chữ lên hình bóng.
+- **Nước đi đặc trưng:**
+  - Bóng chạy ngang trước trăng khổng lồ: khoảnh khắc chính, hợp cao trào, công bố.
+  - Cắt cứng đổi màu nền địa điểm (đen, đỏ, kem, vàng): hợp chuyển ý, đổi mục.
+  - Hai dải chéo chém qua khung rồi chữ hiện giữa hai dải: hợp câu tiết lộ.
+  - Chìa khóa đồng bay từ góc này sang góc khác rồi đáp xuống trạm: hợp quy trình, vật được theo đuổi.
+  - Đóng băng khi nhạc nhấn, im lặng, rồi chạy lại: hợp suýt soát, giá bất ngờ.
+- **Bẫy:** Bóng đen đặt trên nền đen thì mất hình, luôn để trước trăng kem hoặc nền sáng. Dùng blur hoặc glow cho trăng làm mất chất giấy cắt. Mép đa giác tính ngẫu nhiên mỗi khung làm viền rung; tính mép một lần trong tọa độ cục bộ rồi tái dùng. Khăn cứng một đoạn trông như cái lưỡi, phải nhiều đoạn có sóng.
+
+Phỏng theo `styles/spy-titles/STYLE.md` của lemomo-ai/lemo-opuscar (MIT).
+
 *Ý tưởng gốc: MotionFly / lemo-opuscar (MIT), qua SlideFly.*

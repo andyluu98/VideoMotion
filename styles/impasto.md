@@ -64,4 +64,20 @@ Nét viền mảnh quanh hình, gradient mượt, bóng mờ, glow neon, hiệu 
 ## Họ hàng
 `dark-botanical` (cũng tối và sang, nhưng lá phẳng và ánh sáng mềm, không có mép dao), `mau-nuoc` (màu trong, loang, nền sáng, nhẹ hơn hẳn), `hd-2d` (ánh sáng ấm huyền ảo kiểu diorama game, không có chất sơn).
 
+## Bản video (khi làm video; thắng các mục trên khi mâu thuẫn)
+Mục tiêu hình: giống ảnh minh họa `docs/assets/styles/impasto.jpg`, một khung phim chứ không phải slide.
+- **Thế giới và nhân vật:** Một mặt đường ướt xám xanh nhìn thẳng từ trên cao, phủ các cung vảy sơn. Trên đó khoảng hai chục chiếc ô nhìn từ trên (tròn, tám múi xen hai màu: đỏ, xanh lá, vàng, cam, cyan, tím, hồng, trắng), chen nhau thành một vòng xoáy lớn. Mỗi ô đổ một vệt chấm sơn cùng màu theo đường cong phía sau. Ô là chủ thể rực màu, nền xám lạnh. Không có người.
+- **Chất liệu và ánh sáng:** Mọi thứ là nhát dao: hình bình hành hai đầu xiên, một màu, lệch sáng tối khoảng 10%, sống sáng ở mép trên và mép tối ở mép dưới. Mặt đường là các cung vảy chồng bằng stroke xám nhiều sắc. Ô là các múi SVG có gradient nhạt, đổ bóng xuống đường bằng elip mờ tĩnh. Vệt sơn là các chấm hình chữ nhật nhỏ sắp theo đường cong. Không phủ hạt nhiễu; chỉ tween transform, opacity, màu.
+- **Máy quay và khung dọc 9:16:** Nhìn thẳng xuống, cận, giống một tranh vẽ. Máy quay chậm bằng xoay hoặc scale lớp ô và lớp mặt đường tốc độ lệch nhau. Khung dọc: vòng ô nằm giữa, vệt sơn kéo ra mép trên và dưới. Giữ máy trong tấm tranh, không để lộ mép vải.
+- **Chuyển động:** Sơn tĩnh thì đứng yên; chỉ ô và vệt sơn chuyển động. Mượt, có trọng lượng, nhịp chậm vừa. Mỗi cử chỉ có chuẩn bị, hành động, rồi quán tính. Vệt sơn mới chấm xuất hiện theo đường đi của ô. Nét sơn dùng seed cố định, không rung, không sôi.
+- **Chữ trên hình:** Tiêu đề đặt bằng nhát dao, quét trong khoảng một giây (`clipPath` theo hướng nhát), chữ kem Fraunces. Chữ nhỏ là chữ DOM rõ nét đặt trên vùng tranh lặng, vì nhát dao không mang được chữ nhỏ. Phải đủ dấu tiếng Việt.
+- **Nước đi đặc trưng:**
+  - Gạt từng nhát: hình hiện bằng chuỗi wipe theo đúng hướng dao, mỗi nhát trễ 90 đến 140ms (hợp mở cảnh, giới thiệu nơi chốn).
+  - Chủ thể duy nhất có màu giữa nền xám (hợp một người trong đám đông, một điểm cảnh báo).
+  - Chuyển động vẽ nên tranh: đường đi của vật để lại vệt sơn (hợp tuyến giao hàng, điệu múa, di cư).
+  - Quét sơn đè lên cảnh cũ để sang cảnh mới (hợp mốc thời gian, cải tạo).
+- **Bẫy:** Viền mảnh quanh hình phá chất sơn dày. Gradient mượt thay cho bậc nhát dao làm giống bộ lọc. Dissolve giữa hai lớp nhát làm bùn, dùng quét đè hoặc cắt. Ô quá giống nhau về cỡ và màu làm vòng xoáy nhạt, cần đổi cỡ và độ nghiêng.
+
+Phỏng theo `styles/impasto/STYLE.md` của lemomo-ai/lemo-opuscar (MIT).
+
 *Ý tưởng gốc: MotionFly / lemo-opuscar (MIT), qua SlideFly.*

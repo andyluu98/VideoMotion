@@ -71,4 +71,21 @@ Gradient mượt (chỉ dùng tram), bóng đổ mờ, 3D, ánh kim, màu ngoài
 ## Họ hàng
 `retro-zine` (giấy kaki, cắt dán risograph, thô hơn và không có nhân vật có mắt), `midcentury-toon` (cùng Alfa Slab One và in lệch màu, nhưng là hướng dẫn từng bước vui vẻ, không có không khí điều tra), `risograph` (mực trong chồng màu, nghệ thuật indie, không có đạo cụ hồ sơ).
 
+## Bản video (khi làm video; thắng các mục trên khi mâu thuẫn)
+Mục tiêu hình: giống ảnh minh họa `docs/assets/styles/halftone-dossier.jpg`, một khung phim chứ không phải slide.
+- **Thế giới và nhân vật:** Một trang hồ sơ giấy kem, bố cục như trang in: tiêu đề lớn trái trên, bàn xanh cobalt chạy ngang, nhân vật chính là một con mèo cam viền navy dày, nằm bò trên mặt bàn, một chân dài vươn ra đẩy chiếc cốc trắng có trái tim hồng sát mép bàn, hơi nước bốc lên. Mèo có mắt bóng (elip trắng, đồng tử, hai điểm sáng), má hồng, râu. Mèo cao khoảng 30% khung. Phía sau là con số khổng lồ "01" tô tram vàng cam, tràn mép khung.
+- **Chất liệu và ánh sáng:** Giấy kem có nhiễu và nếp gấp giữa tờ (canvas vẽ một lần, multiply). Bóng đậm nhạt là chấm tram: lưới chấm xoay 45 độ và lớp thứ hai lệch góc, mỗi lớp là một `<path>` gom chấm, bán kính theo trường mật độ (tính bằng công thức, không random). Số "01" là fill phẳng cộng lớp tram clip theo glyph. Góc dưới trái có quầng tram hồng nở dần. Tiêu đề có bóng lệch đăng vàng (+6, +7). Không gradient mượt, không glow.
+- **Máy quay và khung dọc 9:16:** Trang phẳng, nhìn thẳng, cỡ cảnh trung. Ở dọc, tiêu đề ở trên, số khổng lồ chiếm giữa khung phía sau, bàn và mèo ở một phần ba dưới, HUD số hồ sơ và chip chương ở hai góc trên. Di máy chỉ là push chậm (1 đến 1,06), rung giảm dần khi va chạm, flash trắng tối đa 0,5; không trượt phối cảnh.
+- **Chuyển động:** Mọi thứ vào có overshoot (`back.out`, 0,3 đến 0,45 giây), không fade. Chữ tiêu đề rơi từng ký tự với `stagger` 0,05 đến 0,08 giây. Mèo thở và chớp mắt đúng giờ kịch bản; nét viền mèo rung (boil) khoảng 10 fps bằng cách đổi nhóm path, chữ và tram thì không rung. Mỗi cảnh chỉ một cú nảy chính.
+- **Chữ trên hình:** Tiêu đề Alfa Slab One cho chữ không dấu, chữ có dấu dùng Be Vietnam Pro 800 kèm bóng lệch hồng hoặc vàng, đủ dấu Việt. Nhãn hồ sơ JetBrains Mono 800 IN HOA ở góc ("HỒ SƠ 01", số hồ sơ, chấm REC và ngày). Phụ đề là thanh viên thuốc navy bo tròn, chữ giấy, từ khóa màu vàng.
+- **Nước đi đặc trưng:**
+  - Con số khổng lồ tram nằm sau nhân vật: hợp đánh số vụ, số lần, thứ tự.
+  - Dán vật chứng: ảnh rơi nghiêng rồi băng keo vàng quét qua góc, hợp đưa bằng chứng, ví dụ.
+  - Nhân vật nghịch ngợm làm một hành động rõ ràng (đẩy cốc): hợp mở truyện vui, thú cưng, lỗi thường gặp.
+  - Con dấu đóng xuống kèm rung và flash: hợp phán quyết, kết luận.
+  - Quét chấm tròn phủ kín rồi đổi cảnh: hợp chuyển ý.
+- **Bẫy:** Chấm tram quá nhỏ (bước dưới 14px ở 1080p) bị moiré sau khi nén. Boil trên chữ hay tram làm nhòe, chỉ áp cho nhân vật. Flash trắng 100% trông như rơi khung. Quên khóa phông trước khi tính vị trí từng ký tự khiến chữ đè nhau.
+
+Phỏng theo `styles/halftone-dossier/STYLE.md` của lemomo-ai/lemo-opuscar (MIT).
+
 *Ý tưởng gốc: MotionFly / lemo-opuscar (MIT), qua SlideFly.*

@@ -57,4 +57,21 @@ Nét thẳng tắp như máy, gradient, bóng đổ, icon phẳng, quá ba màu 
 ## Họ hàng
 `notebook-tabs` (giấy kẻ, tab màu), `crayon-book` (sáp màu trẻ em), `scatterbrain` (bừa có chủ ý, brainstorm).
 
+## Bản video (khi làm video; thắng các mục trên khi mâu thuẫn)
+Mục tiêu hình: giống ảnh minh họa `docs/assets/styles/whiteboard.jpg`, một khung phim chứ không phải slide.
+- **Thế giới và nhân vật:** một tấm bảng trắng bóng, khung quay chỉ thấy một vùng của nó. Không có người, không có tay. Nhân vật là hình vẽ nét đơn: hai chiếc đồng hồ tròn (đen và cam) đặt cạnh nhau, dưới là hai thước đo có vạch chia, nhãn viết tay dưới mỗi hình. Hai cây bút lông nổi ở mép phải khung, thân trắng, dải màu và nắp đúng màu mực, đổ bóng xuống bảng. Hình chính chiếm khoảng 1/3 chiều cao khung; còn lại là mặt bảng trống.
+- **Chất liệu và ánh sáng:** nền SVG gradient trắng ấm, thêm vài dấu vết cũ (chữ, vòng tròn mờ 5 đến 10 % xám hoặc xanh nhạt) và một vệt sáng chéo trắng 10 đến 16 % trôi chậm hơn bảng. Nét mực là `path` bo đầu, `stroke-linecap: round`, độ rộng 6 đến 11 px, hai màu bút (đen than, cam đất), `mix-blend-mode: multiply` để chỗ chồng nét đậm hơn. Đầu và cuối nét hơi chồng lên nhau, vòng tròn không khép kín tuyệt đối. Bút là nhóm SVG tĩnh, bóng là ellipse mờ tĩnh. Filter chỉ để tĩnh.
+- **Máy quay và khung dọc 9:16:** cận trung, nhìn thẳng vào bảng. Dọc 9:16 thì xếp hai đồng hồ chồng trên dưới, thước đo nằm dưới. Di máy bằng scale và translate cả lớp bảng, trượt theo đường bút đang vẽ; không cắt cảnh, chuyển vùng bằng một cú quét nhanh.
+- **Chuyển động:** nét vẽ bằng `stroke-dashoffset`, ease chậm nhanh chậm, mỗi nét 0,3 đến 0,8 giây, xong đúng lúc lời đọc nói tới từ đó. Bút trượt tới đầu nét tiếp theo, bóng to ra khi bút nhấc. Vạch chia thước hiện từng vạch theo nhịp. Hai bút vẽ song song khi so sánh hai đại lượng.
+- **Chữ trên hình:** nhãn viết tay bằng nét, dùng Playpen Sans (đủ dấu tiếng Việt), đúng màu mực của hình đi kèm, viết bằng `clipPath` quét trái sang phải. Phụ đề là nhãn tròn trắng ngà ở đáy, Patrick Hand.
+- **Nước đi đặc trưng:**
+  - Vẽ công thức hoặc nhãn từng nét đúng lúc nói; hợp giải thích khái niệm.
+  - Hai bút cùng vẽ hai đồng hồ hoặc hai thước để so sánh; hợp trước và sau, hai kế hoạch.
+  - Bút dẫn máy quay theo một đường kẻ sang vùng mới; hợp quy trình, chuỗi bước.
+  - Cục tẩy quét ngược để xóa nét; hợp hoàn tác, đảo ngược.
+  - Vệt mờ của bài cũ hiện rõ lại khi cần; hợp thay thế lý thuyết, gọi lại ý trước.
+- **Bẫy:** nét gạch rời quá ngắn thì cho thời lượng tối thiểu, đừng để cả đường nét đứt kéo dài nhiều giây; mực đều đặn như vector thì mất chất bảng, phải có rung tay và chồng nét; vẽ chữ bằng khối hiện mờ thay vì nét thì hỏng cảm giác viết tay; nhãn bị cắt dở khi máy đẩy vào.
+
+Phỏng theo `styles/whiteboard/STYLE.md` của lemomo-ai/lemo-opuscar (MIT).
+
 *Ý tưởng gốc: MotionFly / lemo-opuscar (MIT), qua SlideFly.*

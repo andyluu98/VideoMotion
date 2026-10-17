@@ -29,6 +29,7 @@ Ghi `brief.json`: `topic`, `audience`, `message` (một câu thông điệp lõi
 - Người dùng nêu tên thì dùng (tra `styles/INDEX.md` theo tên Việt hoặc slug).
 - Chưa nêu thì gợi ý 3 style: một **hợp** chủ đề, một **khác nền**, một **bất ngờ** (bảng nhanh trong `styles/nhip-video.md`). Với `auto` thì tự chọn style hợp.
 - Đọc kỹ `styles/<slug>.md` và `styles/nhip-video.md` (cách dùng thẻ slide cho video).
+- Thẻ có mục **Bản video** thì ý tưởng lớn, nhân vật và `look` của storyboard đi theo mục đó, và xem ảnh `docs/assets/styles/<slug>.jpg` để biết đích đến: người dùng chọn style vì ảnh, video phải ra giống ảnh.
 
 ## 3. Ý tưởng lớn và kịch bản (cổng duyệt duy nhất)
 **Ý tưởng lớn trước.** Một câu: video diễn ra trong *thế giới* nào, theo *trục* nào, với *nhân vật hoặc vật xuyên suốt* nào. Ví dụ: "Nhà máy là bàn cờ: mỗi lãng phí là một quân địch, AI là quân hậu đi một nước ăn ba quân." Câu chuyện làm video có hồn; style chỉ quyết định vẻ ngoài.

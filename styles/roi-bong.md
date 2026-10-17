@@ -65,4 +65,24 @@ Màu ngoài bảng (xanh lam, tím, hồng), gradient, bóng mờ, glow, ánh ki
 ## Họ hàng
 `son-mai` (vàng lá trên sơn then đen, ánh phản chiếu chứ không xuyên qua), `cat-giay-do` (giấy đỏ cắt trên nền kem, phẳng, không có đèn sau), `den-long-giay` (cũng là ánh sáng qua lỗ cắt, nhưng là đèn giấy ấm giữa đêm xanh, không có khớp và que).
 
+## Bản video (khi làm video; thắng các mục trên khi mâu thuẫn)
+Mục tiêu hình: giống ảnh minh họa `docs/assets/styles/roi-bong.jpg`, một khung phim chứ không phải slide.
+- **Thế giới và nhân vật:** một tấm màn vải sáng, gần như trống, có vầng sáng đèn dầu từ phía sau. Nhân vật là con rối da trong suốt nhìn nghiêng: đầu lớn đội mũ cao có lông trang trí, thân phủ vảy và hoa văn đục lỗ, tay giơ cung, nhiều mảnh nối bằng khớp đinh tán, cao gần hết khung. Cảnh phụ là các mảnh khắc: cây khô cành nhọn, đồi sóng vân, mặt trời nhiều tia có hình chim bên trong, tất cả cũng là da nhuộm.
+- **Chất liệu và ánh sáng:** màu đến từ ánh sáng xuyên qua. Vẽ nền trắng ấm, mỗi mảnh da fill màu nhuộm (cam, vàng, xanh lục, đỏ son) bằng `mix-blend-mode: multiply` để chỗ chồng lên đậm hơn, chỗ đục lỗ giữ trắng sáng. Hoa văn đục bằng SVG pattern (vảy, kim cương, tròn). Viền mực nâu mảnh quanh mọi vùng. Nền là radial-gradient ấm, sáng giữa, vignette nâu ấm ở góc (không xám). Nhấp nháy nhẹ của đèn bằng opacity lớp phủ ấm, bước nấc.
+- **Máy quay và khung dọc 9:16:** múa rối nhìn nghiêng, cỡ trung tới cận, màn gần như trống. Ở khung dọc dựng nhân vật đứng dọc, đầu cao ngang 1/3 trên, đất khắc ở đáy, mặt trời góc trên. Di máy chậm bằng scale quanh tâm khung, không đẩy vào mép; có thể crash zoom vài frame theo nhịp trống.
+- **Chuyển động:** tay rối rung nhẹ liên tục (vài px, khoảng 0.02 rad), phần lỏng như lông mũ và tua đung đưa trên khớp. Dáng chuyển bằng bước nấc rồi đứng im có nhịp, chỉ phần lỏng còn rung. Không đổi nét mặt, thái độ thể hiện bằng nghiêng đầu và thân. Vào cảnh: to và mờ rồi vào nét; ra cảnh: lớn dần, mờ, tan.
+- **Chữ trên hình:** bảng gỗ sơn tối hẹp, viền vàng mảnh, chữ kem; hoặc tấm da tối với chữ khoét (chữ sáng lên). Phông serif cổ điển hoặc Be Vietnam Pro, đủ dấu tiếng Việt.
+- **Nước đi đặc trưng:**
+  - Ánh sáng là thế giới: thêm hoặc tắt đèn để đổi độ sáng, nhiệt (cảnh đêm, tăng căng thẳng).
+  - Sát màn thì to và mờ: mảnh áp lên màn rồi vào nét (tin đồn lớn dần, ký ức, hạn chót).
+  - Thay mảnh: một mảnh khắc trên que được thay bằng mảnh khác (mùa, trạng thái).
+  - Dải cảnh nhấc lên để lộ lớp dưới (trước và sau, các tầng).
+- **Bẫy:**
+  - Trông như clip-art phẳng: thiếu hoa văn đục, thiếu texture da, thiếu viền khắc.
+  - Mảnh mảnh và nhạt biến mất trên màn sáng: làm chúng tối.
+  - Góc xám khi quá sáng: dùng vignette nâu ấm, không xám.
+  - Dùng particle cho lửa, nước: dùng mảnh khắc đổi và rung.
+
+Phỏng theo `styles/shadow-puppet/STYLE.md` của lemomo-ai/lemo-opuscar (MIT).
+
 *Ý tưởng gốc: MotionFly / lemo-opuscar (MIT), qua SlideFly.*

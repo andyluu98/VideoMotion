@@ -2,6 +2,8 @@
 
 86 thẻ style ở thư mục này dùng chung với SlideMotion (skill làm slide). Thẻ tả **gu**: hình dung, bảng màu, chữ, bề mặt, ngôn ngữ minh họa, chữ ký chuyển động, khoảnh khắc đáng nhớ. Giữ những thứ đó; bố cục và hình từng cảnh do người dựng tự nghĩ.
 
+35 thẻ có ảnh "khung video" trên trang có thêm mục **Bản video** ở cuối: thế giới, nhân vật, ánh sáng, góc máy của phim mẫu. Khi làm video, mục đó thắng phần slide khi mâu thuẫn.
+
 Thẻ viết cho slide nên có vài từ của runtime slide. Đổi sang video như sau:
 
 | Thẻ nói | Trong video |

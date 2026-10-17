@@ -65,4 +65,21 @@ Màu ngoài thang mực và son, hơn một điểm son mỗi slide, viền kín
 ## Họ hàng
 `wabi` (tối giản Nhật, enso và chỉ mực, không vẽ cảnh), `ukiyoe` (tranh khắc gỗ Nhật có màu và đường viền), `son-mai` (cũng Á Đông trang trọng nhưng nền tối, son đỏ và vàng lá).
 
+## Bản video (khi làm video; thắng các mục trên khi mâu thuẫn)
+Mục tiêu hình: giống ảnh minh họa `docs/assets/styles/thuy-mac.jpg`, một khung phim chứ không phải slide.
+- **Thế giới và nhân vật:** giấy xuyến ngà gần như trống. Một chữ thư pháp lớn (nét cọ xám dày, mép đậm) bên trái, vài nét sóng dài quét ngang từ phải sang, hai dãy núi xa nhạt sát chân trời, vài chấm mực bắn. Nhân vật xieyi ở góc dưới trái: nón lá nhọn, thân áo là một mảng xám nhạt cộng hai nét đậm, tay duỗi cầm kiếm dài với chuôi son đỏ. Nhân vật chiếm khoảng 1/4 khung; 60 đến 80% khung là giấy trống.
+- **Chất liệu và ánh sáng:** không có ánh sáng điện ảnh, chỉ có sắc độ mực. Giấy là gradient ngà `#F2ECDE` cộng vài vết ố tròn mờ và vignette nhẹ. Nét cọ là đường SVG `stroke` dày đổ ra từ nhiều sợi (6 đến 20 `path` mảnh song song, độ mờ 0,3 đến 0,9, mỗi sợi đứt ở chỗ khác nhau bằng `stroke-dasharray`) để ra phi bạch. Thân đậm một bên mép bằng một nét đậm hơn. Mảng núi, nước là polygon mép lệch, gradient mực nhạt dần. Chấm mực là hình elip nhỏ. Chỉ một điểm son.
+- **Máy quay và khung dọc 9:16:** tranh phẳng, máy đứng yên là chính; thêm pan chậm từ phải sang trái như cuộn tranh, hoặc tilt dọc như tranh treo. Khung dọc: chữ lớn ở trên, nhân vật nhỏ ở dưới, giữa là giấy trống. Zoom chỉ một lần chậm vào chi tiết quyết định.
+- **Chuyển động:** vẽ hiện ra theo thứ tự nét (`stroke-dashoffset` hoặc clipPath quét theo hướng bút). Nhân vật bước nấc 12 fps; nét quyết định chạy qua khung trong vài khung hình sau một khoảng lặng. Mọi thứ khác mượt, ease `power2.out` rồi tắt dần. Cảnh sau nở ra từ giọt mực (clipPath tròn mép lệch), không dissolve.
+- **Chữ trên hình:** đề từ serif nghiêng (Noto Serif Display hoặc Spectral) màu mực, không hộp, tối đa 2 dòng, đặt vào khoảng giấy trống; con dấu son vuông nhỏ bên cạnh. Chữ thư pháp lớn vẽ như hình, không như phông. Đủ dấu tiếng Việt.
+- **Nước đi đặc trưng:**
+  - Một nét là tất cả: một nét cọ lớn thành núi, sóng hoặc chữ (khai mở chủ đề).
+  - Phi bạch: một nét khô nhanh cắt ngang khung sau khoảng lặng (quyết định, tốc độ).
+  - Khoảng trắng là vật chất: bớt mực để lộ giấy thành cửa, lối đi (vắng mặt, mở ra).
+  - Mực loang chuyển cảnh: cảnh mới nở trong giọt mực có viền đậm (ký ức, đổi mùa).
+  - Cuộn tranh: pan ngang qua một bức tranh dài (hành trình, lịch sử).
+- **Bẫy:** nét khô thành đường nét đứt đều (cho độ mòn giảm dần dọc nét); nhiều nét mờ song song thành ống đàn organ (một mảng gốc cộng hai nét đậm); tô phẳng và viền kín như vector; nhân vật chuyển động mượt như hoạt hình rối; thêm màu thứ hai ngoài son.
+
+Phỏng theo `styles/ink-wash/STYLE.md` của lemomo-ai/lemo-opuscar (MIT).
+
 *Ý tưởng gốc: lemo-opuscar `styles/ink-wash` (MIT), qua MotionFly và SlideFly.*

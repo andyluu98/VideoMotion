@@ -63,4 +63,25 @@ Màu ngoài bảng, gradient trên vật, bóng mờ, 3D, glow, neon; nét và m
 ## Họ hàng
 `retro-windows` (cũng hoài cổ vui, nhưng là cửa sổ máy tính chứ không phải giấy in), `pastel-geometry` (hình khối phấn nhẹ, không có nét mực và lệch đăng), `risograph` (cũng in lệch màu chồng lớp, nhưng rực rỡ indie hơn, không phải phim lớp học).
 
+## Bản video (khi làm video; thắng các mục trên khi mâu thuẫn)
+Mục tiêu hình: giống ảnh minh họa `docs/assets/styles/midcentury-toon.jpg`, một khung phim chứ không phải slide.
+- **Thế giới và nhân vật:** một cảnh hướng dẫn: nền vàng mù tạt có tia nắng xòe, dải sàn vàng đậm, một đường chân trời đứt đoạn. Ở giữa là vòng tròn kem lớn, hai cánh cửa gỗ mở ra hai bên, bên trong là sản phẩm (đĩa tròn xanh ngọc). Bên phải là người thuyết trình hình học: đầu hình trứng, mũi nhô ra khỏi đường viền mặt, áo cam, quần xanh chàm, tay đeo găng bốn ngón, chỉ tay vào sản phẩm. Người cao khoảng 2/3 khung.
+- **Chất liệu và ánh sáng:** mỗi mảng màu là một lớp riêng lệch vài px xuống phải so với nét mực nâu đen, nét mảnh có chỗ đứt (SVG path, dasharray lệch, hoặc stroke riêng). Đổ bóng bằng một bản sao hình dịch xuống phải ở sắc giấy. Tia sáng là khoảng 30 nêm bán trong suốt; điểm xuyết sao bốn cánh. Hạt giấy nhẹ, vignette ấm. Không gradient, không neon.
+- **Máy quay và khung dọc 9:16:** máy là giá đứng, không rung. Cỡ trung, chủ thể chiếm hơn 1/3 chiều cao, tránh dải phụ đề ở đáy. Khung dọc: tiêu đề ở trên, vòng tròn sản phẩm giữa, người thuyết trình nhỏ hơn bên cạnh hoặc dưới. Đẩy chậm vài phần trăm; chuyển bước bằng iris tròn xuyên qua huy hiệu số.
+- **Chuyển động:** dáng, bàn tay và độ lệch màu đổi 12 fps (twos); máy, iris, mũi tên mượt 24 fps. Thân người đứng im, chỉ tay, mắt, miệng cử động; mỗi cử chỉ có chuẩn bị, hành động nhanh ease-out, rồi lắng, rơi đúng nhịp. Huy hiệu, nhãn nảy vào bằng `back.out` mạnh khoảng 0.25 giây.
+- **Chữ trên hình:** tiêu đề chữ script nghiêng đậm đặt trên bản màu lệch; dòng phụ bằng slab serif đậm; phụ đề là thẻ giấy bo tròn viền mực mảnh với hai sao nhỏ hai đầu, nằm dưới. Huy hiệu bước là đĩa mực với số kem và dòng "BƯỚC n / N". Phông Be Vietnam Pro cho mọi chữ có dấu.
+- **Nước đi đặc trưng:**
+  - Iris qua huy hiệu số: con số là cánh cửa sang bước sau (hướng dẫn nhiều bước).
+  - Thân đứng im, tay làm việc: mỗi bước một động tác tay đúng nhịp (thao tác lắp, bấm, chỉnh).
+  - Vòng tròn cận cảnh có đường dẫn: thông số rơi vào trong vòng (liều, giá trị, nút bấm).
+  - Chia khung hai khối màu: đúng và sai, trước và sau (quy tắc an toàn, nâng cấp).
+  - Đứng yên 3 giây ở khung cuối (tóm tắt, kêu gọi).
+- **Bẫy:**
+  - Fill khít với nét viền: mất cảm giác in lệch, phải luôn lệch vài px.
+  - Gradient hoặc bóng mềm: chỉ dùng mảng phẳng và bóng là bản sao hình.
+  - Cả cơ thể cử động liên tục: kiểu phim giữ thân, chỉ tay và mặt động.
+  - Màu neon hoặc đen tuyền: dùng nâu đen ấm và màu bù hoài cổ.
+
+Phỏng theo `styles/midcentury-toon/STYLE.md` của lemomo-ai/lemo-opuscar (MIT).
+
 *Ý tưởng gốc: MotionFly / lemo-opuscar (MIT), qua SlideFly.*

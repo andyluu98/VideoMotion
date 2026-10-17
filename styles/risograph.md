@@ -68,4 +68,21 @@ Màu ngoài bảng, gradient mượt (chỉ tram theo bậc), bóng đổ mờ, 
 ## Họ hàng
 `retro-zine` (giấy kaki, xanh lá với đen, băng keo, con dấu; risograph thì ba mực trong, chồng màu), `biennale-yellow` (một mực chàm trên vàng, chữ serif, áp phích triển lãm tĩnh), `silkscreen-poster` (in lụa mảng phẳng đục, du lịch hoài cổ; không có tram và lệch đăng).
 
+## Bản video (khi làm video; thắng các mục trên khi mâu thuẫn)
+Mục tiêu hình: giống ảnh minh họa `docs/assets/styles/risograph.jpg`, một khung phim chứ không phải slide.
+- **Thế giới và nhân vật:** một bờ sông lúc hoàng hôn như tờ in: đĩa mặt trời hồng lớn ở giữa, các dải ngang vàng đậm nhạt phía sau, đường chân trời xanh dương với vòm cầu và nhà thấp, cánh đồng xanh lá vàng, dải gạch tím chàm sát đáy. Nhân vật là một người đạp xe nhìn nghiêng (mũ bảo hiểm xanh, kính tròn, áo tím, tóc cam) với con chim trắng ngồi trong giỏ trước xe ôm ổ bánh mì. Nhân vật cao khoảng 1/3 khung, đầu nằm trên nền phẳng nhất (đĩa hồng, dải vàng).
+- **Chất liệu và ánh sáng:** không ánh sáng điện ảnh, chỉ có mực trong chồng lên nhau. Chỉ ba mực: hồng, xanh dương, vàng, màu khác là màu chồng (hồng cộng xanh ra tím, xanh cộng vàng ra lá, hồng cộng vàng ra cam). Vẽ mỗi mực thành một lớp riêng với `mix-blend-mode: multiply` hoặc chồng tường minh bằng hình và `clipPath`; lệch đăng mỗi lớp vài px bằng translate cố định. Tram là pattern chấm tròn SVG (mỗi mực một góc xoay, chu kỳ 6 đến 8 px) làm mặt nạ cho vùng nhạt; vùng đậm in đặc. Hạt giấy và lỗ kim bằng chấm nhỏ giấy ngà rải. Quanh nhân vật có viền giấy trắng 4 đến 5 px. Không viền nét, toàn mảng phẳng.
+- **Máy quay và khung dọc 9:16:** khung rộng tĩnh với nhân vật nhỏ trong thế giới lớn, hoặc tracking ngang chậm; trời nhiều khoảng trống. Pan thì trượt ảnh dưới lớp tram cố định theo giấy. Khung dọc: đĩa hồng ở trên, người đạp xe ở giữa dưới, cánh đồng và dải gạch ở đáy; cắt lại bố cục chứ không kéo giãn.
+- **Chuyển động:** nhân vật nhịp hai (12 fps), bánh xe quay nấc; máy quay, đĩa mặt trời, dải màu trượt mượt. Lệch đăng cố định cho mỗi cảnh (1 đến 3 px), chỉ giật mạnh một lần (8 đến 14 px, tắt trong khoảng 0,25 s) ở nhịp nhấn. Lớp mực mới đến bằng quét con lăn (clipPath mép đi ngang). Ease `steps` cho nhân vật, `power2.out` cho kick, `sine.inOut` cho trượt.
+- **Chữ trên hình:** tiêu đề Bricolage Grotesque 800 một mực, có thể có bản hồng lệch phía sau như in hai lượt; phụ đề trên dải giấy trắng khoét bo nhẹ, chữ xanh dương đậm, Be Vietnam Pro 600, mép chữ lộ viền màu lệch đăng. Chữ không mờ dần mà vào bằng quét con lăn, ra bằng cắt. Đủ dấu tiếng Việt.
+- **Nước đi đặc trưng:**
+  - Mỗi mốc ngoặt thêm một mực vào thế giới (sản phẩm đến, thời kỳ mới).
+  - Hai mực chồng nhau thành mực thứ ba (hợp tác, hai tập dữ liệu giao nhau).
+  - Chuyển cảnh chồng mực: một hình đơn sắc lớn phủ khung, mọi thứ bên dưới đổi thành màu chồng, rồi thu thành hình khóa của cảnh sau.
+  - Lệch đăng như nhịp: giật ở điểm nhấn, trôi trong khoảnh khắc giữ, bật về ở nhịp mạnh (hồi hộp, chóng mặt).
+  - Đẩy vào tram cho tới khi chấm thành hình (dân số, đám đông thành người).
+- **Bẫy:** ba lớp tram chồng nhau thành bùn (mỗi vùng tối đa hai mực, một trong đó là tram); lệch đăng nhảy mỗi khung gây nhấp nháy (giữ cố định theo cảnh); chấm tram dính vào vật thay vì vào giấy; màu đậm của ba mực chồng dùng quá sớm (để cho khoảnh khắc đáng giá); gradient mượt thay cho tram bậc.
+
+Phỏng theo `styles/risograph/STYLE.md` của lemomo-ai/lemo-opuscar (MIT).
+
 *Ý tưởng gốc: MotionFly / lemo-opuscar (MIT), qua SlideFly.*

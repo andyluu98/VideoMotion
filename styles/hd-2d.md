@@ -67,4 +67,20 @@ Bloom thật, `filter` mờ, gradient trên sprite; nhân vật dáng mềm cu�
 ## Họ hàng
 `pixel-rpg` (cùng sprite pixel nhưng phẳng, tươi, có hộp thoại và thanh HP, nhịp giật kiểu 16-bit), `den-long-giay` (cũng đêm và đèn ấm, nhưng là bìa cắt, không có pixel), `stained-glass` (huyền ảo bằng ánh sáng xuyên kính màu, trang nghiêm hơn).
 
+## Bản video (khi làm video; thắng các mục trên khi mâu thuẫn)
+Mục tiêu hình: giống ảnh minh họa `docs/assets/styles/hd-2d.jpg`, một khung phim chứ không phải slide.
+- **Thế giới và nhân vật:** một sa bàn đêm nhìn từ trên cao xéo: đỉnh hải đăng với mái chóp tối, buồng kính sáng vàng, lan can sắt vòng quanh, nền gạch pixel, biển chàm tối và mây bậc thang ở xa. Một nhân vật pixel nhỏ (áo choàng đỏ, tay cầm đèn) đứng trong buồng sáng, cao khoảng 1/8 khung, phẳng như bìa cắt. Nhân vật phải có mặt trong cảnh.
+- **Chất liệu và ánh sáng:** sprite và gạch vẽ bằng ô vuông `crispEdges` trong SVG hoặc Canvas 2D; đế, mái, lan can là đa giác phẳng tối. Nguồn sáng là cụm hình chữ nhật vàng cam xếp lớp, quanh nó là các vòng tròn đồng tâm mờ dần, thêm chùm sáng hình thang quét ra mặt biển. Lan can đổ bóng chéo dài lên nền gạch (đa giác `#05030f` mờ 0,4). Vignette bằng radial-gradient. Mờ nét trên và dưới khung là lớp gradient chồng, không dùng `filter` động.
+- **Máy quay và khung dọc 9:16:** nhìn xuống từ cao, góc xéo khoảng 3/4, không bao giờ ngang mắt. Cỡ trung, dải nét ở giữa. Đi máy bằng scale và translate các lớp: trời và biển trượt ít, đế và lan can trượt nhiều. Khung dọc: xếp chồng đỉnh tháp ở giữa, trời trên, biển dưới.
+- **Chuyển động:** sprite bước nấc (đổi hai khung, 6 đến 10 fps); ánh sáng, chùm tia, bụi và máy quay mượt. Đèn thở: opacity vầng sáng dao động tổng vài sine, quanh ±20%. Ease `sine.inOut` hoặc `power1.inOut`, chậm.
+- **Chữ trên hình:** thẻ chương chữ Cormorant IN HOA giãn rộng màu vàng trên tấm tối; lời thoại trong hộp tối viền vàng mảnh, gõ chữ dần, kèm con trỏ nhấp nháy; phụ đề serif nghiêng kem. Đủ dấu tiếng Việt.
+- **Nước đi đặc trưng:**
+  - Đèn bật: cảnh tối rồi lõi sáng nở vòng ra ngoài, bóng lan can quét qua nền (mở màn, khởi động hệ thống).
+  - Đèn cầm tay như đồng hồ cảm xúc: sáng, lụi, gần tắt, bật lại (hành trình dài, kiên trì).
+  - Pull-back từ nhân vật lên toàn bộ sa bàn, dải nét chuyển từ người sang công trình (hệ quả lan rộng).
+  - Đèn bật lần lượt từng ô trên bản đồ (người dùng gia nhập, làng có điện).
+- **Bẫy:** dither hoặc ô vuông quá dày thành caro; vầng sáng làm cháy sprite cầm đèn (dịch nguồn sáng ra phía trước một chút); cảnh tối quá không đọc được (nâng tông trung ở mọi chỗ trừ nhịp phải tối); quên bóng đổ nên sprite trôi khỏi nền; làm mờ nét bằng `filter` động gây giật.
+
+Phỏng theo `styles/hd-2d/STYLE.md` của lemomo-ai/lemo-opuscar (MIT).
+
 *Ý tưởng gốc: MotionFly / lemo-opuscar (MIT), qua SlideFly.*

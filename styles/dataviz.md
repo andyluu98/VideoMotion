@@ -68,4 +68,20 @@ Màu trang trí không mã hóa giá trị, gradient mượt, bóng đổ, 3D, b
 ## Họ hàng
 `cobalt-grid` (bản tin nghiên cứu lưới xanh cô ban, tĩnh và biên tập; dataviz lấy biểu đồ làm nhân vật), `bento-light` (thẻ trắng bo góc trên nền xám, kiểu dashboard sản phẩm; dataviz là giấy kem, mực và bút chì báo chí), `monochrome` (báo cáo dài một màu kiểu sổ cái; dataviz có dải màu giá trị).
 
+## Bản video (khi làm video; thắng các mục trên khi mâu thuẫn)
+Mục tiêu hình: giống ảnh minh họa `docs/assets/styles/dataviz.jpg`, một khung phim chứ không phải slide.
+- **Thế giới và nhân vật:** một tờ giấy kem trơn có lưới chấm mờ, biểu đồ là nhân vật. Hình chính là dải sọc màu ngang rộng gần hết khung (mỗi sọc một năm, từ xanh đậm qua nhạt, trắng, cam tới đỏ thẫm), tiêu đề serif phía trên, dòng chú thích mono nhỏ dưới tiêu đề, vài mốc tick có ghi chú viết tay nối bằng đường dẫn mảnh, ngoặc nhọn viết tay dưới trục. Cây bút chì đỏ xanh chỉ lộ đầu nhọn từ góc dưới phải.
+- **Chất liệu và ánh sáng:** nền kem `#f5f1e8`, lưới chấm bằng pattern tĩnh, nhiễu giấy tĩnh. Sọc dùng `rect` kề nhau, màu theo thang diverging (xanh lam tới đỏ), không kéo giãn màu cho kịch tính. Khung mảnh quanh dải, trục mono xám nhạt. Ghi chú viết tay xanh (ký ức, con người) và đỏ (kỷ lục, cảnh báo). Không bóng đổ nặng, chỉ bóng bút mờ tĩnh.
+- **Máy quay và khung dọc 9:16:** nhìn thẳng từ trên xuống một tờ giấy. Dọc 9:16 thì xoay dải thành cột đứng hoặc cuộn ngang từng đoạn, tiêu đề nằm trên. Di máy bằng scale và translate lớp tờ giấy: toàn cảnh trước, rồi lao vào một sọc kèm ghi chú, rồi lùi ra.
+- **Chuyển động:** sọc hiện lần lượt từ trái sang phải theo nhịp đều, mỗi sọc một cái nảy nhỏ bằng `scaleY` từ trục giữa. Khi đổi thang thì bước nấc kiểu bánh cóc, mỗi nấc có ease. Ghi chú viết bằng `clipPath`. Đường dẫn vẽ bằng `stroke-dashoffset`. Không mờ dần ra trắng hay hòa tan; chuyển cảnh là thao tác của biểu đồ (trục mọc ra, lùi máy, biến hình).
+- **Chữ trên hình:** tiêu đề Newsreader (đủ dấu tiếng Việt) làm tiêu đề của chính biểu đồ; tick và chú thích dùng IBM Plex Mono; ghi chú viết tay dùng Patrick Hand. Phụ đề là chú thích hình, Newsreader, canh trái với biểu đồ, tối đa 2 dòng.
+- **Nước đi đặc trưng:**
+  - Một mốc một sự thật: lao vào một sọc, đường dẫn mảnh ra ghi chú; hợp một ca, một con người.
+  - Trục mọc ra khi lời đọc nêu đơn vị đo; hợp doanh thu, dân số, tỉ lệ.
+  - Biến hình mã hóa: sọc thành thanh, thanh thành bảng xếp hạng; hợp ngân sách, xếp hạng.
+  - Ô trống kế tiếp: một ô nét đứt chờ giá trị chưa biết; hợp dự báo, năm sau.
+- **Bẫy:** kéo dãn thang màu cho kịch tính là bóp méo số liệu; ghi chú đè lên dữ liệu mới thì phải ghim theo tọa độ dữ liệu; hiệu ứng nảy mỗi sọc quá dày làm nhòe, giảm biên độ khi sọc dày; đổi thang quá nhanh thì không ai thấy, giữ trạng thái đổi ít nhất nửa nhịp.
+
+Phỏng theo `styles/dataviz/STYLE.md` của lemomo-ai/lemo-opuscar (MIT).
+
 *Ý tưởng gốc: MotionFly / lemo-opuscar (MIT), qua SlideFly.*

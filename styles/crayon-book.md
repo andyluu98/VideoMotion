@@ -60,4 +60,20 @@ Mảng màu phẳng không có nét tô và vân, gradient mượt, bóng đổ,
 ## Họ hàng
 `whiteboard` (cũng nét tay nhưng là bút lông trên bảng, giảng giải cho người lớn), `paper-popup` (sách thiếu nhi nhưng là thẻ giấy cắt bật lên, màu rực và sạch), `clay-3d` (mềm mại vui tươi cho trẻ em, nhưng là khối đất nặn có chiều sâu, không có vân sáp).
 
+## Bản video (khi làm video; thắng các mục trên khi mâu thuẫn)
+Mục tiêu hình: giống ảnh minh họa `docs/assets/styles/crayon-book.jpg`, một khung phim chứ không phải slide.
+- **Thế giới và nhân vật:** một trang sách tranh thiếu nhi vẽ bằng sáp màu, cảnh đêm. Nền trời xanh chàm đậm, sao trắng nhiều cánh, đồi xa xanh tối. Một mái nhà đỏ cam dốc chéo với ống khói nâu và cửa sổ tròn trên tường vàng. Trên mái ngồi một cô bé đầu tròn, tóc nâu buộc chỏm, má hồng, hai chấm mắt, váy hồng, tay ôm một con cừu bông. Nhân vật cao khoảng 1/3 khung; mái nhà chiếm nửa dưới.
+- **Chất liệu và ánh sáng:** nền giấy có răng, dựng bằng `feTurbulence` tĩnh làm mặt nạ để sáp chỉ bám đỉnh hạt. Nét viền là `path` rung nhẹ, màu chàm hoặc nâu đậm, không bao giờ đen. Tô màu bằng nét zigzag chéo, chừa khe, tràn nhẹ ra ngoài viền. Màu nước xanh chàm là một lớp `multiply` đè lên trời, bị sáp trắng cản (sao và chấm trắng là sáp trắng, giữ nguyên). Không ánh sáng điện ảnh, chỉ độ đậm theo lực tay.
+- **Máy quay và khung dọc 9:16:** cận trung nhìn thẳng, nhân vật đủ lớn ở một khoảng giấy trống để dành chỗ cho chữ. Dọc 9:16 thì trời chiếm phần trên, mái nhà chéo phía dưới. Di máy bằng translate chậm; có thể lùi ra tới mép trang để thấy trang là một vật.
+- **Chuyển động:** mọi thứ vẽ bước nấc 12 fps (đổi seed mỗi 2 khung), nét rung nhẹ (boil) dưới 1 px; máy quay và lớp màu nước chạy mượt 24 fps. Nét hiện dọc theo chiều dài 0,4 đến 0,9 giây; tô màu từng hàng. Tư thế đổi bằng thay hình, không nội suy. Tô màu chính là hành động.
+- **Chữ trên hình:** viết tay trên trang, từng chữ một. Tiêu đề dùng Mali đậm hoặc Itim, phụ đề là chữ in của sách, Itim, màu viền, đặt trên mảng giấy trắng rách mép, đủ dấu tiếng Việt, không dùng hộp tối.
+- **Nước đi đặc trưng:**
+  - Sáp trắng cản màu nước: giấu lời nhắn từ đầu, màu nước quét qua mới lộ; hợp lời tạm biệt, tính năng ẩn.
+  - Thế giới tự vẽ ngay trước nhân vật; hợp hành trình, dòng thời gian.
+  - Tô màu là hành động: cửa sổ sáng lên từng ô; hợp thành phố lên đèn, đội mặc đồng phục.
+  - Lùi ra khỏi mép trang, lật trang; hợp tổng kết năm, thiệp cảm ơn.
+- **Bẫy:** nét sạch và đều như vector thì mất chất sáp; màu nước phủ không kín để lại sọc trắng; nhân vật bị màu nước nhuộm xuống thì phải vẽ sau lớp nước; tô màu mờ nhạt rồi đè nước thì bùn, phải tô đậm hoặc đan chéo.
+
+Phỏng theo `styles/crayon-book/STYLE.md` của lemomo-ai/lemo-opuscar (MIT).
+
 *Ý tưởng gốc: MotionFly / lemo-opuscar (MIT), qua SlideFly.*

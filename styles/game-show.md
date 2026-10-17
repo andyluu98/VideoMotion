@@ -64,4 +64,21 @@ Gradient, bóng mờ, chất liệu giấy, 3D, phát sáng; hai nhân vật cù
 ## Họ hàng
 `block-frame` (pop tươi, khối màu táo bạo nhưng là bố cục đồ họa, không có trường quay hay nhân vật), `scifi-toon` (cũng viền dày màu phẳng, mỗi slide một màu, nhưng là hài viễn tưởng chứ không phải sân khấu thi đấu), `8-bit-orbit` (hoài cổ arcade neon, hợp game nhưng nền tối).
 
+## Bản video (khi làm video; thắng các mục trên khi mâu thuẫn)
+Mục tiêu hình: giống ảnh minh họa `docs/assets/styles/game-show.jpg`, một khung phim chứ không phải slide.
+- **Thế giới và nhân vật:** Sân khấu phẳng một màu tím, rèm đỏ viền vỏ sò rũ ở mép trên, sàn tối ở đáy. Một dàn nhân vật đậu tròn cùng một kiểu thân (thân bầu, tay cụt giơ cao có găng, mắt bầu dục có đốm sáng, miệng há hô, bụng kem, má hồng), phân biệt bằng màu thân và một phụ kiện đầu (ăng ten, tim, dấu hỏi, mũ nồi, tia chớp, tai thỏ). Mỗi con có thẻ tên nhỏ dưới chân. Bốn con nhỏ đứng hàng sau trên bục, ba bốn con lớn hơn ở hàng trước, cả dàn giơ tay hô. Phía trước là hàng bóng đen đầu khán giả chạy ngang đáy khung. Góc trên trái có bảng tiêu đề đỏ nghiêng bo tròn, có tựa lớn và dòng phụ.
+- **Chất liệu và ánh sáng:** Chỉ SVG phẳng: nền một màu, viền mực 8px đầu tròn, bóng đổ cứng bằng cách vẽ lại hình màu mực dịch (8, 8) rồi vẽ hình màu lên trên. Không filter, không blur, không gradient, không glow. Sọc tỏa nhẹ trên nền (`repeating-conic-gradient` tĩnh, trắng 10%) và dải sàn tối có một đường mực. Nhân vật không trùng màu với nền chỗ đứng.
+- **Máy quay và khung dọc 9:16:** Sân khấu chính diện đối xứng như proscenium, cỡ toàn, máy đứng yên; chính khung làm việc di chuyển. Ở dọc, bảng tiêu đề ở trên, dàn nhân vật xếp hai hàng chồng ở giữa và dưới (hàng sau nhỏ, hàng trước lớn), bóng khán giả ở đáy. Máy chỉ có cú đấm theo nhịp: `scale` 1 đến 1,03 rồi về trong 0,16 giây, tổng các cú đấm cùng lúc dưới 0,06.
+- **Chuyển động:** Nhanh, nảy, theo lưới nhịp cố định. Nhân vật nhún theo nhịp (parabol 8 đến 30px), hàng kề nhún lệch nửa nhịp để cả dàn gợn sóng. Mỗi cú trúng là squash tắt dần. Vật vào bằng `back.out`, ra bằng ease-in, không fade chậm. Đổi vòng bằng cắt cứng kèm nháy trắng rất ngắn. Tay giơ cao và miệng há trong nửa nhịp khi hô.
+- **Chữ trên hình:** Chữ kiểu telop: trắng hoặc vàng với viền mực dày khoảng 14% cỡ chữ (`paint-order: stroke`). Phông Baloo 2 hoặc Be Vietnam Pro 800 đủ dấu Việt cho tựa, nhãn hô ngắn IN HOA ("ĐÚNG!", "TUYỆT!"). Thẻ tên nhân vật là nhãn bo tròn trắng viền mực, chữ mực nhỏ. Phụ đề là bảng telop dưới đáy, không dùng caption mỏng.
+- **Nước đi đặc trưng:**
+  - Cả dàn nhân vật giơ tay hô trên sân khấu: hợp mở màn, giới thiệu nhiều thành phần.
+  - Thẻ vòng bay vào kèm số vòng và tên: hợp từng bước, từng chương.
+  - Sao phán quyết đập xuống nghiêng 10 độ rồi confetti: hợp kết quả đúng, hoàn thành.
+  - Bảng điểm và bục 1, 2, 3 mọc lên từ sàn: hợp xếp hạng, số liệu có nguồn.
+  - Nhân vật rơi vào từng con một theo nhịp: hợp liệt kê thành viên, thành phần.
+- **Bẫy:** Hai nhân vật cùng màu với nền chỗ đứng thì chìm mất. Đổi màu thân nhân vật giữa các cảnh làm mất nhận diện. Dùng blur cho bóng hoặc glow làm mất chất phẳng. Hình quá đông và chữ dài trong hình làm khung rối; giữ nhãn ngắn.
+
+Phỏng theo `styles/game-show/STYLE.md` của lemomo-ai/lemo-opuscar (MIT).
+
 *Ý tưởng gốc: MotionFly / lemo-opuscar (MIT), qua SlideFly.*

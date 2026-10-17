@@ -66,4 +66,21 @@ Màu ngoài bảng, trắng tinh, đen tuyền, hơn một giọt son mỗi hìn
 ## Họ hàng
 `thuy-mac` (mực nước Á Đông gần đơn sắc, tĩnh và thiền hơn; màu nước ở đây nhiều sắc và ấm), `urban-sketch` (ký họa bút mực có viền nét rõ, phố phường; màu nước ở đây không viền, thiên nhiên), `crayon-book` (sáp màu trẻ em, nét đặc thô; màu nước thì trong và loang).
 
+## Bản video (khi làm video; thắng các mục trên khi mâu thuẫn)
+Mục tiêu hình: giống ảnh minh họa `docs/assets/styles/mau-nuoc.jpg`, một khung phim chứ không phải slide.
+- **Thế giới và nhân vật:** một trang nhật ký thiên nhiên: mặt cắt rừng mưa nhìn ngang, nhiều lớp cây xanh (tầng vượt tán, tán, tầng dưới, nền rừng) trên giấy kem, đồi xa xanh xám trong sương. Nhân vật là một con chim lớn lông đen cổ xanh dương bước trên nền rừng, ở giữa khung, cao khoảng 1/8 khung. Rễ chống, lá rụng và thân cây dài làm chi tiết.
+- **Chất liệu và ánh sáng:** giấy cotton ấm bằng gradient kem cộng hạt mịn. Mỗi vật là chồng 3 lượt wash cùng polygon, độ mờ khoảng 0,3, đỉnh lệch nhẹ để mép đậm hơn như màu đọng. Lá và cành là nét cọ có độ dày đổi dọc nét, thêm vài nét sợi khô đứt quãng. Sáng là giấy trống, không vẽ trắng. Xa nhạt, nhỏ, ít bão hòa; giữa các lớp là dải sương màu giấy. Không viền vector, chỉ một nét mép đậm hơn dọc hình.
+- **Máy quay và khung dọc 9:16:** góc ngang, một mặt cắt trải dài như cuộn tranh. Đi máy bằng dolly ngang chậm (translate các lớp, lớp xa ít, lớp gần nhiều) hoặc đẩy chậm vào một chi tiết. Khung dọc: mặt cắt đứng, tán cây trên, chim và nền rừng ở dưới, nhãn xếp dọc bên trái.
+- **Chuyển động:** vẽ hiện ra từng nét, cấu trúc trước chi tiết (thân, cành, rồi lá), bằng `stroke-dashoffset` hoặc clipPath. Chỉ sau khi xong mới đung đưa rất nhẹ (skew ngang dưới 0,03). Chim bước mượt. Màn sương giấy xóa cảnh với mép sóng đi lên. Ease `sine.inOut` hoặc `power2.out`, chậm, không giật.
+- **Chữ trên hình:** tiêu đề serif (EB Garamond) góc trên trái, số mục nhỏ (mono) cạnh đó; nhãn tầng bằng chữ viết tay (Dancing Script) cạnh một thước dọc có vạch; số đo (mono) góc trên phải kèm thang nhỏ và giọt chỉ giá trị; phụ đề serif nghiêng mờ nằm trên giấy, không hộp. Đủ dấu tiếng Việt.
+- **Nước đi đặc trưng:**
+  - Vẽ hiện từng lớp rồi nhãn viết tay mọc kèm đường dẫn (giới thiệu cấu trúc nhiều tầng).
+  - Bảng màu là dữ liệu: nền đổi sắc theo giá trị đo (khô sang ẩm, gần sang xa).
+  - Một vật mẫu kèm ghi chú tay và đường dẫn (bộ phận, nguyên liệu).
+  - Sương giấy xóa cảnh về giấy trống (kết chương, thời gian trôi).
+  - Dolly ngang qua một thế giới liền mạch (hành trình, chuyển dần).
+- **Bẫy:** viền vector kín thay cho nét cọ; wash dừng đột ngột ở mép canvas để lộ đường nối (kéo dài ra ngoài khung rồi mờ về giấy); tô trắng tinh (ánh sáng là giấy trống); quá nhiều màu mỗi cảnh (3 đến 5 màu cộng mực); mọi thứ nhấp nháy khi dựng lại nét (cố định seed theo chỉ số, không Math.random).
+
+Phỏng theo `styles/watercolor/STYLE.md` của lemomo-ai/lemo-opuscar (MIT).
+
 *Ý tưởng gốc: MotionFly / lemo-opuscar (MIT), qua SlideFly.*

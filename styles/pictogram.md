@@ -66,4 +66,25 @@ Màu ngoài bảng, gradient, bóng đổ, viền mảnh quanh khối, blur, glo
 ## Họ hàng
 `bauhaus` (hình học cơ bản và màu gốc, tính giáo dục thiết kế, không có người que), `swiss-modern` (lưới chữ tối giản, nghiêm, doanh nghiệp; pictogram rộn ràng, có nhân vật), `block-frame` (khối màu táo bạo kiểu pop agency, khung dày; pictogram theo lưới ô vuông chặt và đổi màu theo chương).
 
+## Bản video (khi làm video; thắng các mục trên khi mâu thuẫn)
+Mục tiêu hình: giống ảnh minh họa `docs/assets/styles/pictogram.jpg`, một khung phim chứ không phải slide.
+- **Thế giới và nhân vật:** một thẻ trong chuỗi thẻ danh mục. Nền là lưới ô vuông phủ hình tròn, nửa tròn và ô hoa văn nhỏ, toàn bộ trong năm tông của một màu (ở ảnh là vàng). Bên phải là đĩa mặt trời lớn nhạt hơn, trên đó một hình người pictogram: đầu tròn, thân và tay chân là thanh bo đầu tròn, không mặt, chi xa nhạt hòa vào nền, cao khoảng 2/3 khung, làm một hành động. Bên trái là tiêu đề cực to, dòng ngôn ngữ thứ hai, chỉ số "06 / 43" bằng chữ mono.
+- **Chất liệu và ánh sáng:** hoàn toàn phẳng. Dựng bằng SVG hoặc Canvas 2D: lưới ô cỡ khoảng 1/6 chiều cao khung, nền tông giữa, hình tròn và nửa tròn đặt trên nút lưới, một phần ô có hoa văn (vảy cá, chấm, vòng đồng tâm, nan quạt, ô cờ). Vẽ rộng hơn khung để trượt hàng. Năm tông cho mỗi màu; chữ và hình người dùng mực đậm hoặc kem. Không viền, không bóng; chỉ một vệt sáng quét mờ trên đĩa. Hạt rất nhẹ.
+- **Máy quay và khung dọc 9:16:** khung phẳng, gần như đứng yên; năng lượng đến từ hàng trượt, chuyển cảnh và hành động của hình người. Khung dọc: tiêu đề to ở trên, đĩa và hình người ở giữa, ô lưới còn lại làm nền, thanh tiến độ ở đáy. Chữ và hình không chồng nhau. Không chuyển động máy 3D, không rung.
+- **Chuyển động:** mọi cảnh bắt đầu và mọi động tác chính rơi đúng nhịp. Chữ vào bằng mặt nạ trượt lên: tiêu đề trước, dòng phụ sau khoảng 0.08 giây. Hình người ráp từ các dải ngang trượt vào từ hai phía luân phiên. Nền thở: các hàng trôi ngược chiều. Chuyển cảnh theo lưới: trượt hàng, rơi cột, đẩy, quạt từ góc ô. Ease mũ ease-out, một `back` nhẹ cùng lắm.
+- **Chữ trên hình:** tiêu đề chữ không chân đậm 900, cỡ rất lớn, sát chữ; dòng phụ nặng bên dưới; chữ mono nhỏ ở góc như HUD; thanh tiến độ N vạch (hiện tại cao, đã qua nhạt). Phông Be Vietnam Pro đậm cho chữ có dấu, mono chỉ cho số và nhãn không dấu.
+- **Nước đi đặc trưng:**
+  - Một thẻ một mục: số đếm là móc câu "tất cả N" (danh mục công cụ, món ăn, bước).
+  - Chương bằng màu: mỗi nhóm một màu, mở bằng thẻ hoa văn toàn màn.
+  - Một động từ một mục: hình người làm đúng một hành động (kỹ thuật, tư thế).
+  - Chạy nhanh nửa nhịp cho nhóm con (các biến thể, các bước nhỏ).
+  - Kéo lùi thành bức tường lưới mọi thẻ (tổng kết).
+- **Bẫy:**
+  - Hình người có mặt hoặc biểu cảm: phải trơn, không mặt.
+  - Hoa văn nền tương phản cao dưới chữ: giữ nhạt dưới chữ, chỉ thẻ chương mới tương phản đủ.
+  - Cắt không đúng nhịp: dịch ra khỏi lưới thời gian là mất chất.
+  - Dùng Math.random cho hoa văn: dùng hàm băm theo chỉ số ô để cố định.
+
+Phỏng theo `styles/pictogram-motion/STYLE.md` của lemomo-ai/lemo-opuscar (MIT).
+
 *Ý tưởng gốc: MotionFly / lemo-opuscar (MIT), qua SlideFly.*

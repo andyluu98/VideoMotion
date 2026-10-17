@@ -74,4 +74,20 @@ Màu ngoài bảng (nhất là cam trong hình), gradient màu, bóng đổ màu
 ## Họ hàng
 `neon-cyber` (neon phát sáng, có hồng tím, năng lượng cao; hud thì một sắc lạnh, không glow, là đồ nghề đo), `terminal-green` (giao diện chữ dòng lệnh; hud là khung dây và đồng hồ), `blueprint` (bản vẽ kỹ thuật nét trắng trên giấy xanh, cổ điển; hud là màn chiếu tương lai trên nền đen).
 
+## Bản video (khi làm video; thắng các mục trên khi mâu thuẫn)
+Mục tiêu hình: giống ảnh minh họa `docs/assets/styles/hologram-hud.jpg`, một khung phim chứ không phải slide.
+- **Thế giới và nhân vật:** Phòng điều khiển tối với một bệ chiếu tròn ở nửa dưới, nón sáng mờ dựng lên phía trên. Trên bệ là một vật thể khung dây ánh sáng (ví dụ một chiếc xe đạp điện đẳng cự, nghiêng 3/4) chiếm khoảng 60% chiều cao khung; vật là ẩn dụ của chủ đề, mọi bộ phận nối liền nhau. Bên trái là ba tấm nhãn tối xếp dọc, mỗi tấm một số đo màu cam. Bốn góc là khung HUD.
+- **Chất liệu và ánh sáng:** Nền gần đen xanh thẫm, lưới chấm xanh ngọc, quầng sáng sau vật, tối góc. Cạnh khung dây bằng stroke 1,5 đến 2,5px, ba mức độ mờ theo độ xa (gần sáng, xa chìm 25 đến 30%); một lớp stroke dày hơn, mờ, đặt dưới để giả glow, không dùng filter động. Mặt trong suốt rất nhạt. Bệ là các elip đồng tâm, một vòng đứt nét, vài vạch chia. Nón sáng là gradient dọc mờ dần. Cam chỉ ở chữ số đã khóa.
+- **Máy quay và khung dọc 9:16:** Hơi nhìn từ trên xuống, 3/4. Máy đẩy vào rất chậm hoặc quay nhẹ bằng cách scale/translate lớp vật, lớp bệ và lớp HUD với tốc độ khác nhau (HUD nhanh hơn, lưới chậm nhất). Khung dọc: vật ở nửa trên, các tấm nhãn xếp chồng ở nửa dưới, không đè lên nét khung dây.
+- **Chuyển động:** Nhanh, gắt, tuyến tính, không nảy, không nhấp nháy. Dải quét chạy qua vật, vật lộ dần theo đường dải đi qua (`clipPath`). Cạnh nóng vẽ trước, tấm nhãn hiện sau. Vòng đồng hồ ngoài cùng quay rất chậm.
+- **Chữ trên hình:** Nhãn IN HOA Chakra Petch, số Plex Mono (đơn cách để không nhảy khi đếm). Mỗi khối chữ có tấm nền tối viền 1px và tick góc, có số thứ tự nhỏ. Chữ không bao giờ nằm trên nét khung dây. Phụ đề là tấm HUD tối có góc ngoặc ở giữa đáy. Phải đủ dấu tiếng Việt.
+- **Nước đi đặc trưng:**
+  - Dải quét lộ hình: mặt phẳng sáng quét xuống, vật hiện theo (hợp giới thiệu sản phẩm).
+  - Khóa mục tiêu: bốn góc L từ rộng co lại ôm chi tiết, rồi số cam chạy và đứng yên (hợp thông số chính).
+  - Tầng nổ theo trục: các lớp tách dọc trục đứt, lớp đang xét sáng nóng (hợp cấu tạo, bóc tách).
+  - Chip nạp dần: số đã khóa trượt vào dải bên và ở lại (hợp 3 đến 5 ý phải đọc hết).
+- **Bẫy:** Dùng cam trong hình vẽ làm hỏng luật màu. Mặt đặc che khung dây thành khối nhựa. Bộ phận trôi lơ lửng không nối nên bị nhìn ra ngay. Số đo bịa trên nhãn. Glow nặng hoặc nhấp nháy làm mất vẻ dụng cụ đo.
+
+Phỏng theo `styles/hologram-hud/STYLE.md` của lemomo-ai/lemo-opuscar (MIT).
+
 *Ý tưởng gốc: MotionFly / lemo-opuscar (MIT), qua SlideFly.*

@@ -58,4 +58,21 @@ Tô màu, đổ bóng, gradient, hạt nhiễu, viền kép, nền họa tiết;
 ## Họ hàng
 `monochrome` (đen trắng nhưng là mảng khối phẳng và chữ dày, kiểu sổ cái), `soft-editorial` (thoáng và văn chương, nhưng dùng serif và màu pastel), `whiteboard` (cũng nét tay, nhưng nhiều nét rời, ba màu bút và chữ dày đặc hơn).
 
+## Bản video (khi làm video; thắng các mục trên khi mâu thuẫn)
+Mục tiêu hình: giống ảnh minh họa `docs/assets/styles/one-line.jpg`, một khung phim chứ không phải slide.
+- **Thế giới và nhân vật:** một tờ giấy trắng ấm, trên đó chỉ có một nét mực đen liên tục, không bao giờ nhấc bút. Nét ấy vẽ ra một khuôn mặt người đeo kính tròn, mắt nhắm với hàng mi, tai, râu cằm, mũi, và một con diều gắn dây trên đỉnh đầu. Môi là đoạn nét duy nhất đổi sang màu đỏ. Mặt chiếm khoảng 70 % chiều cao khung, phần giấy còn lại trống.
+- **Chất liệu và ánh sáng:** nền kem `#f4efe4`, vân giấy tĩnh rất nhẹ. Nét là một `path` SVG duy nhất, độ rộng gần như không đổi, đầu nét tròn, màu mực ấm `#1d1a17`. Không tô, không đổ bóng, không nền. Chỗ dừng bút để lại giọt mực nhỏ hình giọt nước. Bóng bút là một dải mờ nghiêng tĩnh (chỉ đổ xuống giấy, không vẽ bàn tay hay bút). Một màu nhấn duy nhất (đỏ) dùng một lần trên một đoạn có nghĩa.
+- **Máy quay và khung dọc 9:16:** cận trung, nhìn thẳng. Dọc 9:16 hợp khuôn mặt thẳng đứng, diều ở trên. Máy bám đầu bút trễ một chút, dùng translate và scale lớp giấy; có thể lùi dần cho thấy toàn bức, không cắt cảnh.
+- **Chuyển động:** mọi thứ chạy mượt 24 fps, nét vẽ bằng `stroke-dashoffset` trên một `path` dài. Tốc độ theo độ cong: quanh góc chậm, đường thẳng nhanh; nét quan trọng nhất chậm nhất. Chuyển cảnh là biến hình: nét cuối của hình này là nét đầu của hình sau. Dừng bút là một sự kiện, kéo dài khoảng 1,5 đến 3 giây.
+- **Chữ trên hình:** chữ cũng là nét viết tay trái sang phải, không hộp, dùng Patrick Hand (hoặc Quicksand mảnh), đủ dấu tiếng Việt, màu mực, viết bằng `clipPath` quét ngang ở chỗ giấy trống phía dưới, tránh đè lên nét vẽ.
+- **Nước đi đặc trưng:**
+  - Bút không nhấc: một dòng liền cho mọi thứ liền mạch; hợp con sông từ nguồn ra biển, dây chuyền.
+  - Dòng nét là thời gian: độ rung, độ đậm đổi theo tuổi và mệt; hợp máy móc hao mòn, người chạy mệt.
+  - Biến hình: hạt thành cây thành cái bàn; hợp bản phác thành sản phẩm.
+  - Đoạn nhấn đỏ dùng một lần; hợp tình yêu, nguy hiểm, giải thưởng.
+  - Lùi dần cho thấy mọi cảnh nhỏ là một bức tranh lớn; hợp cột mốc thành biểu tượng.
+- **Bẫy:** nét nối thừa trông như nếp nhăn hay râu, phải tính đường đi liên tục từ đầu như bài toán một nét; hai nét sát nhau dính vào nhau khi nét dày, chừa khoảng; giọt mực tròn như nốt ruồi, phải là giọt nước chảy xuống; nét quá mảnh khi lùi xa, cho độ rộng không nhỏ hơn mức tối thiểu trên màn hình.
+
+Phỏng theo `styles/one-line/STYLE.md` của lemomo-ai/lemo-opuscar (MIT).
+
 *Ý tưởng gốc: MotionFly / lemo-opuscar (MIT), qua SlideFly.*

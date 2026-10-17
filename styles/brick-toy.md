@@ -63,4 +63,24 @@ Màu ngoài bảng gạch, gradient, bóng mềm, ánh phát quang, 3D hay isome
 ## Họ hàng
 `clay-3d` (khối đất sét mềm, bo tròn, biến dạng được; ở đây mọi thứ cứng và có núm), `iso-infographic` (khối lập phương nhìn xéo, tông phẳng, giải thích hệ thống; ở đây nhìn thẳng và đồ chơi hơn), `paper-popup` (cũng là "dựng mô hình" nhưng bằng giấy gấp mở ra).
 
+## Bản video (khi làm video; thắng các mục trên khi mâu thuẫn)
+Mục tiêu hình: giống ảnh minh họa `docs/assets/styles/brick-toy.jpg`, một khung phim chứ không phải slide.
+- **Thế giới và nhân vật:** đồ chơi lắp ghép đặt trên bàn thật, chụp macro. Ảnh có một tên lửa xếp từ gạch đỏ và trắng, mũi nhọn, cánh đỏ, ô cửa tròn có phi công nhỏ, lửa đẩy cũng là các viên gạch vàng cam. Đằng sau mờ là đồ vật thật (ấm trà, tách) thành phong cảnh, phía trước là những khối gạch trắng có núm. Nhân vật dựng từ gạch, nhìn thẳng, chiếm khoảng 1/2 chiều cao khung.
+- **Chất liệu và ánh sáng:** mỗi gạch là hình chữ nhật bo góc trong SVG, fill phẳng, một vệt sáng chữ nhật cứng ở cạnh trên (highlight hộp đèn), một dải tối ở cạnh dưới, núm tròn trên mặt. Chỗ tiếp xúc giữa các viên có bóng tối mỏng (giả ambient occlusion). Nền: gradient xanh lạnh nhạt, mờ dần; vật thật phía sau vẽ đơn giản, blur chỉ để tĩnh. Màu trắng giữ lạnh nhẹ để không ngả kem. Lửa dựng từ gạch trong suốt cam vàng, xếp lại mỗi nhịp.
+- **Máy quay và khung dọc 9:16:** góc thấp ngang đồ chơi, cỡ trung, nhân vật ở giữa, nền mờ hai bên. Khung dọc hợp tên lửa và tháp gạch đứng. Máy trượt mượt bằng scale và translate; lớp tiền cảnh mờ đặt thấp ở mép đáy, không che chủ thể.
+- **Chuyển động:** gạch và nhân vật bước nấc 12 fps (twos); máy, lửa, vật bay mượt 24 fps. Gạch bay vào theo cung rồi chạm lại với một nhún rất nhỏ (vài frame). Tư thế lớn, giữ vài hình. Tay chân xoay tại khớp, gạch không co giãn.
+- **Chữ trên hình:** viên thuốc tối bo tròn ở đáy kèm biểu tượng viên gạch nhỏ, chữ trắng. Tiêu đề hiện nấc như đặt một viên. Phông Fredoka hoặc Be Vietnam Pro, đủ dấu tiếng Việt, không in chữ trên núm.
+- **Nước đi đặc trưng:**
+  - Lắp ghép: các viên bay vào và khớp lại (ra mắt sản phẩm, quy trình dựng).
+  - Vỡ mà không hại: tháp đổ, mảnh thành thứ mới (xoay hướng, tái chế).
+  - Đồ thật làm phong cảnh: rack focus từ vật thật sang gạch (so sánh quy mô).
+  - Phóng ra xa để lộ cả thế giới là đồ chơi trên bàn (kết, nhìn lại).
+- **Bẫy:**
+  - Gạch phẳng không có highlight chữ nhật và bóng tiếp xúc: trông dán lên.
+  - Co giãn hoặc uốn cong gạch: mọi thứ cứng, chỉ xoay tại khớp.
+  - Lửa dạng gradient mềm hoặc particle: phải là gạch rời.
+  - Ánh vàng ấm làm gạch trắng ngả cam: giữ nền và tông lạnh.
+
+Phỏng theo `styles/brick-toy/STYLE.md` của lemomo-ai/lemo-opuscar (MIT).
+
 *Ý tưởng gốc: MotionFly / lemo-opuscar (MIT), qua SlideFly.*

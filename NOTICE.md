@@ -7,7 +7,7 @@ VideoMotion tách từ [MotionFly](https://github.com/andyluu98/MotionFly) (cùn
 | Thành phần | Nguồn | Giấy phép | Đã sửa gì |
 |---|---|---|---|
 | `tools/` (voice, timeline, assemble, packets, audio, music, setup) | MotionFly 0.4.0 (commit a97b643) | MIT | `assemble.py` nạp thêm plugin GSAP và phông của dự án; `packets.py` viết lại gói giao việc; thêm `tools/fonts.py`; bỏ `sheet.py` |
-| `styles/*.md` (86 thẻ) | [SlideMotion](https://github.com/andyluu98/slidemotion) (cùng tác giả, MIT); nhiều thẻ phỏng theo [lemomo-ai/lemo-opuscar](https://github.com/lemomo-ai/lemo-opuscar) (MIT) và frontend-slides (MIT), ghi công ở cuối từng thẻ | MIT | Không sửa; thêm `styles/nhip-video.md` |
+| `styles/*.md` (86 thẻ) | [SlideMotion](https://github.com/andyluu98/slidemotion) (cùng tác giả, MIT); nhiều thẻ phỏng theo [lemomo-ai/lemo-opuscar](https://github.com/lemomo-ai/lemo-opuscar) (MIT) và frontend-slides (MIT), ghi công ở cuối từng thẻ | MIT | Thêm `styles/nhip-video.md`; 35 thẻ có ảnh khung video được thêm mục "Bản video" phỏng theo `styles/*/STYLE.md` của lemo-opuscar commit a75e2b3 (MIT) |
 | `vendor/bestagentkits/fit-beat-grid.py` | [bestagentkits/motion-video-skill](https://github.com/bestagentkits/motion-video-skill) commit a73702b | MIT | Không sửa |
 | `templates/fonts/BeVietnamPro-*.ttf`, `JetBrainsMono-Variable.ttf` | [google/fonts](https://github.com/google/fonts) | SIL OFL 1.1 | Đổi tên file JetBrains Mono |
 | `reference/vn-short-video-tts/` | dự án cũ của chủ repo | của chủ repo | Không sửa |

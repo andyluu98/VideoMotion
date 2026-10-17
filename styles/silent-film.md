@@ -62,4 +62,21 @@ Màu rực, gradient màu, bóng đổ màu, glow, 3D, chân dung cận cảnh l
 ## Họ hàng
 `vintage-editorial` (giấy báo ấm, bố cục tạp chí, không có rạp và phim), `rubber-hose` (cũng đen trắng hoài cổ nhưng là hoạt hình nhí nhảnh có mặt cười), `engraving` (nét khắc đồng tinh xảo, học thuật, không có thẻ chữ và cắt cảnh).
 
+## Bản video (khi làm video; thắng các mục trên khi mâu thuẫn)
+Mục tiêu hình: giống ảnh minh họa `docs/assets/styles/silent-film.jpg`, một khung phim chứ không phải slide.
+- **Thế giới và nhân vật:** Một phố nhỏ thập niên 1920 trong khung 4:3 giữa hai tấm màn nhung tối. Mặt tiền nhà nhiều cửa sổ chia ô, biển cửa hiệu, cửa gỗ lớn có bậc thềm. Hai nhân vật diễn bằng dáng: một người thợ bánh cao, đội mũ trắng, tạp dề dài, đứng thẳng; một đứa trẻ đội mũ nồi, áo khoác tối, ngồi trên bậc thềm ôm ổ bánh tròn. Người lớn cao khoảng 80% khung hình in, trẻ nhỏ hơn nhiều. Mặt sáng, gần như không đổi nét, người dựng bằng khối phẳng nhiều bậc xám.
+- **Chất liệu và ánh sáng:** Chỉ giá trị xám trên nền sepia bạc: khối phẳng ở năm bậc xám, vùng tối phủ gạch bóng 45 độ (pattern `<pattern>` hoặc nhiều `<line>`, bước khoảng 6px, nét 1,5px, mờ 35 đến 55%), vùng sáng để trống. Nét viền mực 2,5px chỉ ở vật chính. Xa nhạt, gần đậm. Lớp phủ tĩnh: vignette mép cháy, vệt xước dọc mảnh, vài hạt bụi, một sợi tóc. Độ sáng cả màn nhấp nháy rất nhẹ bằng `opacity` lớp phủ. Không màu ngoài tông sepia; filter chỉ để tĩnh.
+- **Máy quay và khung dọc 9:16:** Máy nặng, hầu hết cảnh đứng yên, cỡ toàn đến trung, nhân vật nhỏ trong cảnh rộng. Ở dọc, khung in 4:3 đặt giữa trên nền màn nhung, hai tấm màn chiếm phần trên và dưới thêm bóng tối rạp; chừa dải dưới cho thẻ chữ. Di máy chỉ là push rất chậm hoặc trượt ngang lớp nền; mở và đóng bằng iris (clipPath hình tròn).
+- **Chuyển động:** Lấy mẫu như quay tay khoảng 16 fps: nhân vật và máy đổi tư thế theo nấc (`steps()`), còn xước, bụi, nhấp nháy đổi mỗi khung. Diễn xuất deadpan: mặt ít đổi, thân diễn (cúi trước khi làm, giữ dáng, giật hai khung khi bất ngờ). Cắt thẳng, iris, tối dần; không dissolve.
+- **Chữ trên hình:** Chữ nằm trên thẻ đen (intertitle) chiếm cả khung, viền deco mảnh màu kem, vài chữ mỗi thẻ. Tiêu đề Playfair Display SC cho chữ không dấu, chữ có dấu dùng Be Vietnam Pro đậm; lời dẫn nghiêng dùng Newsreader nghiêng hoặc Be Vietnam Pro nghiêng, đủ dấu Việt. Biển cửa hiệu trong cảnh chỉ là chữ ngắn trên vật. Thẻ giữ tối thiểu 1,8 giây.
+- **Nước đi đặc trưng:**
+  - Cảnh rộng đứng yên, nhân vật nhỏ diễn một hành động: hợp kể nguyên nhân, hậu quả.
+  - Cắt sang thẻ chữ đen, chữ kem hiện chậm sau 300ms: hợp ý chốt, đảo chiều.
+  - Iris mở ở bìa, thu về một chấm ở kết: hợp mở và kết.
+  - Iris dừng nửa chừng để nhân vật liếc khán giả: hợp bí mật, đồng lõa.
+  - Màn nhung kéo ra rồi thẻ "PHẦN MỘT": hợp mở đầu.
+- **Bẫy:** Thêm màu hay gradient màu làm mất chất phim bạc; mọi giá trị phải là xám sepia. Cận cảnh mặt lớn nhìn như ma-nơ-canh, giữ nhân vật nhỏ hoặc đặt trong iris. Nhồi nhiều hành động vào một cảnh nhỏ thì thành nhiễu; một chuỗi rõ, có nhịp dừng. Rèm đóng mà chỉ được sáng bởi màn tối thì đen kịt, thêm sáng chân rèm.
+
+Phỏng theo `styles/silent-film/STYLE.md` của lemomo-ai/lemo-opuscar (MIT).
+
 *Ý tưởng gốc: MotionFly / lemo-opuscar (MIT), qua SlideFly.*

@@ -68,4 +68,21 @@ Màu ngoài bảng; vàng kim quá một điểm mỗi slide; đỏ trên đỏ 
 ## Họ hàng
 `son-mai` (nền sơn then tối, vàng lá, sang và lắng; cắt giấy thì sáng, vui, thủ công), `dong-ho` (tranh dân gian mảng màu phẳng có nét viền, kể chuyện; cắt giấy không có nét, chỉ có lỗ thủng), `paper-popup` (sách giấy dựng đứng nhiều lớp có chiều sâu; cắt giấy nằm phẳng một mặt).
 
+## Bản video (khi làm video; thắng các mục trên khi mâu thuẫn)
+Mục tiêu hình: giống ảnh minh họa `docs/assets/styles/cat-giay-do.jpg`, một khung phim chứ không phải slide.
+- **Thế giới và nhân vật:** đêm chàm thẫm, một con thú khổng lồ cắt bằng giấy đỏ nằm choán gần cả khung, bờm cuộn xoáy, mắt nhắm là hai nét cong, thân phủ vảy bán nguyệt và răng cưa. Mũi nó là một bông hoa cắt đối xứng (rosette) sáng vàng như có đèn phía sau. Phía trước là đồi giấy xanh chàm viền răng cưa với mái nhà cắt, góc trên có một bông hoa đỏ khác. Mảnh giấy tam giác đỏ bay ra từ mũi, vài hạt trắng như tuyết. Thú chiếm hơn một nửa khung.
+- **Chất liệu và ánh sáng:** mọi vật là giấy đã cắt, mờ đục, không gradient bóng và không nét viền. Mỗi mảnh là polygon mép lượn nhẹ như cắt tay, viền sáng 1 px phía trên trái và viền tối phía dưới phải (mặt cắt), bóng giấy mềm sát bên dưới (đổ lên lớp dưới bằng bản sao tối, lệch vài px). Hình đỏ khối có thêm nét khe mảnh bên trong mép (viền đôi) để tách đỏ chồng đỏ. Chi tiết (mắt, bờm, vảy, răng) là lỗ khoét lộ nền, không vẽ. Vân giấy là chấm và sợi xám nhạt rất mờ. Nền và thú thuộc hai họ giấy khác nhau (nền chàm tối, thú đỏ). Bông hoa phát sáng: hình lỗ tô vàng kem trên vòng sáng ấm đồng tâm mờ dần; vầng sáng là vòng tròn đồng tâm, không `filter` động.
+- **Máy quay và khung dọc 9:16:** các lớp giấy luôn song song với màn hình, chiều sâu chỉ bằng thị sai và tông giấy (xa đỏ nhạt, gần đỏ chính, nặng đỏ thẫm). Pan chậm qua các lớp giấy, rồi đẩy vào mảnh đang sáng. Khung dọc: thú cắt lại quanh đầu, bông hoa sáng ở trung tâm, đồi răng cưa và băng chữ dưới đáy.
+- **Chuyển động:** nhân vật bước nấc 12 fps, khớp nối bằng điểm đinh, tư thế cứng, vọt 1,15 lần trong một nấc. Máy quay, mảnh bay, hạt rơi, vầng sáng mượt. Mảnh giấy tam giác xoay và rơi, tắt dần. Ease `steps(1)` cho tư thế, `power2.out` cho mảnh bay, `sine.inOut` cho pan. Cảnh đổi bằng hành động giấy (gập, lật trang, bóc tờ).
+- **Chữ trên hình:** phụ đề là một băng giấy đỏ thẫm hơn tranh, hai đầu đuôi én, rìa răng cưa, chữ kem serif đậm (Spectral hoặc Fraunces) nằm thấp, có bóng giấy; rơi vào theo hai nấc 12 fps như dán câu đối. Chữ tựa là chữ cắt rỗng, hiện từng chữ. Đủ dấu tiếng Việt.
+- **Nước đi đặc trưng:**
+  - Lỗ là ánh sáng: mảnh bật đèn sau lưng, mọi lỗ sáng lên và hoa văn chiếu lên nền (ý tưởng tỏa ra, cửa sổ đêm về nhà).
+  - Gập, cắt, mở: một nhát cắt trên tờ gập thành nhiều hình, bung ra đúng nhịp mạnh (một thầy nhiều trò, nhân bản).
+  - Đối xứng nhân lên: hoa văn đối xứng tách ra, nhân thành pháo hoa (lan truyền).
+  - Mảnh vụn có tương lai: vụn rơi khi cắt sau thành tuyết, hạt, sao (tái chế, thất bại nhỏ cộng dồn).
+  - Mọi thứ là một tờ phẳng: đường gờ đồi đứng dậy thành con thú (phong cảnh thành sinh vật).
+- **Bẫy:** đỏ trên đỏ thành một khối (khác họ giấy nền, tông gần xa, viền đôi khe); chi tiết vẽ bằng nét hoặc gradient thay vì lỗ khoét; gập thẻ phẳng trông như trượt thẻ (chia dải, nén theo cos, tối dần khi dựng lên, lộ màu mặt sau); vầng sáng quá mạnh làm mất hoa văn ở tâm; thú chuyển động mượt thay vì bước nấc.
+
+Phỏng theo `styles/papercut-red/STYLE.md` của lemomo-ai/lemo-opuscar (MIT).
+
 *Ý tưởng gốc: MotionFly / lemo-opuscar (MIT), qua SlideFly.*

@@ -69,4 +69,20 @@ Tô mảng xám hay đen đặc, gradient, bóng đổ mờ, render 3D, ánh kim
 ## Họ hàng
 `woodcut` (khắc gỗ: mảng đen lớn, nét dao thô, kịch tính; khắc đồng thì nét mảnh đan chéo, tinh và học thuật), `vintage-editorial` (báo ảnh kem với chữ lớn, dí dỏm; khắc đồng là hình nét đan chéo có khung in và bóng số), `blueprint` (bản vẽ kỹ thuật nét đều trên giấy xanh; khắc đồng nét phình thon trên giấy kem).
 
+## Bản video (khi làm video; thắng các mục trên khi mâu thuẫn)
+Mục tiêu hình: giống ảnh minh họa `docs/assets/styles/engraving.jpg`, một khung phim chứ không phải slide.
+- **Thế giới và nhân vật:** một tấm bản khắc đồng trên giấy kem, khung in có viền kép, ở giữa là một con ong mật nhìn từ trên, cánh xòe, râu và chân có đốt, thân đan nét ngang và chéo, hai cụm phấn hoa cam ở chân. Quanh nó là ba vòng tròn phóng to (mắt kép, móc cánh, giỏ phấn) nối bằng đường dẫn mảnh, một hình nhỏ đúng cỡ thật ở góc. Tiêu đề chữ in hoa lớn, tên khoa học in nghiêng bên dưới, nhãn hình đánh số. Con ong chiếm khoảng 60 % chiều cao khung.
+- **Chất liệu và ánh sáng:** nền kem `#f1e8d2` có vân sợi tĩnh, khung nổi bằng hai đường viền và một bóng khe mảnh. Mực một màu nâu đen `#1c1510`. Độ đậm nhạt chỉ làm bằng mật độ nét: lớp nét song song cho nửa tối, lớp nét chéo cho bóng, không tô xám. Nét thắt thon hai đầu: mỗi nét là `path` dạng thoi (tự dựng đa giác, không dùng `stroke` đều). Một hướng sáng cố định phía trên bên trái, nét viền dày hơn ở phía khuất. Màu nước chỉ là lớp `multiply` mờ đặt dưới mực, tràn nhẹ ra ngoài nét.
+- **Máy quay và khung dọc 9:16:** như kính lúp trên một tờ giấy, gần như tĩnh. Dọc 9:16 thì con ong ở giữa, các vòng phóng to xếp dọc ở dưới. Di máy rất nhẹ: đẩy vào dưới 2 %, hoặc tiến vào một vòng tròn cùng lúc nó bay ra lề.
+- **Chuyển động:** thứ tự khắc là hoạt họa: nét viền, rồi nét song song quét qua từng phần, rồi nét chéo, rồi chỗ tối nhất. Nét chạy tốc độ đều bằng `stroke-dashoffset`, nhiều nét cùng lúc. Vòng tròn bay theo cung ease nhẹ, to dần khi tới lề. Màu nước nở từ một điểm bằng `clipPath` hình tròn lớn dần. Không mờ dần hay trượt kiểu giao diện.
+- **Chữ trên hình:** tiêu đề Playfair Display SC (đủ dấu tiếng Việt), tên khoa học và chú thích Newsreader nghiêng. Chữ khắc hiện từng ký tự, không fade. Phụ đề là mảnh giấy ở đáy, chữ Newsreader.
+- **Nước đi đặc trưng:**
+  - Ba lượt khắc: khung, nét song song, nét chéo; hợp một vật được dựng dần.
+  - Vòng phóng to: vẽ vòng, phình ra, bay ra lề kèm đường dẫn rồi khắc nhãn; hợp chi tiết không thấy bằng mắt.
+  - Màu nước nở sau khi in; hợp nhấn một bộ phận.
+  - Hình đúng cỡ thật ở góc; hợp so sánh kích thước.
+- **Bẫy:** nét đều như bút bi thì mất chất khắc, phải thắt thon hai đầu; tô xám thay vì đan nét; đường dẫn chạy xuyên qua con ong thay vì chừa khoảng; tạo vòng phóng to ở bán kính nhỏ rồi scale lên thì nét vỡ, hãy vẽ lớn rồi thu vào.
+
+Phỏng theo `styles/engraving/STYLE.md` của lemomo-ai/lemo-opuscar (MIT).
+
 *Ý tưởng gốc: MotionFly / lemo-opuscar (MIT), qua SlideFly.*

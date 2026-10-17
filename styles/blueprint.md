@@ -67,4 +67,25 @@ Gradient nhiều màu, bóng đổ màu, hiệu ứng 3D, glow neon, nét chạy
 ## Họ hàng
 `iso-infographic` (hình isometric màu tươi, hợp giải thích hệ thống cho người không chuyên), `engraving` (khắc đồng cổ điển, hợp bảo tàng, khoa học).
 
+## Bản video (khi làm video; thắng các mục trên khi mâu thuẫn)
+Mục tiêu hình: giống ảnh minh họa `docs/assets/styles/blueprint.jpg`, một khung phim chứ không phải slide.
+- **Thế giới và nhân vật:** cả phim xảy ra trên một tờ giấy bản vẽ xanh Phổ. Vật được thiết kế là nhân vật: ở ảnh là cần trục giàn thép có cờ, hộp máy bánh răng có đồng hồ và ống thổi, đám mây bị lưới hứng, một luống trồng nhỏ; kèm nhãn "FIG. 3" và bảng danh mục chi tiết, khung tên ở góc dưới phải. Người chỉ hiện dưới dạng bóng bàn tay cầm bút hoặc chữ ký. Vật chiếm 2/3 khung, chừa vùng trống để ghi chú.
+- **Chất liệu và ánh sáng:** nền gradient xanh Phổ không đều (hai tông xanh, vệt tráng, nếp gấp mờ, sờn mép nhạt). Nét trắng hơi ngả xanh, 4 độ dày (viền, chi tiết, mảnh, tóc), nét đứt cho đường tâm và đường khuất. Vật che khuất theo thứ tự vẽ: fill màu giấy rồi mới stroke viền. Gạch chéo 45 độ cho mặt cắt. Mây và vùng mềm có gạch chéo mảnh. Bóng chỉ hiện khi vật rời tờ giấy. Màu duy nhất ngoài xanh trắng dùng đúng một lần (dấu đỏ).
+- **Máy quay và khung dọc 9:16:** máy lướt trên tờ giấy như mắt đọc bản vẽ. Cỡ trung, vật khoảng 80 phần trăm chiều cao, có trời trống một bên để ghi chú. Khung dọc: vật ở nửa trên, bảng chi tiết ở nửa dưới, hoặc đẩy cận từng bộ phận. Di máy bằng scale và translate cả tờ; cận cảnh 2 lần cắt trên nhịp mạnh.
+- **Chuyển động:** nét vẽ lên theo độ dài đường (stroke-dashoffset) với đầu bút sáng, đúng thứ tự phác: đường tâm, viền, chi tiết, gạch chéo, kích thước, bóng số, nhãn. Cơ cấu bước theo lưới như cơ cấu đồng hồ, bánh răng tiến từng răng. Chi tiết tách ra rồi về từng nhịp. Hỏng thì chậm dần, sụp xuống. Ease mượt, cắt cứng trên nhịp.
+- **Chữ trên hình:** chữ viết tay (kiểu kiến trúc sư) cho nhãn, ghi chú, phụ đề; chữ kỹ thuật cho ô khung tên; script cho chữ ký. Chữ được viết lên từ trái sang phải. Phụ đề là ghi chú bản vẽ: hộp trong suốt viền đôi trắng, ô "NOTE / n", đặt vào khoảng trời trống chứ không cố định ở đáy. Dùng Be Vietnam Pro cho chữ có dấu.
+- **Nước đi đặc trưng:**
+  - Vẽ theo thứ tự phác: vật tự dựng từng lớp mỗi nhịp (giải thích cấu tạo).
+  - Chú thích sống: kích thước đo bộ phận đang động, bóng số bay theo chi tiết (cơ chế hoạt động).
+  - FIG. số làm chuyển cảnh: gạch "FIG. 2" viết lại "FIG. 3 IN OPERATION" (các giai đoạn, phiên bản).
+  - Tách rời chi tiết rồi gom lại (cấu tạo, sửa chữa).
+  - Dấu đóng đỏ lên khung tên (kết luận, phê duyệt).
+- **Bẫy:**
+  - Nét trắng sáng rực như HUD, 3D: phải là nét vẽ tay kỹ thuật, 2D, hơi mềm.
+  - Không chừa chỗ trống cho ghi chú: hình dày, chữ chen nhau.
+  - Nét trắng đều một độ dày: dùng 4 độ dày, tăng theo zoom chậm.
+  - Dùng nhiều màu: chỉ xanh trắng và một dấu đóng.
+
+Phỏng theo `styles/blueprint/STYLE.md` của lemomo-ai/lemo-opuscar (MIT).
+
 *Ý tưởng gốc: MotionFly / lemo-opuscar (MIT), qua SlideFly.*

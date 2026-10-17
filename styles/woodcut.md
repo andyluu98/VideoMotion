@@ -64,4 +64,21 @@ Gradient, bóng đổ mờ, xám trung gian, màu thứ hai ngoài cam, cam in l
 ## Họ hàng
 `engraving` (khắc đồng nét mảnh đan chéo, tinh và học thuật; khắc gỗ mảng lớn, thô, kịch tính), `dong-ho` (tranh dân gian mảng màu phẳng, vui; khắc gỗ gần như chỉ đen và giấy, nặng hơn), `peoples-platform` (áp phích cổ động đồ họa, khẩu hiệu thẳng; khắc gỗ kể chuyện bằng hình và chất gỗ).
 
+## Bản video (khi làm video; thắng các mục trên khi mâu thuẫn)
+Mục tiêu hình: giống ảnh minh họa `docs/assets/styles/woodcut.jpg`, một khung phim chứ không phải slide.
+- **Thế giới và nhân vật:** Một tờ in nằm trong lề giấy kem: làng núi về đêm. Bốn năm đỉnh núi đen nhọn, một tháp chuông cao đứng giữa, dãy nhà mái dốc có ô cửa sáng ở hàng trước, tuyết rải dưới chân. Ảnh không có người; nếu cần người thì là bóng đen nhỏ có viền dao trắng, da khắc trắng, mắt mũi để đen, chiếm dưới 15% khung.
+- **Chất liệu và ánh sáng:** Khối đen `#14110d` có vân gỗ ngang mờ (repeating-linear-gradient tĩnh). Ánh sáng là nhát khắc: mặt núi và mái hướng sáng phủ loạt nhát trắng xiên cùng hướng, nhát hình lá dài 30 đến 160px, mặt tối để nguyên đen. Mỗi nhát là `<path>` hoặc `<line>` có `stroke-linecap` tròn, vẽ sẵn bằng bảng tọa độ cố định. Tấm cam `#e0612b` chỉ nằm trong vùng đã khắc trắng (mái nhà, sườn núi sáng, ô cửa), kèm chấm đục trắng làm tuyết và sao. Lề giấy kem có sợi ngang, mép khối hơi rách (clipPath đa giác lệch). Không gradient mượt, không xám.
+- **Máy quay và khung dọc 9:16:** Cảnh tĩnh như một trang truyện không lời, góc nhìn ngang, cỡ toàn. Ở dọc, tờ in là khung đứng, núi và tháp chiếm hai phần ba trên, nhà và tuyết ở dưới, chữ nằm ở lề giấy phía dưới. Di máy chỉ là push chậm hoặc pull-back bằng `scale` cả tờ in; lề giấy đứng yên.
+- **Chuyển động:** Nặng, chắc, ít động tác. Hình hiện theo tay thợ: nhát đục U thô trước, nhát V mảnh sau, chấm đục cuối, mỗi nhóm hiện theo `stagger` ngắn bằng `opacity` hoặc `clipPath`, không fade mượt. Tấm cam hiện sau cùng. Đổi cảnh bằng cắt cứng kèm lệch in vài pixel hai khung rồi về chỗ.
+- **Chữ trên hình:** Chú thích nằm ở lề giấy dưới tờ in, chữ Be Vietnam Pro hoặc Vollkorn nghiêng cho chú thích, đủ dấu Việt, màu mực, không đè lên hình. Tiêu đề Anton IN HOA cho chữ không dấu; chữ có dấu dùng Be Vietnam Pro đậm. Nhãn "HÌNH n" gạch chân một nét dao.
+- **Nước đi đặc trưng:**
+  - Khắc ra từng nhát theo hướng sáng: hợp hiện hình chính, mở cảnh.
+  - Ép giấy bằng `scale` nhẹ rồi khựng, một lần: hợp khoảnh khắc chính, tuyên ngôn.
+  - Tấm cam in sau cùng vào ô cửa hay lõi sáng: hợp hy vọng, một điểm cần nhấn.
+  - Chấm đục bay như tia lửa trên nền đen: hợp kết, quyết tâm.
+  - Khối đen đổi chỗ nặng nề giữa các cảnh: hợp chuyển chương.
+- **Bẫy:** Khắc kín mọi mặt thành lông hay mưa; chỉ khắc vài nhát sát mép hướng sáng. Cam tràn lên vùng đen chưa khắc làm mất luật in. Nét dài đều như vẽ máy; mỗi nhát phải là hình lá, dài ngắn khác nhau, tọa độ cố định chứ không random. Dùng filter blur hay bóng đổ mờ làm hỏng chất gỗ.
+
+Phỏng theo `styles/woodcut/STYLE.md` của lemomo-ai/lemo-opuscar (MIT).
+
 *Ý tưởng gốc: MotionFly / lemo-opuscar (MIT), qua SlideFly.*

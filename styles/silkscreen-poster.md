@@ -68,4 +68,21 @@ Gradient, viền quanh hình đặc, chấm tram, bóng đổ mờ, glow, 3D, qu
 ## Họ hàng
 `risograph` (mực trong chồng màu, có tram, lệch đăng mạnh, trẻ trung hơn), `bold-poster` (chữ khổng lồ làm nhân vật chính, không kể bằng cảnh), `ukiyoe` (cũng in từng bản màu và lệch đăng, nhưng có nét khóa đen và chất Nhật).
 
+## Bản video (khi làm video; thắng các mục trên khi mâu thuẫn)
+Mục tiêu hình: giống ảnh minh họa `docs/assets/styles/silkscreen-poster.jpg`, một khung phim chứ không phải slide.
+- **Thế giới và nhân vật:** một tường ván gỗ nâu, trên đó treo ba tấm áp phích dọc và một biển ngang phía trên. Mỗi tấm là một cảnh in phẳng: hồ cam hồng với núi tím và hàng thông, thác nước giữa vách đá, đỉnh núi tím với đường mòn nét đứt. Đáy mỗi tấm là dải thông tin tối: tên, số thứ tự, hàng chỉ số nhỏ. Mặt trời là vòng tròn đồng tâm. Mỗi áp phích chiếm khoảng 70 % chiều cao khung.
+- **Chất liệu và ánh sáng:** mỗi lớp mực là một `path` đặc, không gradient; trời làm bằng các dải bậc (màu phẳng, sọc mỏng dần, màu kế). Mỗi lớp lệch 1 đến 3 px so với lớp trước, để lộ lưỡi giấy hở. Mép sáng trên trái, mép tối dưới phải bằng một bản sao dịch chuyển cắt trong `clipPath`. Giấy kem có vân và lỗ kim màu giấy, chỉ hiện trên mực. Tối đa 6 màu mực mỗi tấm, một màu nhấn hiếm (mặt trời, đường mòn, số quan trọng). Ván gỗ là sọc dọc tối với vân nhẹ.
+- **Máy quay và khung dọc 9:16:** nhìn thẳng vào tường. Dọc 9:16 thì chỉ một áp phích đầy khung, các tấm khác hiện lần lượt bằng trượt ngang. Đẩy vào dải thông tin để đọc; lùi ra toàn tường làm cảnh cuối.
+- **Chuyển động:** mỗi lớp mực được kéo qua bằng một mép `clipPath` chạy tuyến tính, đều, không ease. Màu nhấn bắt đầu chậm nửa nhịp. Các mục thông tin in từ trái sang phải theo nhịp. Đổi bảng màu bằng một vệt gạt chéo nhanh, hình học giữ nguyên, chỉ đổi màu. Tuyệt đối không fade.
+- **Chữ trên hình:** tên và số dùng Big Shoulders Display hẹp, đậm, in hoa; nhãn nhỏ dùng Be Vietnam Pro (đủ dấu tiếng Việt). Màu chữ chọn theo độ tương phản với mực bên dưới.
+- **Nước đi đặc trưng:**
+  - Mỗi mực một nhịp: thông tin in sau cùng, đúng lúc được đọc; hợp lịch, giá, giờ mở cửa.
+  - Đổi bảng màu cùng một hình: hợp mùa, thời điểm trong ngày, phiên bản màu.
+  - Lớp lỏng rồi khớp: các lớp lệch nhau rồi kẹp vào đúng vị trí trong một nhịp; hợp con số quan trọng sắp lộ.
+  - Đường đi in từng đoạn nét đứt màu nhấn; hợp tuyến xe, hành trình.
+  - Cả bộ áp phích treo cạnh nhau làm cảnh cuối; hợp danh mục, nhiều khu vực.
+- **Bẫy:** dùng gradient hoặc viền `stroke` làm hỏng chất mực phẳng; bóng của khung lưới là hình chữ nhật đặc thì bẩn, dùng bóng dạng vòng; thêm quá nhiều nhiễu thành kiểu in riso; đặt quá nhiều hạng mục làm quá thời lượng, hãy in nhiều mục trong cùng một lượt kéo.
+
+Phỏng theo `styles/silkscreen-poster/STYLE.md` của lemomo-ai/lemo-opuscar (MIT).
+
 *Ý tưởng gốc: MotionFly / lemo-opuscar (MIT), qua SlideFly.*
