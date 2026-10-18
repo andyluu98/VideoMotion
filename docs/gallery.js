@@ -1,4 +1,4 @@
-/* thư viện 91 style: lọc theo nhóm, tìm kiếm, nút Chép chỉ chép "style <slug>" */
+/* thư viện 92 style: lọc theo nhóm, tìm kiếm, nút Chép chỉ chép "style <slug>" */
 (() => {
   const rank = f => f === 'VideoMotion' ? 0 : f === 'MotionFly' ? 1 : 2;
   const S = (window.STYLES || []).slice().sort((a, b) => rank(a.from) - rank(b.from));

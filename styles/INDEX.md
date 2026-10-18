@@ -2,7 +2,7 @@
 
 Chọn theo chủ đề và cảm xúc. Gợi ý 3 style cho người dùng: một **hợp**, một **khác nền**, một **bất ngờ**. Đọc thẻ `styles/<slug>.md` của style đã chọn trước khi dựng.
 
-Tổng 91 style. Mỗi style có một thẻ gợi ý ở cột "Thẻ".
+Tổng 92 style. Mỗi style có một thẻ gợi ý ở cột "Thẻ".
 
 ## Nền tối (18)
 
@@ -27,7 +27,7 @@ Tổng 91 style. Mỗi style có một thẻ gợi ý ở cột "Thẻ".
 | Retro VHS | `retro-vhs` | hoài niệm, ấm áp, mong manh, ký ức | Video kỷ niệm gia đình, kỷ yếu, mở màn sự kiện retro, trailer hoài cổ, nội dung thập niên 80 và 90 | VT323 + Space Mono | [có](retro-vhs.md) |
 | ASCII CRT | `ascii-crt` | lạnh, kiên nhẫn, máy móc điềm tĩnh, chờ đợi | Công cụ lập trình, viễn tưởng, thương hiệu công nghệ, nhật ký hệ thống | VT323 | [có](ascii-crt.md) |
 
-## Nền sáng (49)
+## Nền sáng (50)
 
 | Style | Slug | Cảm xúc | Hợp với | Chữ | Thẻ |
 |---|---|---|---|---|---|
@@ -80,6 +80,7 @@ Tổng 91 style. Mỗi style có một thẻ gợi ý ở cột "Thẻ".
 | Rubber hose 1930 | `rubber-hose` | hoài cổ, nhí nhảnh, đen trắng, nhạc jazz | Bài giảng nhẹ nhàng, nội dung cho thiếu nhi hoặc gia đình, quảng cáo vui, kể chuyện bằng đồ vật có mặt cười | Lobster + Playfair Display SC + Be Vietnam Pro | [có](rubber-hose.md) |
 | Truyện tranh | `comic-book` | sôi nổi, hài hước, kịch tính, tuổi thơ | Kể chuyện vui, giới thiệu sản phẩm kiểu phiêu lưu, khóa học cho người trẻ, trailer mạng xã hội | Bangers + Be Vietnam Pro | [có](comic-book.md) |
 | Neo-brutalism | `neo-brutalism` | ồn ào, vui, dạn dĩ, nghịch ngợm | Ra mắt app và sản phẩm số, khuyến mãi, thương mại điện tử, sự kiện giới trẻ, quảng cáo ngắn | Lexend + Space Mono | [có](neo-brutalism.md) |
+| Vox Collage | `vox-collage` | thời sự, tỉnh táo, tò mò, thủ công cắt dán | Video giải thích tin tức và kinh tế, lý do một hiện tượng, lịch sử ngắn, so sánh, điểm lại sự kiện có mốc | Anton + Source Serif 4 + Xanh Mono | [có](vox-collage.md) |
 
 ## Nền trộn (24)
 

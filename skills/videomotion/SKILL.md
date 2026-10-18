@@ -5,7 +5,7 @@ description: Làm video tiếng Việt từ một yêu cầu, AI làm đạo di�
 
 # VideoMotion: AI làm đạo diễn cho video
 
-Khung dựng sẵn làm video nào cũng một dáng. VideoMotion đưa cho AI thứ nó thật sự cần: **gu** (91 thẻ style), **vốn từ chuyển động** (`motion/dong-tu.md`) và **một câu chuyện** do đạo diễn viết. Bạn (phiên chính) là đạo diễn; từng cảnh giao cho agent `vm-canh` (Sonnet mới nhất, effort medium) dựng song song.
+Khung dựng sẵn làm video nào cũng một dáng. VideoMotion đưa cho AI thứ nó thật sự cần: **gu** (92 thẻ style), **vốn từ chuyển động** (`motion/dong-tu.md`) và **một câu chuyện** do đạo diễn viết. Bạn (phiên chính) là đạo diễn; từng cảnh giao cho agent `vm-canh` (Sonnet mới nhất, effort medium) dựng song song.
 
 ```bash
 VV="${CLAUDE_PLUGIN_ROOT}"

@@ -1,6 +1,6 @@
 # VideoMotion: AI làm đạo diễn cho video
 
-Trang giới thiệu, video mẫu và thư viện 91 style (bấm "Chép" để lấy `style <tên>`): **https://andyluu98.github.io/VideoMotion/**
+Trang giới thiệu, video mẫu và thư viện 92 style (bấm "Chép" để lấy `style <tên>`): **https://andyluu98.github.io/VideoMotion/**
 
 Plugin Claude Code làm video tiếng Việt từ một câu yêu cầu. Không khung dựng sẵn: AI nghĩ ý tưởng lớn, viết kịch bản, đọc bằng giọng VieNeu, phân cảnh theo từng từ, rồi giao mỗi cảnh cho một agent Sonnet dựng song song bằng HyperFrames và GSAP. Ra file MP4 có nhạc nền và phụ đề.
 
@@ -14,7 +14,7 @@ Plugin Claude Code làm video tiếng Việt từ một câu yêu cầu. Không 
 
 "Săn quái lãng phí trong xưởng": 24 giây, khung dọc 9:16, style `pixel-rpg`, giọng Ngọc Huyền. 4 cảnh do 4 agent Sonnet dựng song song. Mã nguồn dự án ở `examples/san-quai-lang-phi/` (bấm ảnh để xem video).
 
-Anh em với [SlideMotion](https://github.com/andyluu98/slidemotion) (làm slide): dùng chung 91 thẻ style (VideoMotion có thêm 5 thẻ riêng) và cùng một tinh thần.
+Anh em với [SlideMotion](https://github.com/andyluu98/slidemotion) (làm slide): dùng chung 92 thẻ style (VideoMotion có thêm 6 thẻ riêng) và cùng một tinh thần.
 
 ## Vì sao có VideoMotion
 
@@ -23,7 +23,7 @@ Anh em với [SlideMotion](https://github.com/andyluu98/slidemotion) (làm slide
 | | MotionFly | VideoMotion |
 |---|---|---|
 | Cách nghĩ | Luật hình cứng: 85 phần trăm hình, tối đa 30 từ mỗi cảnh, thẻ nào cũng có SVG | Ý tưởng lớn, vật xuyên suốt, chuyển động theo động từ của câu; bố cục do người dựng tự nghĩ |
-| Style | 43 thẻ tiếng Anh, dài, nhiều luật kỹ thuật | 91 thẻ tiếng Việt ngắn (86 chung với SlideMotion): gu, màu, chữ, chữ ký chuyển động |
+| Style | 43 thẻ tiếng Anh, dài, nhiều luật kỹ thuật | 92 thẻ tiếng Việt ngắn (86 chung với SlideMotion): gu, màu, chữ, chữ ký chuyển động |
 | Phông chữ | Chỉ Be Vietnam Pro và JetBrains Mono | Phông riêng của từng style, tải sẵn bằng `tools/fonts.py` |
 | GSAP | Chỉ bản lõi | Thêm SplitText, DrawSVG, MotionPath, MorphSVG, ScrambleText, CustomEase |
 | Agent dựng cảnh | Theo model phiên chính | `model: sonnet` (luôn là Sonnet mới nhất), `effort: medium`, chạy song song |
@@ -68,7 +68,7 @@ skills/vm-giong/      giọng VieNeu, mốc từng từ
 skills/vm-nhac/       nhạc nền, trộn -14 LUFS
 skills/vm-cai-dat/    kiểm tra và cài đặt
 agents/vm-canh.md     agent dựng một cảnh (Sonnet, effort medium)
-styles/               91 thẻ style, INDEX.md, nhip-video.md (dùng thẻ slide cho video)
+styles/               92 thẻ style, INDEX.md, nhip-video.md (dùng thẻ slide cho video)
 motion/dong-tu.md     từ điển động từ ra chuyển động GSAP
 tools/                voice, timeline, fonts, packets, assemble, audio, music, setup
 templates/            khuôn cảnh, phông mặc định

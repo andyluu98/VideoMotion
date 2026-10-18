@@ -28,6 +28,11 @@ def main() -> None:
     out_dir = ROOT / "docs" / "assets" / "styles"
     out_dir.mkdir(parents=True, exist_ok=True)
     styles, group = [], ""
+    old_js = ROOT / "docs" / "styles.js"
+    old_from = {}
+    if old_js.exists():
+        t = old_js.read_text(encoding="utf-8")
+        old_from = {x["slug"]: x["from"] for x in json.loads(t[t.index("["):t.rindex("]") + 1])}
     for line in (ROOT / "styles" / "INDEX.md").read_text(encoding="utf-8").splitlines():
         m = re.match(r"## (.+?) \(\d+\)", line)
         if m:
@@ -39,11 +44,14 @@ def main() -> None:
         slug = cells[1].strip("`")
         own = ROOT / "site" / "media" / "mau" / f"{slug}.jpg"
         src, origin = (own, "VideoMotion") if own.exists() else (mf_imgs.get(slug), "MotionFly")
+        if not src and old_from.get(slug) == "MotionFly" and (out_dir / f"{slug}.jpg").exists():
+            src = out_dir / f"{slug}.jpg"  # thư mục MotionFly vắng: giữ ảnh khung video đã chép
         if not src:
             src, origin = sm / "docs" / "assets" / "styles" / f"{slug}-1.jpg", "SlideFly"
         img = ""
         if src.exists():
-            shutil.copy2(src, out_dir / f"{slug}.jpg")
+            if src.resolve() != (out_dir / f"{slug}.jpg").resolve():
+                shutil.copy2(src, out_dir / f"{slug}.jpg")
             img = f"assets/styles/{slug}.jpg"
         styles.append({"name": cells[0], "slug": slug, "group": group, "mood": cells[2], "use": cells[3],
                        "fonts": cells[4], "img": img, "from": origin if img else ""})
